@@ -1,0 +1,136 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Entity class="oracle.dbtools.crest.model.design.logical.Entity" directorySegmentName="seg_0" id="058C4293-C2A6-DA26-E3DC-A8A16DCBF06F" name="Pieza_inteligencia">
+<createdBy>Personal</createdBy>
+<createdTime>2021-12-19 23:19:25 UTC</createdTime>
+<ownerDesignName>proyecto</ownerDesignName>
+<engineerTo>
+<item key="25826295-0E8D-8F26-7470-FDC820B2AD0C" value="true"/>
+</engineerTo>
+<adequatelyNormalized>NO</adequatelyNormalized>
+<expectedVolumes>0</expectedVolumes>
+<fwdEngineeringStrategyName>Single Table</fwdEngineeringStrategyName>
+<growthPercent>0</growthPercent>
+<growthType>Year</growthType>
+<maxVolumes>9999999</maxVolumes>
+<minVolumes>0</minVolumes>
+<normalForm>Third</normalForm>
+<attributes itemClass="oracle.dbtools.crest.model.design.logical.Attribute">
+<Attribute name="id" id="CAC9C03F-43AF-06BA-2B5B-EBC93AE3BEA2">
+<createdBy>Personal</createdBy>
+<createdTime>2021-12-19 23:19:33 UTC</createdTime>
+<ownerDesignName>proyecto</ownerDesignName>
+<engineerTo>
+<item key="25826295-0E8D-8F26-7470-FDC820B2AD0C" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="precio_aproximado" id="85252D1B-47EC-9ED9-7E3F-472FDDFF0410">
+<createdBy>Personal</createdBy>
+<createdTime>2021-12-19 23:19:38 UTC</createdTime>
+<ownerDesignName>proyecto</ownerDesignName>
+<engineerTo>
+<item key="25826295-0E8D-8F26-7470-FDC820B2AD0C" value="true"/>
+</engineerTo>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="fecha_construccion" id="909A0119-5578-7514-365B-E9FCF0982423">
+<createdBy>Personal</createdBy>
+<createdTime>2021-12-19 23:20:07 UTC</createdTime>
+<ownerDesignName>proyecto</ownerDesignName>
+<engineerTo>
+<item key="25826295-0E8D-8F26-7470-FDC820B2AD0C" value="true"/>
+</engineerTo>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT007</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="nivel_confiabilidad" id="C7CD5578-5C41-3AC1-B9C1-E7D3B266784F">
+<createdBy>Personal</createdBy>
+<createdTime>2021-12-19 23:20:30 UTC</createdTime>
+<ownerDesignName>proyecto</ownerDesignName>
+<engineerTo>
+<item key="25826295-0E8D-8F26-7470-FDC820B2AD0C" value="true"/>
+</engineerTo>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="nivel_clasificado" id="7A76F7AE-4819-21B9-753A-2D27D925D998">
+<createdBy>Personal</createdBy>
+<createdTime>2021-12-19 23:20:55 UTC</createdTime>
+<ownerDesignName>proyecto</ownerDesignName>
+<engineerTo>
+<item key="25826295-0E8D-8F26-7470-FDC820B2AD0C" value="true"/>
+</engineerTo>
+<use>0</use>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="id1" id="CD27535B-D021-0A50-D7AE-DD22F0E0F174">
+<createdBy>Personal</createdBy>
+<createdTime>2021-12-19 23:21:36 UTC</createdTime>
+<generatorID>4DCDECE3-EB49-E3CA-35DE-256AD9A70817</generatorID>
+<ownerDesignName>proyecto</ownerDesignName>
+<engineerTo>
+<item key="25826295-0E8D-8F26-7470-FDC820B2AD0C" value="true"/>
+</engineerTo>
+<referedAttribute>FC711DF8-9451-48BD-BB81-96FDE0863E3B</referedAttribute>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="id2" id="6277F1AC-1F35-DDE8-8C00-CEA2ADE8D41B">
+<createdBy>Personal</createdBy>
+<createdTime>2021-12-19 23:57:26 UTC</createdTime>
+<generatorID>FE6163EF-36F4-F57F-9DD8-0A54D961A6D1</generatorID>
+<ownerDesignName>proyecto</ownerDesignName>
+<engineerTo>
+<item key="25826295-0E8D-8F26-7470-FDC820B2AD0C" value="true"/>
+</engineerTo>
+<referedAttribute>E9CC9FDE-C8C3-AC4D-F655-83FBD98EE15D</referedAttribute>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="id11" id="D9418C6B-839B-BAE7-CD8A-A9455666B383">
+<createdBy>Personal</createdBy>
+<createdTime>2021-12-19 23:57:26 UTC</createdTime>
+<generatorID>FE6163EF-36F4-F57F-9DD8-0A54D961A6D1</generatorID>
+<ownerDesignName>proyecto</ownerDesignName>
+<engineerTo>
+<item key="25826295-0E8D-8F26-7470-FDC820B2AD0C" value="true"/>
+</engineerTo>
+<referedAttribute>3CC21610-1F82-394F-323F-8C7F3FA0922E</referedAttribute>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+</attributes>
+<identifiers itemClass="oracle.dbtools.crest.model.design.logical.CandidateKey">
+<identifier id="24785E21-237C-388B-CDA2-956F94BF4695" name="Pieza_inteligencia PK">
+<createdBy>Personal</createdBy>
+<createdTime>2021-12-19 23:19:38 UTC</createdTime>
+<ownerDesignName>proyecto</ownerDesignName>
+<engineerTo>
+<item key="25826295-0E8D-8F26-7470-FDC820B2AD0C" value="true"/>
+</engineerTo>
+<pk>true</pk>
+<usedAttributes>
+<attributeRef>CAC9C03F-43AF-06BA-2B5B-EBC93AE3BEA2</attributeRef>
+</usedAttributes>
+</identifier>
+</identifiers>
+</Entity>

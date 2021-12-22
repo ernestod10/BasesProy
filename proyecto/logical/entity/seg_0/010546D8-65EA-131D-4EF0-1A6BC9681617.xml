@@ -1,0 +1,72 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Entity class="oracle.dbtools.crest.model.design.logical.Entity" directorySegmentName="seg_0" id="010546D8-65EA-131D-4EF0-1A6BC9681617" name="ciudad">
+<createdBy>Personal</createdBy>
+<createdTime>2021-12-19 23:24:42 UTC</createdTime>
+<ownerDesignName>proyecto</ownerDesignName>
+<engineerTo>
+<item key="25826295-0E8D-8F26-7470-FDC820B2AD0C" value="true"/>
+</engineerTo>
+<adequatelyNormalized>NO</adequatelyNormalized>
+<expectedVolumes>0</expectedVolumes>
+<fwdEngineeringStrategyName>Single Table</fwdEngineeringStrategyName>
+<growthPercent>0</growthPercent>
+<growthType>Year</growthType>
+<maxVolumes>9999999</maxVolumes>
+<minVolumes>0</minVolumes>
+<normalForm>Third</normalForm>
+<attributes itemClass="oracle.dbtools.crest.model.design.logical.Attribute">
+<Attribute name="id" id="2590AC72-E54D-3DBB-DC54-5AC5C976BEE9">
+<createdBy>Personal</createdBy>
+<createdTime>2021-12-19 23:24:49 UTC</createdTime>
+<ownerDesignName>proyecto</ownerDesignName>
+<engineerTo>
+<item key="25826295-0E8D-8F26-7470-FDC820B2AD0C" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="nombre" id="5AC183B7-877B-E705-D424-E4C477397BAC">
+<createdBy>Personal</createdBy>
+<createdTime>2021-12-19 23:24:55 UTC</createdTime>
+<ownerDesignName>proyecto</ownerDesignName>
+<engineerTo>
+<item key="25826295-0E8D-8F26-7470-FDC820B2AD0C" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="id1" id="E66BFD34-48C3-A435-313B-5B7577ABB0F9">
+<createdBy>Personal</createdBy>
+<createdTime>2021-12-19 23:25:03 UTC</createdTime>
+<generatorID>B1E79B40-8706-3E81-1ACB-F2B056D7FCB3</generatorID>
+<ownerDesignName>proyecto</ownerDesignName>
+<engineerTo>
+<item key="25826295-0E8D-8F26-7470-FDC820B2AD0C" value="true"/>
+</engineerTo>
+<referedAttribute>6AF8ADC3-03FA-675F-FB55-692474DE99CF</referedAttribute>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+</attributes>
+<identifiers itemClass="oracle.dbtools.crest.model.design.logical.CandidateKey">
+<identifier id="1251DB7D-9C51-174D-FE3F-4F05AD2EAE81" name="ciudad PK">
+<createdBy>Personal</createdBy>
+<createdTime>2021-12-19 23:24:54 UTC</createdTime>
+<ownerDesignName>proyecto</ownerDesignName>
+<engineerTo>
+<item key="25826295-0E8D-8F26-7470-FDC820B2AD0C" value="true"/>
+</engineerTo>
+<pk>true</pk>
+<usedAttributes>
+<attributeRef>2590AC72-E54D-3DBB-DC54-5AC5C976BEE9</attributeRef>
+<attributeRef>E66BFD34-48C3-A435-313B-5B7577ABB0F9</attributeRef>
+</usedAttributes>
+</identifier>
+</identifiers>
+</Entity>

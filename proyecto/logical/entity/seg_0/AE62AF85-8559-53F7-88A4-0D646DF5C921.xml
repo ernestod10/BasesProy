@@ -1,0 +1,62 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Entity class="oracle.dbtools.crest.model.design.logical.Entity" directorySegmentName="seg_0" id="AE62AF85-8559-53F7-88A4-0D646DF5C921" name="P_T">
+<createdBy>Personal</createdBy>
+<createdTime>2021-12-19 23:21:14 UTC</createdTime>
+<ownerDesignName>proyecto</ownerDesignName>
+<engineerTo>
+<item key="25826295-0E8D-8F26-7470-FDC820B2AD0C" value="true"/>
+</engineerTo>
+<adequatelyNormalized>NO</adequatelyNormalized>
+<expectedVolumes>0</expectedVolumes>
+<fwdEngineeringStrategyName>Single Table</fwdEngineeringStrategyName>
+<growthPercent>0</growthPercent>
+<growthType>Year</growthType>
+<maxVolumes>9999999</maxVolumes>
+<minVolumes>0</minVolumes>
+<normalForm>Third</normalForm>
+<attributes itemClass="oracle.dbtools.crest.model.design.logical.Attribute">
+<Attribute name="id" id="7C4E92B4-6756-B871-CF5B-9ADC09A88106">
+<createdBy>Personal</createdBy>
+<createdTime>2021-12-19 23:21:22 UTC</createdTime>
+<generatorID>595934DF-FA2A-D090-A9F2-44D1562D912B</generatorID>
+<ownerDesignName>proyecto</ownerDesignName>
+<engineerTo>
+<item key="25826295-0E8D-8F26-7470-FDC820B2AD0C" value="true"/>
+</engineerTo>
+<referedAttribute>CAC9C03F-43AF-06BA-2B5B-EBC93AE3BEA2</referedAttribute>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="id1" id="E4320444-212A-51A8-1BC8-C90CD4E51DA3">
+<createdBy>Personal</createdBy>
+<createdTime>2021-12-19 23:21:25 UTC</createdTime>
+<generatorID>CBA5584C-A792-DE67-009E-8BBB36E6715C</generatorID>
+<ownerDesignName>proyecto</ownerDesignName>
+<engineerTo>
+<item key="25826295-0E8D-8F26-7470-FDC820B2AD0C" value="true"/>
+</engineerTo>
+<referedAttribute>FC711DF8-9451-48BD-BB81-96FDE0863E3B</referedAttribute>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+</attributes>
+<identifiers itemClass="oracle.dbtools.crest.model.design.logical.CandidateKey">
+<identifier id="9400D4C6-B359-D857-8314-5C28EA54A59F" name="P_T PK">
+<createdBy>Personal</createdBy>
+<createdTime>2021-12-19 23:21:22 UTC</createdTime>
+<ownerDesignName>proyecto</ownerDesignName>
+<engineerTo>
+<item key="25826295-0E8D-8F26-7470-FDC820B2AD0C" value="true"/>
+</engineerTo>
+<pk>true</pk>
+<usedAttributes>
+<attributeRef>7C4E92B4-6756-B871-CF5B-9ADC09A88106</attributeRef>
+<attributeRef>E4320444-212A-51A8-1BC8-C90CD4E51DA3</attributeRef>
+</usedAttributes>
+</identifier>
+</identifiers>
+</Entity>
