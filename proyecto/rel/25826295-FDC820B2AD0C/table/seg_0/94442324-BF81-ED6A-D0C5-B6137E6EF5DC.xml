@@ -1,0 +1,182 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="94442324-BF81-ED6A-D0C5-B6137E6EF5DC" name="Pieza_inteligencia">
+<createdBy>diego</createdBy>
+<createdTime>2022-01-02 21:29:55 UTC</createdTime>
+<generatorID>058C4293-C2A6-DA26-E3DC-A8A16DCBF06F</generatorID>
+<ownerDesignName>proyecto</ownerDesignName>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="id" id="B8D7D84C-FE79-F426-7BE8-B4FB549DE58C">
+<createdBy>diego</createdBy>
+<createdTime>2022-01-02 21:29:55 UTC</createdTime>
+<generatorID>CAC9C03F-43AF-06BA-2B5B-EBC93AE3BEA2</generatorID>
+<ownerDesignName>proyecto</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="precio_aproximado" id="EC60229A-5FC4-28F6-743F-E71775753F30">
+<createdBy>diego</createdBy>
+<createdTime>2022-01-02 21:29:55 UTC</createdTime>
+<generatorID>85252D1B-47EC-9ED9-7E3F-472FDDFF0410</generatorID>
+<ownerDesignName>proyecto</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="fecha_construccion" id="E7866983-8D0A-52F7-3992-3671D51FE54D">
+<createdBy>diego</createdBy>
+<createdTime>2022-01-02 21:29:55 UTC</createdTime>
+<generatorID>909A0119-5578-7514-365B-E9FCF0982423</generatorID>
+<ownerDesignName>proyecto</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT007</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="nivel_confiabilidad" id="ED4FA6E5-9E3D-F14B-76A3-2FE456BEFEA8">
+<createdBy>diego</createdBy>
+<createdTime>2022-01-02 21:29:55 UTC</createdTime>
+<generatorID>C7CD5578-5C41-3AC1-B9C1-E7D3B266784F</generatorID>
+<ownerDesignName>proyecto</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="nivel_clasificado" id="DC847798-674A-BB97-3AE2-AD72352D0B92">
+<createdBy>diego</createdBy>
+<createdTime>2022-01-02 21:29:55 UTC</createdTime>
+<generatorID>7A76F7AE-4819-21B9-753A-2D27D925D998</generatorID>
+<ownerDesignName>proyecto</ownerDesignName>
+<use>0</use>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="Tema_id" id="A5E51330-FD77-D969-1133-9416AE96F44B">
+<createdBy>diego</createdBy>
+<createdTime>2022-01-02 21:29:55 UTC</createdTime>
+<generatorID>CD27535B-D021-0A50-D7AE-DD22F0E0F174</generatorID>
+<ownerDesignName>proyecto</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="0F17495A-8C50-FDCD-6AFC-4FF749481AA6" referredColumn="478FC76F-9787-3410-16D6-D58AE2E84AB3"/>
+</associations>
+</Column>
+<Column name="Historico_cargo_Fecha_inicio" id="3826B469-D139-89E0-8ED0-FC98E95FBA2C">
+<createdBy>diego</createdBy>
+<createdTime>2022-01-02 21:29:55 UTC</createdTime>
+<generatorID>89F16F8B-2D65-E036-AAC5-DF6B40752B3C</generatorID>
+<ownerDesignName>proyecto</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT007</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="F89DFED4-010D-D47E-697C-761CDA6DD1FE" referredColumn="B6CD3232-71CF-6EBA-EFF8-61A960228C92"/>
+</associations>
+</Column>
+<Column name="Historico_cargo_Empleado_inteligencia_id_emp_int" id="65AC7CED-34A4-E786-8F4B-96D744BAECA8">
+<createdBy>diego</createdBy>
+<createdTime>2022-01-02 21:29:55 UTC</createdTime>
+<generatorID>B608FBBE-9DDF-67C0-90F0-4264083735A5</generatorID>
+<ownerDesignName>proyecto</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="F89DFED4-010D-D47E-697C-761CDA6DD1FE" referredColumn="4264801C-501A-7609-6BF3-DF5B0E36AF93"/>
+</associations>
+</Column>
+<Column name="Historico_cargo_Estacion_id_estacion" id="E1385FBD-CC77-3A8E-76EE-20A504F9B45B">
+<createdBy>diego</createdBy>
+<createdTime>2022-01-02 21:29:55 UTC</createdTime>
+<generatorID>2AB03053-EB14-75A7-873C-84D56C2EB29A</generatorID>
+<ownerDesignName>proyecto</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="F89DFED4-010D-D47E-697C-761CDA6DD1FE" referredColumn="D258ABD8-BB33-2A1C-260E-F06324E851AA"/>
+</associations>
+</Column>
+<Column name="Historico_cargo_Estacion_ID_oficina" id="E4E7B9F4-B38C-6CB1-27DA-2F46FD2F469F">
+<createdBy>diego</createdBy>
+<createdTime>2022-01-02 21:29:55 UTC</createdTime>
+<generatorID>84428D7F-9EA4-290D-3140-345D862E2402</generatorID>
+<ownerDesignName>proyecto</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="F89DFED4-010D-D47E-697C-761CDA6DD1FE" referredColumn="CFDA937D-F224-FC8A-5F34-505EEEBA4735"/>
+</associations>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="74C2556F-D76A-91C6-EB7A-C27C056ED309" name="Pieza_inteligencia_PK">
+<createdBy>diego</createdBy>
+<createdTime>2022-01-02 21:29:55 UTC</createdTime>
+<generatorID>24785E21-237C-388B-CDA2-956F94BF4695</generatorID>
+<ownerDesignName>proyecto</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="B8D7D84C-FE79-F426-7BE8-B4FB549DE58C"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="686EC876-75BB-7F0E-5F9E-B72D077CA4A3" name="Pieza_inteligencia_Historico_cargo_FK">
+<createdBy>diego</createdBy>
+<createdTime>2022-01-02 21:29:55 UTC</createdTime>
+<generatorID>D4D2FAB5-E6C7-8CBD-95CE-72DAA5F58012</generatorID>
+<ownerDesignName>proyecto</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="3826B469-D139-89E0-8ED0-FC98E95FBA2C"/>
+<colUsage columnID="65AC7CED-34A4-E786-8F4B-96D744BAECA8"/>
+<colUsage columnID="E1385FBD-CC77-3A8E-76EE-20A504F9B45B"/>
+<colUsage columnID="E4E7B9F4-B38C-6CB1-27DA-2F46FD2F469F"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="5288A2A5-5F3E-93B5-5D8D-6861A92F1455" name="Pieza_inteligencia_Tema_FK">
+<createdBy>diego</createdBy>
+<createdTime>2022-01-02 21:29:55 UTC</createdTime>
+<generatorID>4DCDECE3-EB49-E3CA-35DE-256AD9A70817</generatorID>
+<ownerDesignName>proyecto</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="A5E51330-FD77-D969-1133-9416AE96F44B"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

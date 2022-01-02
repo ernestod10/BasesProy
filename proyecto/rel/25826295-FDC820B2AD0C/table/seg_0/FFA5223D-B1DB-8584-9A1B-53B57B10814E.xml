@@ -1,0 +1,59 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="FFA5223D-B1DB-8584-9A1B-53B57B10814E" name="Historico_Seguridad">
+<createdBy>diego</createdBy>
+<createdTime>2022-01-02 21:29:55 UTC</createdTime>
+<generatorID>09EA2136-64DE-8243-86A6-6BF3E5649A32</generatorID>
+<ownerDesignName>proyecto</ownerDesignName>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="ID" id="BCFDF8FA-4B06-F413-C141-C9B4B4FF4D12">
+<createdBy>diego</createdBy>
+<createdTime>2022-01-02 21:29:55 UTC</createdTime>
+<generatorID>3FCD70B6-7EC2-6BA4-A581-EB53707ED2EF</generatorID>
+<ownerDesignName>proyecto</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="ID_empleado" id="7E767632-F746-1AAF-8221-E9D9FE8E0A01">
+<createdBy>diego</createdBy>
+<createdTime>2022-01-02 21:29:55 UTC</createdTime>
+<generatorID>77F34E83-A173-BFEE-B85E-F3900680EC3A</generatorID>
+<ownerDesignName>proyecto</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="ID_Pieza" id="5E432F8B-9C85-E092-5195-E854EC2DFB06">
+<createdBy>diego</createdBy>
+<createdTime>2022-01-02 21:29:55 UTC</createdTime>
+<generatorID>BD4728D1-7DE2-DE95-26BE-EA7D64BAF9DD</generatorID>
+<ownerDesignName>proyecto</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="EF3AF344-29E8-299C-F723-CD3EC8702350" name="Historico_Seguridad_PK">
+<createdBy>diego</createdBy>
+<createdTime>2022-01-02 21:29:55 UTC</createdTime>
+<generatorID>DCE02B04-99FF-98E3-2A4F-3F1A7AEDECC2</generatorID>
+<ownerDesignName>proyecto</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="BCFDF8FA-4B06-F413-C141-C9B4B4FF4D12"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

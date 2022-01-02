@@ -1,0 +1,75 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="DF69A542-8C9A-71EC-EBCE-88829B5E897F" name="ciudad">
+<createdBy>diego</createdBy>
+<createdTime>2022-01-02 21:29:55 UTC</createdTime>
+<generatorID>010546D8-65EA-131D-4EF0-1A6BC9681617</generatorID>
+<ownerDesignName>proyecto</ownerDesignName>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="id_ciudad" id="712814A6-886F-CBA7-71DE-E5BF78EB01F0">
+<createdBy>diego</createdBy>
+<createdTime>2022-01-02 21:29:55 UTC</createdTime>
+<generatorID>2590AC72-E54D-3DBB-DC54-5AC5C976BEE9</generatorID>
+<ownerDesignName>proyecto</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="nombre" id="2CD2EFC0-BDE0-60DB-5FC4-C6E761D613C6">
+<createdBy>diego</createdBy>
+<createdTime>2022-01-02 21:29:55 UTC</createdTime>
+<generatorID>5AC183B7-877B-E705-D424-E4C477397BAC</generatorID>
+<ownerDesignName>proyecto</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="Pais_id_pais" id="BEB7B21C-7CFD-DA9F-6469-631F6415FA8D">
+<createdBy>diego</createdBy>
+<createdTime>2022-01-02 21:29:55 UTC</createdTime>
+<generatorID>E66BFD34-48C3-A435-313B-5B7577ABB0F9</generatorID>
+<ownerDesignName>proyecto</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="3EF55F57-280E-06AF-E6AA-58C63359E71F" referredColumn="00EBE44C-362E-D08D-8D89-67398936BD2D"/>
+</associations>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="3331C00E-0FA9-1784-2223-FF5FD6BC5411" name="ciudad_PK">
+<createdBy>diego</createdBy>
+<createdTime>2022-01-02 21:29:55 UTC</createdTime>
+<generatorID>1251DB7D-9C51-174D-FE3F-4F05AD2EAE81</generatorID>
+<ownerDesignName>proyecto</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="712814A6-886F-CBA7-71DE-E5BF78EB01F0"/>
+<colUsage columnID="BEB7B21C-7CFD-DA9F-6469-631F6415FA8D"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="B9F488E6-0B7A-48E2-58DE-8375792A649F" name="ciudad_Pais_FK">
+<createdBy>diego</createdBy>
+<createdTime>2022-01-02 21:29:55 UTC</createdTime>
+<generatorID>B1E79B40-8706-3E81-1ACB-F2B056D7FCB3</generatorID>
+<ownerDesignName>proyecto</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="BEB7B21C-7CFD-DA9F-6469-631F6415FA8D"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

@@ -1,0 +1,17 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<FKIndexAssociation class="oracle.dbtools.crest.model.design.relational.FKIndexAssociation" directorySegmentName="seg_0" id="F89DFED4-010D-D47E-697C-761CDA6DD1FE" containerWithKeyObject="94442324-BF81-ED6A-D0C5-B6137E6EF5DC" localFKIndex="686EC876-75BB-7F0E-5F9E-B72D077CA4A3" name="Pieza_inteligencia_Historico_cargo_FK">
+<createdBy>diego</createdBy>
+<createdTime>2022-01-02 21:29:55 UTC</createdTime>
+<generatorID>D4D2FAB5-E6C7-8CBD-95CE-72DAA5F58012</generatorID>
+<ownerDesignName>proyecto</ownerDesignName>
+<referredTableLongName>Historico_cargo</referredTableLongName>
+<deleteRule>NO ACTION</deleteRule>
+<referredTableID>48283B8A-3A16-D357-31F1-687F2909C1A8</referredTableID>
+<keyObject>978F1D1E-D392-5993-A906-CD0690ACBD34</keyObject>
+<referredKeyID>978F1D1E-D392-5993-A906-CD0690ACBD34</referredKeyID>
+<mandatory>true</mandatory>
+<refColNames>Fecha_inicio,Empleado_inteligencia_id_emp_int,Estacion_id_estacion,Estacion_ID_oficina</refColNames>
+<transferable>true</transferable>
+<rely>false</rely>
+<columnDependencyConstraintGenerateInDDL>true</columnDependencyConstraintGenerateInDDL>
+</FKIndexAssociation>

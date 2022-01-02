@@ -1,0 +1,79 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="3AE08570-9411-8139-BDB3-3DA1B577CA5F" name="Area_interes">
+<createdBy>diego</createdBy>
+<createdTime>2022-01-02 21:29:55 UTC</createdTime>
+<generatorID>D7451E67-A2A3-DB9C-F63D-627840792526</generatorID>
+<ownerDesignName>proyecto</ownerDesignName>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="Cliente_id" id="B17FD557-8193-69D8-DAB4-24ACC362BEA5">
+<createdBy>diego</createdBy>
+<createdTime>2022-01-02 21:29:55 UTC</createdTime>
+<generatorID>D46FFC3D-6E51-D0A9-F948-B7393D0D8361</generatorID>
+<ownerDesignName>proyecto</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="E5BAB166-B4F0-22F3-7900-3680A2F65462" referredColumn="E6620951-7A6A-333E-5AAC-0BBE073DEA29"/>
+</associations>
+</Column>
+<Column name="Tema_id" id="0A2D523D-5344-BBFD-A37C-FB8CC4F5087A">
+<createdBy>diego</createdBy>
+<createdTime>2022-01-02 21:29:55 UTC</createdTime>
+<generatorID>5E32F322-5F6F-9839-ABE8-413BC891E8F2</generatorID>
+<ownerDesignName>proyecto</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="994CF584-0D79-5799-B3DF-89EDD9EDFCA4" referredColumn="478FC76F-9787-3410-16D6-D58AE2E84AB3"/>
+</associations>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="046EBA81-0EFA-E199-45D1-39EDA8E5DDA2" name="Area_interes_PK">
+<createdBy>diego</createdBy>
+<createdTime>2022-01-02 21:29:55 UTC</createdTime>
+<generatorID>BA50140D-B914-C03D-2591-E0A18A7F9C50</generatorID>
+<ownerDesignName>proyecto</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="B17FD557-8193-69D8-DAB4-24ACC362BEA5"/>
+<colUsage columnID="0A2D523D-5344-BBFD-A37C-FB8CC4F5087A"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="2C974805-E20F-C7C8-F9CE-93400FB3675D" name="Area_interes_Cliente_FK">
+<createdBy>diego</createdBy>
+<createdTime>2022-01-02 21:29:55 UTC</createdTime>
+<generatorID>68A4E4DE-08DE-C8E4-A8DD-4DDA9958EDDD</generatorID>
+<ownerDesignName>proyecto</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="B17FD557-8193-69D8-DAB4-24ACC362BEA5"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="AE7E8E77-017D-5677-6981-2427A8E2E277" name="Area_interes_Tema_FK">
+<createdBy>diego</createdBy>
+<createdTime>2022-01-02 21:29:55 UTC</createdTime>
+<generatorID>C348CBB0-77F2-781F-06DD-95941070F825</generatorID>
+<ownerDesignName>proyecto</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="0A2D523D-5344-BBFD-A37C-FB8CC4F5087A"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

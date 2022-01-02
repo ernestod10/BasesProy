@@ -1,0 +1,17 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<FKIndexAssociation class="oracle.dbtools.crest.model.design.relational.FKIndexAssociation" directorySegmentName="seg_0" id="A2BADC3F-9D6F-E764-8DF6-89717C47BCF9" containerWithKeyObject="C6AD8B5B-2BA6-26A2-4272-866B30F53C12" localFKIndex="DCD0D0F5-E9C3-9759-D215-590C65CC3A18" name="Historico_pago_Hecho_crudo_FK">
+<createdBy>diego</createdBy>
+<createdTime>2022-01-02 21:29:55 UTC</createdTime>
+<generatorID>B51C501D-2915-BE39-9D4C-2D1DD647138F</generatorID>
+<ownerDesignName>proyecto</ownerDesignName>
+<referredTableLongName>Hecho_crudo</referredTableLongName>
+<deleteRule>NO ACTION</deleteRule>
+<referredTableID>B0BAF836-CA93-D642-D610-47453963EE30</referredTableID>
+<keyObject>5340A3DD-4BB1-345A-2166-97E3693F98F5</keyObject>
+<referredKeyID>5340A3DD-4BB1-345A-2166-97E3693F98F5</referredKeyID>
+<mandatory>false</mandatory>
+<refColNames>id_hecho_cdo</refColNames>
+<transferable>true</transferable>
+<rely>false</rely>
+<columnDependencyConstraintGenerateInDDL>true</columnDependencyConstraintGenerateInDDL>
+</FKIndexAssociation>

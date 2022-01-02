@@ -1,0 +1,79 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="8840D389-5F25-E469-2DEC-65A81BD6EF2B" name="P_T">
+<createdBy>diego</createdBy>
+<createdTime>2022-01-02 21:29:55 UTC</createdTime>
+<generatorID>AE62AF85-8559-53F7-88A4-0D646DF5C921</generatorID>
+<ownerDesignName>proyecto</ownerDesignName>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="Pieza_inteligencia_id" id="41F913BF-E6AC-A45D-699C-F37EAF4ADA08">
+<createdBy>diego</createdBy>
+<createdTime>2022-01-02 21:29:55 UTC</createdTime>
+<generatorID>7C4E92B4-6756-B871-CF5B-9ADC09A88106</generatorID>
+<ownerDesignName>proyecto</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="2B96E9C8-4112-D659-3C31-C82EE13D8EFF" referredColumn="B8D7D84C-FE79-F426-7BE8-B4FB549DE58C"/>
+</associations>
+</Column>
+<Column name="Tema_id" id="D131CAAB-78F7-435C-C606-880E8BCC66CC">
+<createdBy>diego</createdBy>
+<createdTime>2022-01-02 21:29:55 UTC</createdTime>
+<generatorID>E4320444-212A-51A8-1BC8-C90CD4E51DA3</generatorID>
+<ownerDesignName>proyecto</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="DCEFF077-16A3-084A-6389-5EC3E31781D5" referredColumn="478FC76F-9787-3410-16D6-D58AE2E84AB3"/>
+</associations>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="21BCD46B-3AF4-C3F2-15C1-6FF5D2AB7B27" name="P_T_PK">
+<createdBy>diego</createdBy>
+<createdTime>2022-01-02 21:29:55 UTC</createdTime>
+<generatorID>9400D4C6-B359-D857-8314-5C28EA54A59F</generatorID>
+<ownerDesignName>proyecto</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="41F913BF-E6AC-A45D-699C-F37EAF4ADA08"/>
+<colUsage columnID="D131CAAB-78F7-435C-C606-880E8BCC66CC"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="85A7C04A-A5EC-CA31-EFC6-DAC7F2B61A7C" name="P_T_Pieza_inteligencia_FK">
+<createdBy>diego</createdBy>
+<createdTime>2022-01-02 21:29:55 UTC</createdTime>
+<generatorID>595934DF-FA2A-D090-A9F2-44D1562D912B</generatorID>
+<ownerDesignName>proyecto</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="41F913BF-E6AC-A45D-699C-F37EAF4ADA08"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="19C3665B-B819-EDB6-D2C8-E57B6B32A145" name="P_T_Tema_FK">
+<createdBy>diego</createdBy>
+<createdTime>2022-01-02 21:29:55 UTC</createdTime>
+<generatorID>CBA5584C-A792-DE67-009E-8BBB36E6715C</generatorID>
+<ownerDesignName>proyecto</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="D131CAAB-78F7-435C-C606-880E8BCC66CC"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

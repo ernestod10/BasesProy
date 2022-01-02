@@ -1,0 +1,17 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<FKIndexAssociation class="oracle.dbtools.crest.model.design.relational.FKIndexAssociation" directorySegmentName="seg_0" id="A9BDA6D3-7393-7C87-EA94-09A6BCB18C79" containerWithKeyObject="C6AD8B5B-2BA6-26A2-4272-866B30F53C12" localFKIndex="8F71827D-2CFD-FD58-CB1B-C8FB60A7EE2F" name="Historico_pago_Informante_FK">
+<createdBy>diego</createdBy>
+<createdTime>2022-01-02 21:29:55 UTC</createdTime>
+<generatorID>BA0C4E50-E003-1AA0-19F0-4EE4DFAF2D2F</generatorID>
+<ownerDesignName>proyecto</ownerDesignName>
+<referredTableLongName>Informante</referredTableLongName>
+<deleteRule>NO ACTION</deleteRule>
+<referredTableID>6559EAEB-C170-267D-B1F1-4C5E4D6F62C4</referredTableID>
+<keyObject>E64A3E86-1C41-7299-D495-2B5A63D40804</keyObject>
+<referredKeyID>E64A3E86-1C41-7299-D495-2B5A63D40804</referredKeyID>
+<mandatory>true</mandatory>
+<refColNames>id_informante</refColNames>
+<transferable>true</transferable>
+<rely>false</rely>
+<columnDependencyConstraintGenerateInDDL>true</columnDependencyConstraintGenerateInDDL>
+</FKIndexAssociation>

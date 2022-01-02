@@ -1,0 +1,17 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<FKIndexAssociation class="oracle.dbtools.crest.model.design.relational.FKIndexAssociation" directorySegmentName="seg_0" id="F8C387CD-508A-06B1-4EF9-70DDE057E2B0" containerWithKeyObject="8B25A514-C2FB-4390-5E70-FFB71CAC1442" localFKIndex="D97A68CC-3C6E-4844-5D0B-7220E39D426A" name="Analistas_temas_Empleado_inteligencia_FK">
+<createdBy>diego</createdBy>
+<createdTime>2022-01-02 21:29:55 UTC</createdTime>
+<generatorID>13371021-26DB-D308-8B72-45FB2EE48BAA</generatorID>
+<ownerDesignName>proyecto</ownerDesignName>
+<referredTableLongName>Empleado_inteligencia</referredTableLongName>
+<deleteRule>NO ACTION</deleteRule>
+<referredTableID>08602F1E-3B34-34D8-B56F-13CB46B87A20</referredTableID>
+<keyObject>DB469866-5DE6-19D2-F465-BF4DED378A64</keyObject>
+<referredKeyID>DB469866-5DE6-19D2-F465-BF4DED378A64</referredKeyID>
+<mandatory>true</mandatory>
+<refColNames>id_emp_int</refColNames>
+<transferable>true</transferable>
+<rely>false</rely>
+<columnDependencyConstraintGenerateInDDL>true</columnDependencyConstraintGenerateInDDL>
+</FKIndexAssociation>
