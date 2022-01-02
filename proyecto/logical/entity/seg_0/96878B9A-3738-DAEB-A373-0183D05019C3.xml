@@ -49,7 +49,19 @@
 <use>0</use>
 <ownDataTypeParameters>,,</ownDataTypeParameters>
 </Attribute>
-<Attribute name="Informacion" id="50587FED-02DD-E527-87A7-7627E89C0D33">
+<Attribute name="tipo_contenido" id="94D3ECC9-C505-E21A-A912-970E1DECA100">
+<createdBy>diego</createdBy>
+<createdTime>2022-01-02 19:28:32 UTC</createdTime>
+<ownerDesignName>proyecto</ownerDesignName>
+<engineerTo>
+<item key="25826295-0E8D-8F26-7470-FDC820B2AD0C" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="Contenido" id="50587FED-02DD-E527-87A7-7627E89C0D33">
 <createdBy>Personal</createdBy>
 <createdTime>2021-12-19 23:27:45 UTC</createdTime>
 <ownerDesignName>proyecto</ownerDesignName>
