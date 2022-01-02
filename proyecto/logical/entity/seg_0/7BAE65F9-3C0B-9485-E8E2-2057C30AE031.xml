@@ -15,7 +15,7 @@
 <minVolumes>0</minVolumes>
 <normalForm>Third</normalForm>
 <attributes itemClass="oracle.dbtools.crest.model.design.logical.Attribute">
-<Attribute name="id" id="7876887E-59AE-5244-7315-8E57A9FC6467">
+<Attribute name="id_emp_int" id="7876887E-59AE-5244-7315-8E57A9FC6467">
 <createdBy>Personal</createdBy>
 <createdTime>2021-12-19 23:11:45 UTC</createdTime>
 <ownerDesignName>proyecto</ownerDesignName>
@@ -27,7 +27,7 @@
 <logicalDatatype>LOGDT019</logicalDatatype>
 <ownDataTypeParameters>,,</ownDataTypeParameters>
 </Attribute>
-<Attribute name="documento_identidad" id="4BC66905-F8B6-254A-06B2-9908A68EC675">
+<Attribute name="doc_identidad" id="4BC66905-F8B6-254A-06B2-9908A68EC675">
 <createdBy>Personal</createdBy>
 <createdTime>2021-12-19 23:11:51 UTC</createdTime>
 <ownerDesignName>proyecto</ownerDesignName>
@@ -39,25 +39,71 @@
 <logicalDatatype>LOGDT019</logicalDatatype>
 <ownDataTypeParameters>,,</ownDataTypeParameters>
 </Attribute>
-<Attribute name="datos_personales" id="CCAE48D1-C369-6167-1E39-F5C09D7EE45B">
+<Attribute name="nombre_pila" id="CCAE48D1-C369-6167-1E39-F5C09D7EE45B">
 <createdBy>Personal</createdBy>
 <createdTime>2021-12-19 23:12:29 UTC</createdTime>
 <ownerDesignName>proyecto</ownerDesignName>
 <engineerTo>
 <item key="25826295-0E8D-8F26-7470-FDC820B2AD0C" value="true"/>
 </engineerTo>
-<use>0</use>
-<ownDataTypeParameters>,,</ownDataTypeParameters>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>30</dataTypeSize>
+<ownDataTypeParameters>30,,</ownDataTypeParameters>
 </Attribute>
-<Attribute name="TipoESeguridad" id="118C041F-E4FE-947C-999E-4DC86FB8ABC6">
+<Attribute name="segundo_nombre" id="F7181C37-87C1-CCE0-1E21-F47C81A8DDAE">
+<createdBy>diego</createdBy>
+<createdTime>2022-01-02 19:17:58 UTC</createdTime>
+<ownerDesignName>proyecto</ownerDesignName>
+<engineerTo>
+<item key="25826295-0E8D-8F26-7470-FDC820B2AD0C" value="true"/>
+</engineerTo>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>25</dataTypeSize>
+<ownDataTypeParameters>25,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="apellido1" id="34CEF6EE-35B6-6DF8-BBF2-4371C4EDA877">
+<createdBy>diego</createdBy>
+<createdTime>2022-01-02 19:18:57 UTC</createdTime>
+<ownerDesignName>proyecto</ownerDesignName>
+<engineerTo>
+<item key="25826295-0E8D-8F26-7470-FDC820B2AD0C" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>30</dataTypeSize>
+<ownDataTypeParameters>30,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="apellido2" id="735CFD9F-067A-8602-02A3-9771908F5938">
+<createdBy>diego</createdBy>
+<createdTime>2022-01-02 19:19:24 UTC</createdTime>
+<ownerDesignName>proyecto</ownerDesignName>
+<engineerTo>
+<item key="25826295-0E8D-8F26-7470-FDC820B2AD0C" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>25</dataTypeSize>
+<ownDataTypeParameters>25,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="ClaseSeguridad" id="118C041F-E4FE-947C-999E-4DC86FB8ABC6">
 <createdBy>Personal</createdBy>
 <createdTime>2021-12-19 23:12:43 UTC</createdTime>
 <ownerDesignName>proyecto</ownerDesignName>
 <engineerTo>
 <item key="25826295-0E8D-8F26-7470-FDC820B2AD0C" value="true"/>
 </engineerTo>
-<use>0</use>
-<ownDataTypeParameters>,,</ownDataTypeParameters>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>1</dataTypeSize>
+<ownDataTypeParameters>1,,</ownDataTypeParameters>
 </Attribute>
 <Attribute name="Licencia" id="8E1DD5CE-A052-B76D-8E62-25B211F51DFB">
 <createdBy>Personal</createdBy>
@@ -134,7 +180,7 @@
 <logicalDatatype>LOGDT024</logicalDatatype>
 <ownDataTypeParameters>,,</ownDataTypeParameters>
 </Attribute>
-<Attribute name="id1" id="B886C54C-6DF8-E3E3-C3DB-8FB9D02A46AA">
+<Attribute name="id_ciudad" id="B886C54C-6DF8-E3E3-C3DB-8FB9D02A46AA">
 <createdBy>Personal</createdBy>
 <createdTime>2021-12-19 23:44:29 UTC</createdTime>
 <generatorID>9C07B40B-E629-3ECC-2F4F-55BFC5ECE730</generatorID>
@@ -148,7 +194,7 @@
 <logicalDatatype>LOGDT019</logicalDatatype>
 <ownDataTypeParameters>,,</ownDataTypeParameters>
 </Attribute>
-<Attribute name="id11" id="EA58FD6B-825A-0094-058D-87C950D35942">
+<Attribute name="id_pais" id="EA58FD6B-825A-0094-058D-87C950D35942">
 <createdBy>Personal</createdBy>
 <createdTime>2021-12-19 23:44:29 UTC</createdTime>
 <generatorID>9C07B40B-E629-3ECC-2F4F-55BFC5ECE730</generatorID>

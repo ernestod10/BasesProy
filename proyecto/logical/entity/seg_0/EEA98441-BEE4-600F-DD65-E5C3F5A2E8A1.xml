@@ -15,7 +15,7 @@
 <minVolumes>0</minVolumes>
 <normalForm>Third</normalForm>
 <attributes itemClass="oracle.dbtools.crest.model.design.logical.Attribute">
-<Attribute name="ID" id="FCC14FE6-1645-E491-6F89-D3031CB9EE46">
+<Attribute name="id_hecho_cdo" id="FCC14FE6-1645-E491-6F89-D3031CB9EE46">
 <createdBy>Personal</createdBy>
 <createdTime>2021-12-19 23:30:14 UTC</createdTime>
 <generatorID>910A44C5-313C-C61A-4C46-01DABFA53647</generatorID>

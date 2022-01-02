@@ -15,7 +15,7 @@
 <minVolumes>0</minVolumes>
 <normalForm>Third</normalForm>
 <attributes itemClass="oracle.dbtools.crest.model.design.logical.Attribute">
-<Attribute name="id" id="578C9B3A-0648-A8BE-B083-596B2BCC934D">
+<Attribute name="id_estacion" id="578C9B3A-0648-A8BE-B083-596B2BCC934D">
 <createdBy>Personal</createdBy>
 <createdTime>2021-12-19 23:47:39 UTC</createdTime>
 <ownerDesignName>proyecto</ownerDesignName>
@@ -65,7 +65,7 @@
 <logicalDatatype>LOGDT019</logicalDatatype>
 <ownDataTypeParameters>,,</ownDataTypeParameters>
 </Attribute>
-<Attribute name="id2" id="2F1FE2FE-72F7-6E7B-C089-3ACF7DE8E2B7">
+<Attribute name="id_ciudad" id="2F1FE2FE-72F7-6E7B-C089-3ACF7DE8E2B7">
 <createdBy>Personal</createdBy>
 <createdTime>2021-12-19 23:48:55 UTC</createdTime>
 <generatorID>ABC1CC92-0334-011C-30A1-A0A6BF744CD3</generatorID>
@@ -79,7 +79,7 @@
 <logicalDatatype>LOGDT019</logicalDatatype>
 <ownDataTypeParameters>,,</ownDataTypeParameters>
 </Attribute>
-<Attribute name="id11" id="A9523ED0-6953-D217-2A9E-22990B251AEB">
+<Attribute name="id_pais" id="A9523ED0-6953-D217-2A9E-22990B251AEB">
 <createdBy>Personal</createdBy>
 <createdTime>2021-12-19 23:48:55 UTC</createdTime>
 <generatorID>ABC1CC92-0334-011C-30A1-A0A6BF744CD3</generatorID>

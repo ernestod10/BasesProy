@@ -50,7 +50,7 @@
 <use>0</use>
 <ownDataTypeParameters>,,</ownDataTypeParameters>
 </Attribute>
-<Attribute name="id" id="E66CD629-8112-79A6-6D30-516A344A6DBF">
+<Attribute name="id_emp_int" id="E66CD629-8112-79A6-6D30-516A344A6DBF">
 <createdBy>Personal</createdBy>
 <createdTime>2021-12-19 23:47:13 UTC</createdTime>
 <generatorID>60790764-3DA7-5B21-80FF-DD140597383F</generatorID>
@@ -64,7 +64,7 @@
 <logicalDatatype>LOGDT019</logicalDatatype>
 <ownDataTypeParameters>,,</ownDataTypeParameters>
 </Attribute>
-<Attribute name="id1" id="A238FF48-2706-8019-A0B4-B280A6FB7C8B">
+<Attribute name="id_estacion" id="A238FF48-2706-8019-A0B4-B280A6FB7C8B">
 <createdBy>Personal</createdBy>
 <createdTime>2021-12-19 23:50:05 UTC</createdTime>
 <generatorID>BE9E8461-A35D-3336-670A-CD08DF9CDB69</generatorID>

@@ -39,7 +39,7 @@
 <logicalDatatype>LOGDT007</logicalDatatype>
 <ownDataTypeParameters>,,</ownDataTypeParameters>
 </Attribute>
-<Attribute name="Precio_final" id="17BB9EAD-5144-C285-365F-6BE232867F4E">
+<Attribute name="total_precio_final" id="17BB9EAD-5144-C285-365F-6BE232867F4E">
 <createdBy>Personal</createdBy>
 <createdTime>2021-12-19 23:59:29 UTC</createdTime>
 <ownerDesignName>proyecto</ownerDesignName>

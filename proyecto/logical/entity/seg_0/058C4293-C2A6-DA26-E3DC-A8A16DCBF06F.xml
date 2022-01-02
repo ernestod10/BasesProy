@@ -90,6 +90,62 @@
 <logicalDatatype>LOGDT019</logicalDatatype>
 <ownDataTypeParameters>,,</ownDataTypeParameters>
 </Attribute>
+<Attribute name="Fecha_inicio" id="89F16F8B-2D65-E036-AAC5-DF6B40752B3C">
+<createdBy>diego</createdBy>
+<createdTime>2022-01-02 19:20:57 UTC</createdTime>
+<generatorID>D4D2FAB5-E6C7-8CBD-95CE-72DAA5F58012</generatorID>
+<ownerDesignName>proyecto</ownerDesignName>
+<engineerTo>
+<item key="25826295-0E8D-8F26-7470-FDC820B2AD0C" value="true"/>
+</engineerTo>
+<referedAttribute>EB7F2DFE-443F-F6DC-C86D-80A582FA230C</referedAttribute>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT007</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="id_emp_int" id="B608FBBE-9DDF-67C0-90F0-4264083735A5">
+<createdBy>diego</createdBy>
+<createdTime>2022-01-02 19:20:57 UTC</createdTime>
+<generatorID>D4D2FAB5-E6C7-8CBD-95CE-72DAA5F58012</generatorID>
+<ownerDesignName>proyecto</ownerDesignName>
+<engineerTo>
+<item key="25826295-0E8D-8F26-7470-FDC820B2AD0C" value="true"/>
+</engineerTo>
+<referedAttribute>E66CD629-8112-79A6-6D30-516A344A6DBF</referedAttribute>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="id_estacion" id="2AB03053-EB14-75A7-873C-84D56C2EB29A">
+<createdBy>diego</createdBy>
+<createdTime>2022-01-02 19:20:57 UTC</createdTime>
+<generatorID>D4D2FAB5-E6C7-8CBD-95CE-72DAA5F58012</generatorID>
+<ownerDesignName>proyecto</ownerDesignName>
+<engineerTo>
+<item key="25826295-0E8D-8F26-7470-FDC820B2AD0C" value="true"/>
+</engineerTo>
+<referedAttribute>A238FF48-2706-8019-A0B4-B280A6FB7C8B</referedAttribute>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="ID_oficina" id="84428D7F-9EA4-290D-3140-345D862E2402">
+<createdBy>diego</createdBy>
+<createdTime>2022-01-02 19:20:57 UTC</createdTime>
+<generatorID>D4D2FAB5-E6C7-8CBD-95CE-72DAA5F58012</generatorID>
+<ownerDesignName>proyecto</ownerDesignName>
+<engineerTo>
+<item key="25826295-0E8D-8F26-7470-FDC820B2AD0C" value="true"/>
+</engineerTo>
+<referedAttribute>0B81B749-88A8-900E-6AFA-60DF6D706B27</referedAttribute>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
 </attributes>
 <identifiers itemClass="oracle.dbtools.crest.model.design.logical.CandidateKey">
 <identifier id="24785E21-237C-388B-CDA2-956F94BF4695" name="Pieza_inteligencia PK">

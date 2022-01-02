@@ -15,7 +15,7 @@
 <minVolumes>0</minVolumes>
 <normalForm>Third</normalForm>
 <attributes itemClass="oracle.dbtools.crest.model.design.logical.Attribute">
-<Attribute name="ID" id="00485DA1-0E6A-CC0F-B049-96451237A5FA">
+<Attribute name="ID_Pago_Infor" id="00485DA1-0E6A-CC0F-B049-96451237A5FA">
 <createdBy>Personal</createdBy>
 <createdTime>2021-12-19 23:31:03 UTC</createdTime>
 <ownerDesignName>proyecto</ownerDesignName>
@@ -51,7 +51,7 @@
 <logicalDatatype>LOGDT019</logicalDatatype>
 <ownDataTypeParameters>,,</ownDataTypeParameters>
 </Attribute>
-<Attribute name="ID1" id="3E2246F6-024A-D738-897C-157AB180F86F">
+<Attribute name="id_hecho_cdo" id="3E2246F6-024A-D738-897C-157AB180F86F">
 <createdBy>Personal</createdBy>
 <createdTime>2021-12-19 23:31:36 UTC</createdTime>
 <generatorID>B51C501D-2915-BE39-9D4C-2D1DD647138F</generatorID>
@@ -66,7 +66,7 @@
 <logicalDatatype>LOGDT019</logicalDatatype>
 <ownDataTypeParameters>,,</ownDataTypeParameters>
 </Attribute>
-<Attribute name="id2" id="5D247B1B-F9D0-5397-036A-79AE321DD49A">
+<Attribute name="id_informante" id="5D247B1B-F9D0-5397-036A-79AE321DD49A">
 <createdBy>Personal</createdBy>
 <createdTime>2021-12-19 23:35:47 UTC</createdTime>
 <generatorID>BA0C4E50-E003-1AA0-19F0-4EE4DFAF2D2F</generatorID>
@@ -80,7 +80,7 @@
 <logicalDatatype>LOGDT019</logicalDatatype>
 <ownDataTypeParameters>,,</ownDataTypeParameters>
 </Attribute>
-<Attribute name="id3" id="942F1E7D-77C2-CDCB-9391-8AAFC9CEA1DB">
+<Attribute name="id_estacion" id="942F1E7D-77C2-CDCB-9391-8AAFC9CEA1DB">
 <createdBy>Personal</createdBy>
 <createdTime>2021-12-19 23:51:56 UTC</createdTime>
 <generatorID>C10917DC-AD5F-FBA4-2E54-8B6492F6F87E</generatorID>

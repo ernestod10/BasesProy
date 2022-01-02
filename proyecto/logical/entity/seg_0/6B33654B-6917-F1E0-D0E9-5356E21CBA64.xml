@@ -66,7 +66,7 @@
 <logicalDatatype>LOGDT019</logicalDatatype>
 <ownDataTypeParameters>,,</ownDataTypeParameters>
 </Attribute>
-<Attribute name="id1" id="7BAD8AD3-7D66-492D-BA27-89A3F75B08E0">
+<Attribute name="id_ciudad" id="7BAD8AD3-7D66-492D-BA27-89A3F75B08E0">
 <createdBy>diego</createdBy>
 <createdTime>2022-01-02 18:59:08 UTC</createdTime>
 <generatorID>F4DE0AF1-3C89-F742-48B7-ACB7726EAFA4</generatorID>
@@ -80,7 +80,7 @@
 <logicalDatatype>LOGDT019</logicalDatatype>
 <ownDataTypeParameters>,,</ownDataTypeParameters>
 </Attribute>
-<Attribute name="id11" id="6C5D2C46-CB0C-21F2-5056-0EFE78DF5C95">
+<Attribute name="id_pais" id="6C5D2C46-CB0C-21F2-5056-0EFE78DF5C95">
 <createdBy>diego</createdBy>
 <createdTime>2022-01-02 18:59:08 UTC</createdTime>
 <generatorID>F4DE0AF1-3C89-F742-48B7-ACB7726EAFA4</generatorID>

@@ -15,7 +15,7 @@
 <minVolumes>0</minVolumes>
 <normalForm>Third</normalForm>
 <attributes itemClass="oracle.dbtools.crest.model.design.logical.Attribute">
-<Attribute name="id" id="CE2932E6-4CF2-D3D2-8B9C-939E385CC130">
+<Attribute name="id_informante" id="CE2932E6-4CF2-D3D2-8B9C-939E385CC130">
 <createdBy>Personal</createdBy>
 <createdTime>2021-12-19 23:34:26 UTC</createdTime>
 <ownerDesignName>proyecto</ownerDesignName>
@@ -67,7 +67,7 @@
 <logicalDatatype>LOGDT007</logicalDatatype>
 <ownDataTypeParameters>,,</ownDataTypeParameters>
 </Attribute>
-<Attribute name="id2" id="F877E8AA-DFDC-F559-1F44-264B8649E2B5">
+<Attribute name="id_emp_int" id="F877E8AA-DFDC-F559-1F44-264B8649E2B5">
 <createdBy>Personal</createdBy>
 <createdTime>2021-12-19 23:51:26 UTC</createdTime>
 <generatorID>1BD87E57-E3D4-B4DC-AA48-50D02F680CF9</generatorID>
@@ -81,7 +81,7 @@
 <logicalDatatype>LOGDT019</logicalDatatype>
 <ownDataTypeParameters>,,</ownDataTypeParameters>
 </Attribute>
-<Attribute name="id11" id="DBB159BC-A02F-8C5D-B4C9-FC927F69F715">
+<Attribute name="id_estacion" id="DBB159BC-A02F-8C5D-B4C9-FC927F69F715">
 <createdBy>Personal</createdBy>
 <createdTime>2021-12-19 23:51:26 UTC</createdTime>
 <generatorID>1BD87E57-E3D4-B4DC-AA48-50D02F680CF9</generatorID>
@@ -123,7 +123,7 @@
 <logicalDatatype>LOGDT007</logicalDatatype>
 <ownDataTypeParameters>,,</ownDataTypeParameters>
 </Attribute>
-<Attribute name="id3" id="2F0A87E9-6DA4-75DD-37BC-763FDBC549E0">
+<Attribute name="id_emp_int1" id="2F0A87E9-6DA4-75DD-37BC-763FDBC549E0">
 <createdBy>diego</createdBy>
 <createdTime>2022-01-02 19:01:13 UTC</createdTime>
 <generatorID>9921897E-C927-E62B-3C09-B587769ADA82</generatorID>
@@ -137,7 +137,7 @@
 <logicalDatatype>LOGDT019</logicalDatatype>
 <ownDataTypeParameters>,,</ownDataTypeParameters>
 </Attribute>
-<Attribute name="id12" id="86E1855A-EE4D-6577-D9C9-12F09007DC8F">
+<Attribute name="id_estacion1" id="86E1855A-EE4D-6577-D9C9-12F09007DC8F">
 <createdBy>diego</createdBy>
 <createdTime>2022-01-02 19:01:13 UTC</createdTime>
 <generatorID>9921897E-C927-E62B-3C09-B587769ADA82</generatorID>

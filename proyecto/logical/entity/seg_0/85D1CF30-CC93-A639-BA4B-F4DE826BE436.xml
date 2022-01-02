@@ -64,7 +64,7 @@
 <dataTypeSize>1</dataTypeSize>
 <ownDataTypeParameters>1,,</ownDataTypeParameters>
 </Attribute>
-<Attribute name="id1" id="49CE7EFF-AD22-A804-ADED-88D7931BF5AE">
+<Attribute name="id_ciudad" id="49CE7EFF-AD22-A804-ADED-88D7931BF5AE">
 <createdBy>Personal</createdBy>
 <createdTime>2021-12-19 23:25:21 UTC</createdTime>
 <generatorID>8F2BEC71-284A-3D9E-0B8D-F4DD377A171D</generatorID>
@@ -78,7 +78,7 @@
 <logicalDatatype>LOGDT019</logicalDatatype>
 <ownDataTypeParameters>,,</ownDataTypeParameters>
 </Attribute>
-<Attribute name="id11" id="5D7313C7-E5D3-CB61-437F-BD560E2AF34A">
+<Attribute name="id_pais" id="5D7313C7-E5D3-CB61-437F-BD560E2AF34A">
 <createdBy>Personal</createdBy>
 <createdTime>2021-12-19 23:25:21 UTC</createdTime>
 <generatorID>8F2BEC71-284A-3D9E-0B8D-F4DD377A171D</generatorID>
