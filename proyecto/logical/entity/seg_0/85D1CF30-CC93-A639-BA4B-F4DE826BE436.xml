@@ -51,7 +51,7 @@
 <logicalDatatype>LOGDT024</logicalDatatype>
 <ownDataTypeParameters>,,</ownDataTypeParameters>
 </Attribute>
-<Attribute name="Tipo_cliente" id="AA70B624-56A0-7799-009C-6BCFCFF661BA">
+<Attribute name="Exclusivo" id="AA70B624-56A0-7799-009C-6BCFCFF661BA">
 <createdBy>Personal</createdBy>
 <createdTime>2021-12-19 23:22:46 UTC</createdTime>
 <ownerDesignName>proyecto</ownerDesignName>

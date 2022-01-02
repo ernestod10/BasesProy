@@ -90,34 +90,6 @@
 <logicalDatatype>LOGDT019</logicalDatatype>
 <ownDataTypeParameters>,,</ownDataTypeParameters>
 </Attribute>
-<Attribute name="id2" id="6277F1AC-1F35-DDE8-8C00-CEA2ADE8D41B">
-<createdBy>Personal</createdBy>
-<createdTime>2021-12-19 23:57:26 UTC</createdTime>
-<generatorID>FE6163EF-36F4-F57F-9DD8-0A54D961A6D1</generatorID>
-<ownerDesignName>proyecto</ownerDesignName>
-<engineerTo>
-<item key="25826295-0E8D-8F26-7470-FDC820B2AD0C" value="true"/>
-</engineerTo>
-<referedAttribute>E9CC9FDE-C8C3-AC4D-F655-83FBD98EE15D</referedAttribute>
-<useDomainConstraints>false</useDomainConstraints>
-<use>1</use>
-<logicalDatatype>LOGDT019</logicalDatatype>
-<ownDataTypeParameters>,,</ownDataTypeParameters>
-</Attribute>
-<Attribute name="id11" id="D9418C6B-839B-BAE7-CD8A-A9455666B383">
-<createdBy>Personal</createdBy>
-<createdTime>2021-12-19 23:57:26 UTC</createdTime>
-<generatorID>FE6163EF-36F4-F57F-9DD8-0A54D961A6D1</generatorID>
-<ownerDesignName>proyecto</ownerDesignName>
-<engineerTo>
-<item key="25826295-0E8D-8F26-7470-FDC820B2AD0C" value="true"/>
-</engineerTo>
-<referedAttribute>3CC21610-1F82-394F-323F-8C7F3FA0922E</referedAttribute>
-<useDomainConstraints>false</useDomainConstraints>
-<use>1</use>
-<logicalDatatype>LOGDT019</logicalDatatype>
-<ownDataTypeParameters>,,</ownDataTypeParameters>
-</Attribute>
 </attributes>
 <identifiers itemClass="oracle.dbtools.crest.model.design.logical.CandidateKey">
 <identifier id="24785E21-237C-388B-CDA2-956F94BF4695" name="Pieza_inteligencia PK">
