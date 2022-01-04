@@ -1,5 +1,30 @@
 --Creacion objetos
+create or replace type LIC as object
+(Pais varchar2(15),
+Numero Number); 
 
+create or replace type CARACT as object
+(A varchar2(15)
+); 
+
+create or replace type ALIA as object
+(
+
+
+); 
+
+create or replace type IDIOM as varray[6] of varchar2(10);
+
+create or replace type INFORMAC as object
+(Pais varchar2(15),
+Numero Number); 
+
+create or replace type CONTACT as object
+(Nombre varchar2(15),
+apellido varchar2(15),
+apellido2 varchar2(15),
+telefono Number(10),
+email varchar2(15)); 
 
 
 
@@ -36,9 +61,7 @@ CREATE TABLE cliente (
     nombre               VARCHAR2 (22)
 
      NOT NULL,
-    contacto_empresa     VARCHAR2 (22)
-
-     NOT NULL,
+    contacto_empresa     CONTACT NOT NULL,
     exclusivo            NUMBER NOT NULL,
     ciudad_id_ciudad     NUMBER NOT NULL,
     ciudad_pais_id_pais  NUMBER NOT NULL
@@ -55,25 +78,13 @@ CREATE TABLE empleado_inteligencia (
     apellido1            VARCHAR2(30) NOT NULL,
     apellido2            VARCHAR2(25) NOT NULL,
     claseseguridad       VARCHAR2(1) NOT NULL,
-    licencia             unknown 
---  ERROR: Datatype UNKNOWN is not allowed 
-     NOT NULL,
-    caracteristicas      unknown 
---  ERROR: Datatype UNKNOWN is not allowed 
-     NOT NULL,
+    licencia             LIC NOT NULL,
+    caracteristicas      CARACT NOT NULL,
     telefono             NUMBER NOT NULL,
-    alias                unknown 
---  ERROR: Datatype UNKNOWN is not allowed 
-    ,
-    calle                unknown 
---  ERROR: Datatype UNKNOWN is not allowed 
-     NOT NULL,
-    idiomas              unknown 
---  ERROR: Datatype UNKNOWN is not allowed 
-     NOT NULL,
-    nivel_educativo      VARCHAR2 (22)
-
-     NOT NULL,
+    alias                ALIA ,
+    calle                VARCHAR2(30) NOT NULL,
+    idiomas              IDIOM NOT NULL,
+    nivel_educativo      VARCHAR2 (22) NOT NULL,
     ciudad_id_ciudad     NUMBER NOT NULL,
     ciudad_pais_id_pais  NUMBER NOT NULL
 );
@@ -82,15 +93,9 @@ ALTER TABLE empleado_inteligencia ADD CONSTRAINT empleado_inteligencia_pk PRIMAR
 
 CREATE TABLE empleado_jefe (
     id                NUMBER NOT NULL,
-    nombre            VARCHAR2 (22)
-
-     NOT NULL,
-    apellido          VARCHAR2 (22)
-
-     NOT NULL,
-    tipo              unknown 
---  ERROR: Datatype UNKNOWN is not allowed 
-     NOT NULL,
+    nombre            VARCHAR2 (22) NOT NULL,
+    apellido          VARCHAR2 (22) NOT NULL,
+    tipo              VARCHAR2(10) NOT NULL,
     empleado_jefe_id  NUMBER NOT NULL
 );
 
@@ -98,9 +103,7 @@ ALTER TABLE empleado_jefe ADD CONSTRAINT empleado_jefe_pk PRIMARY KEY ( id );
 
 CREATE TABLE estacion (
     id_estacion                   NUMBER NOT NULL,
-    nombre                        VARCHAR2 (22)
-
-     NOT NULL,
+    nombre                        VARCHAR2 (22) NOT NULL,
     presupuesto_anual             NUMBER NOT NULL,
     empleado_jefe_id              NUMBER NOT NULL,
     ciudad_id_ciudad              NUMBER NOT NULL,
@@ -118,25 +121,13 @@ ALTER TABLE estacion ADD CONSTRAINT estacion_pk PRIMARY KEY ( id_estacion,
 
 CREATE TABLE hecho_crudo (
     id_hecho_cdo                                      NUMBER NOT NULL,
-    resumen                                           VARCHAR2 (22)
-
-     NOT NULL,
-    fuente                                            unknown 
---  ERROR: Datatype UNKNOWN is not allowed 
-     NOT NULL,
-    tipo_contenido                                    VARCHAR2 (22)
-
-     NOT NULL,
-    contenido                                         VARCHAR2 (22)
-
-     NOT NULL,
-    nivel_confiabilidad_inicial                       unknown 
---  ERROR: Datatype UNKNOWN is not allowed 
-     NOT NULL,
+    resumen                                           VARCHAR2 (22) NOT NULL,
+    fuente                                            VARCHAR(1) NOT NULL,
+    tipo_contenido                                    VARCHAR2 (12) NOT NULL,
+    contenido                                         VARCHAR2 (80) NOT NULL,
+    nivel_confiabilidad_inicial                       Number NOT NULL,
     fecha_obtencion                                   DATE NOT NULL,
-    nivel_confiabilidad_final                         unknown 
---  ERROR: Datatype UNKNOWN is not allowed 
-    ,
+    nivel_confiabilidad_final                         NUMBER,
     fecha_final_cierre                                DATE,
     cantidad_analistas                                NUMBER NOT NULL,
     historico_pago_id_pago_infor                      NUMBER, 
@@ -172,9 +163,7 @@ ALTER TABLE hist_venta
 CREATE TABLE historico_cargo (
     fecha_inicio                           DATE NOT NULL,
     fecha_fin                              DATE,
-    cargo                                  unknown 
---  ERROR: Datatype UNKNOWN is not allowed 
-     NOT NULL, 
+    cargo                                  Varchar(1) NOT NULL, 
     emp_int_id_emp_int                     NUMBER NOT NULL,
     estacion_id_estacion                   NUMBER NOT NULL, 
     est_ofic_prin_id_ofic  NUMBER NOT NULL
@@ -241,9 +230,7 @@ ALTER TABLE informante ADD CONSTRAINT informante_pk PRIMARY KEY ( id_informante 
 
 CREATE TABLE oficina_principal (
     id_oficina           NUMBER NOT NULL,
-    nombre               VARCHAR2 (22)
-
-     NOT NULL,
+    nombre               VARCHAR2 (22) NOT NULL,
     sede                 NUMBER NOT NULL,
     empleado_jefe_id     NUMBER NOT NULL,
     ciudad_id_ciudad     NUMBER NOT NULL,
@@ -285,9 +272,7 @@ CREATE TABLE pais (
     nombre   VARCHAR2 (22)
 
      NOT NULL,
-    region   unknown 
---  ERROR: Datatype UNKNOWN is not allowed 
-     NOT NULL
+    region   VARCHAR2(10) NOT NULL
 );
 
 ALTER TABLE pais ADD CONSTRAINT pais_pk PRIMARY KEY ( id_pais );
@@ -297,9 +282,7 @@ CREATE TABLE pieza_inteligencia (
     precio_aproximado                                 NUMBER,
     fecha_construccion                                DATE,
     nivel_confiabilidad                               NUMBER,
-    nivel_clasificado                                 unknown 
---  ERROR: Datatype UNKNOWN is not allowed 
-     NOT NULL,
+    nivel_clasificado                                 NUMBER NOT NULL,
     tema_id                                           NUMBER NOT NULL,
     historico_cargo_fecha_inicio                      DATE NOT NULL, 
     hist_cg_emp_int_id_emp_int                        NUMBER NOT NULL, 
