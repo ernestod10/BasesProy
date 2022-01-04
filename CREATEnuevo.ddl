@@ -1,13 +1,9 @@
--- Generado por Oracle SQL Developer Data Modeler 20.2.0.167.1538
---   en:        2022-01-03 14:39:36 VET
---   sitio:      Oracle Database 12c
---   tipo:      Oracle Database 12c
+--Creacion objetos
 
 
 
--- predefined type, no DDL - MDSYS.SDO_GEOMETRY
 
--- predefined type, no DDL - XMLTYPE
+--Creacion tablas
 
 CREATE TABLE analistas_temas ( 
 
@@ -28,9 +24,7 @@ ALTER TABLE area_interes ADD CONSTRAINT area_interes_pk PRIMARY KEY ( cliente_id
 
 CREATE TABLE ciudad (
     id_ciudad     NUMBER NOT NULL,
-    nombre        VARCHAR2 (22)
-
-     NOT NULL,
+    nombre        VARCHAR2 (22) NOT NULL,
     pais_id_pais  NUMBER NOT NULL
 );
 
@@ -198,8 +192,7 @@ CREATE TABLE historico_pago (
     pago                                   NUMBER NOT NULL,
     hecho_crudo_id_hecho_cdo               NUMBER,
     informante_id_informante               NUMBER NOT NULL,
-    estacion_id_estacion                   NUMBER NOT NULL, 
-    est_ofic_prin_id_ofic                  NUMBER NOT NULL
+
 );
 
 CREATE UNIQUE INDEX historico_pago__idx ON
@@ -422,11 +415,6 @@ ALTER TABLE historico_cargo
         REFERENCES estacion ( id_estacion,
                               oficina_principal_id_oficina );
 
-ALTER TABLE historico_pago
-    ADD CONSTRAINT historico_pago_estacion_fk FOREIGN KEY ( estacion_id_estacion,
-                                                            est_ofic_prin_id_ofic )
-        REFERENCES estacion ( id_estacion,
-                              oficina_principal_id_oficina );
 
 ALTER TABLE historico_pago
     ADD CONSTRAINT historico_pago_informante_fk FOREIGN KEY ( informante_id_informante )
