@@ -85,7 +85,7 @@ CREATE TABLE cliente (
 ALTER TABLE cliente ADD CONSTRAINT cliente_pk PRIMARY KEY ( id );
 
 CREATE TABLE empleado_inteligencia (
-    id_emp_int           NUMBER NOT NULL,
+    id_emp_int           NUMBER NOT NULL PRIMARY KEY,
     doc_identidad        NUMBER NOT NULL,
     fec_nac              DATE NOT NULL,
     nombre_pila          VARCHAR2(30) NOT NULL,
@@ -104,7 +104,6 @@ CREATE TABLE empleado_inteligencia (
     ciudad_pais_id_pais  NUMBER NOT NULL
 );
 
-ALTER TABLE empleado_inteligencia ADD CONSTRAINT empleado_inteligencia_pk PRIMARY KEY ( id_emp_int );
 
 CREATE TABLE empleado_jefe (
     id                NUMBER NOT NULL,
