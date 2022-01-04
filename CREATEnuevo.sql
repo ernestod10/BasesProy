@@ -4,16 +4,31 @@ create or replace type LIC as object
 Numero Number); 
 
 create or replace type CARACT as object
-(A varchar2(15)
+(   
+    fotografia BFILE,
+    huella_digital BFILE, -- observacion pudiera ser un archivo 
+    huella_retina BFILE, -- observacion
+    altura_cm NUMBER(3),
+    peso NUMBER(5,2),
+    color_ojos VARCHAR2(15),
+    vision VARCHAR2(15)
 ); 
 
-create or replace type ALIA as object
+create or replace type ALIAS_ as object
 (
-
-
+    nombre VARCHAR2(25),
+    foto BFILE,
+    fec_nac DATE,
+    pais VARCHAR2(30),
+    doc_inden VARCHAR2(10),
+    color_ojos VARCHAR2(15),
+    direccion VARCHAR2(50),
+    ult_fec_uso DATE
+    -- Falta atributo tabla anidada para los familiares
 ); 
 
-create or replace type IDIOM as varray[6] of varchar2(10);
+ 
+create or replace type IDIOM as varray(6) of varchar2(10); 
 
 create or replace type INFORMAC as object
 (Pais varchar2(15),
@@ -81,7 +96,7 @@ CREATE TABLE empleado_inteligencia (
     licencia             LIC NOT NULL,
     caracteristicas      CARACT NOT NULL,
     telefono             NUMBER NOT NULL,
-    alias                ALIA ,
+    ali                  ALIAS_ ,
     calle                VARCHAR2(30) NOT NULL,
     idiomas              IDIOM NOT NULL,
     nivel_educativo      VARCHAR2 (22) NOT NULL,
