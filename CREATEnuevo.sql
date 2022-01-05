@@ -47,42 +47,36 @@ email varchar2(15));
 
 CREATE TABLE analistas_temas ( 
 
-    emp_int_id_emp_int                NUMBER NOT NULL,
-    tema_id                           NUMBER NOT NULL
+    emp_int_id               NUMBER NOT NULL,
+    tema_id                  NUMBER NOT NULL,
+    CONSTRAINT analistas_temas_pk PRIMARY KEY ( emp_int_id,tema_id )
 );
 
-ALTER TABLE analistas_temas ADD CONSTRAINT analistas_temas_pk PRIMARY KEY ( emp_int_id_emp_int,
-                                                                            tema_id );
 
 CREATE TABLE area_interes (
     cliente_id  NUMBER NOT NULL,
-    tema_id     NUMBER NOT NULL
+    tema_id     NUMBER NOT NULL,
+    CONSTRAINT area_interes_pk PRIMARY KEY ( cliente_id,tema_id )
 );
 
-ALTER TABLE area_interes ADD CONSTRAINT area_interes_pk PRIMARY KEY ( cliente_id,
-                                                                      tema_id );
 
 CREATE TABLE ciudad (
     id_ciudad     NUMBER NOT NULL,
     nombre        VARCHAR2 (22) NOT NULL,
-    pais_id_pais  NUMBER NOT NULL
+    pais_id       NUMBER NOT NULL,
+    CONSTRAINT ciudad_pk PRIMARY KEY ( id_ciudad,pais_id )
 );
 
-ALTER TABLE ciudad ADD CONSTRAINT ciudad_pk PRIMARY KEY ( id_ciudad,
-                                                          pais_id_pais );
 
 CREATE TABLE cliente (
-    id                   NUMBER NOT NULL,
-    nombre               VARCHAR2 (22)
-
-     NOT NULL,
+    id                   NUMBER NOT NULL PRIMARY KEY,
+    nombre               VARCHAR2 (22)NOT NULL,
     contacto_empresa     CONTACT NOT NULL,
     exclusivo            NUMBER NOT NULL,
     ciudad_id_ciudad     NUMBER NOT NULL,
-    ciudad_pais_id_pais  NUMBER NOT NULL
+    ciudad_pais_id NUMBER NOT NULL
 );
-
-ALTER TABLE cliente ADD CONSTRAINT cliente_pk PRIMARY KEY ( id );
+-------------------------------------------------
 
 CREATE TABLE empleado_inteligencia (
     id_emp_int           NUMBER NOT NULL PRIMARY KEY,
@@ -130,8 +124,7 @@ CREATE UNIQUE INDEX estacion__idx ON
         empleado_jefe_id
     ASC );
 
-ALTER TABLE estacion ADD CONSTRAINT estacion_pk PRIMARY KEY ( id_estacion,
-                                                              oficina_principal_id_oficina );
+ALTER TABLE estacion ADD CONSTRAINT estacion_pk PRIMARY KEY ( id_estacion,oficina_principal_id_oficina );
 
 CREATE TABLE hecho_crudo (
     id_hecho_cdo                                      NUMBER NOT NULL,
@@ -307,13 +300,12 @@ CREATE TABLE pieza_inteligencia (
 ALTER TABLE pieza_inteligencia ADD CONSTRAINT pieza_inteligencia_pk PRIMARY KEY ( id );
 
 CREATE TABLE tema (
-    id           NUMBER NOT NULL,
+    id           NUMBER NOT NULL PRIMARY KEY,
     nombre       VARCHAR2 (22) NOT NULL,
     descripcion  VARCHAR2 (22) NOT NULL,
     topico       VARCHAR2 (22) NOT NULL
 );
 
-ALTER TABLE tema ADD CONSTRAINT tema_pk PRIMARY KEY ( id );
 
 CREATE TABLE verificacion_hecho (
     id                                                NUMBER NOT NULL,
@@ -334,14 +326,17 @@ ALTER TABLE verificacion_hecho
                                                        hist_carg_est_id_est,
                                                        hist_carg_est_id_ofic );
  
+
+-- Relacion de Tabla Analista Temas
 ALTER TABLE analistas_temas
-    ADD CONSTRAINT ana_temas_emp_int_fk FOREIGN KEY ( emp_int_id_emp_int )
+    ADD CONSTRAINT ana_temas_emp_int_fk FOREIGN KEY ( emp_int_id )
         REFERENCES empleado_inteligencia ( id_emp_int );
 
 ALTER TABLE analistas_temas
     ADD CONSTRAINT analistas_temas_tema_fk FOREIGN KEY ( tema_id )
         REFERENCES tema ( id );
 
+-- Relacion de Tabla Areas de Interes
 ALTER TABLE area_interes
     ADD CONSTRAINT area_interes_cliente_fk FOREIGN KEY ( cliente_id )
         REFERENCES cliente ( id );
@@ -350,21 +345,23 @@ ALTER TABLE area_interes
     ADD CONSTRAINT area_interes_tema_fk FOREIGN KEY ( tema_id )
         REFERENCES tema ( id );
 
+-- Relacion de Tabla ciudad 
 ALTER TABLE ciudad
     ADD CONSTRAINT ciudad_pais_fk FOREIGN KEY ( pais_id_pais )
         REFERENCES pais ( id_pais );
 
 ALTER TABLE cliente
-    ADD CONSTRAINT cliente_ciudad_fk FOREIGN KEY ( ciudad_id_ciudad,
-                                                   ciudad_pais_id_pais )
-        REFERENCES ciudad ( id_ciudad,
-                            pais_id_pais );
+    ADD CONSTRAINT cliente_ciudad_fk FOREIGN KEY ( ciudad_id_ciudad,ciudad_pais_id )
+        REFERENCES ciudad ( id_ciudad,pais_id );
+
+
+-- Relacion de empleado inteilgencia
 
 ALTER TABLE empleado_inteligencia
     ADD CONSTRAINT emp_int_ciudad_fk FOREIGN KEY ( ciudad_id_ciudad,
                                                                  ciudad_pais_id_pais )
         REFERENCES ciudad ( id_ciudad,
-                            pais_id_pais );
+                            pais_id );
 
 ALTER TABLE empleado_jefe
     ADD CONSTRAINT empleado_jefe_empleado_jefe_fk FOREIGN KEY ( empleado_jefe_id )
@@ -374,7 +371,7 @@ ALTER TABLE estacion
     ADD CONSTRAINT estacion_ciudad_fk FOREIGN KEY ( ciudad_id_ciudad,
                                                     ciudad_pais_id_pais )
         REFERENCES ciudad ( id_ciudad,
-                            pais_id_pais );
+                            pais_id );
 
 ALTER TABLE estacion
     ADD CONSTRAINT estacion_empleado_jefe_fk FOREIGN KEY ( empleado_jefe_id )
@@ -445,7 +442,7 @@ ALTER TABLE oficina_principal
     ADD CONSTRAINT oficina_principal_ciudad_fk FOREIGN KEY ( ciudad_id_ciudad,
                                                              ciudad_pais_id_pais )
         REFERENCES ciudad ( id_ciudad,
-                            pais_id_pais );
+                            pais_id );
 
 ALTER TABLE oficina_principal
     ADD CONSTRAINT ofi_p_emp_jefe_fk FOREIGN KEY ( empleado_jefe_id )
