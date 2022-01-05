@@ -109,7 +109,7 @@ CREATE TABLE empleado_jefe (
     nombre            VARCHAR2 (22) NOT NULL,
     apellido          VARCHAR2 (22) NOT NULL,
     tipo              VARCHAR2(10) NOT NULL,
-    empleado_jefe_id  NUMBER NOT NULL
+    empleado_jefe_id  NUMBER
 );
 
 -------------------------------------------------
