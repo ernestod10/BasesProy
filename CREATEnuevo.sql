@@ -112,17 +112,15 @@ CREATE TABLE empleado_jefe (
     empleado_jefe_id  NUMBER
 );
 
--------------------------------------------------
-
-
 CREATE TABLE estacion (
     id_estacion                   NUMBER NOT NULL,
     nombre                        VARCHAR2 (22) NOT NULL,
     presupuesto_anual             NUMBER NOT NULL,
     empleado_jefe_id              NUMBER NOT NULL,
-    ciudad_id_ciudad              NUMBER NOT NULL,
-    ciudad_pais_id_pais           NUMBER NOT NULL,
-    oficina_principal_id_oficina  NUMBER NOT NULL
+    ciudad_id                     NUMBER NOT NULL,
+    ciudad_pais_id                NUMBER NOT NULL,
+    oficina_principal_id          NUMBER NOT NULL,
+    CONSTRAINT estacion_pk PRIMARY KEY ( id_estacion,oficina_principal_id )
 );
 
 CREATE UNIQUE INDEX estacion__idx ON
@@ -130,18 +128,39 @@ CREATE UNIQUE INDEX estacion__idx ON
         empleado_jefe_id
     ASC );
 
-ALTER TABLE estacion ADD CONSTRAINT estacion_pk PRIMARY KEY ( id_estacion,oficina_principal_id_oficina );
+
+CREATE TABLE oficina_principal (
+    id_oficina           NUMBER NOT NULL PRIMARY KEY,
+    nombre               VARCHAR2 (22) NOT NULL,
+    sede                 NUMBER NOT NULL,
+    empleado_jefe_id     NUMBER NOT NULL,
+    ciudad_id            NUMBER NOT NULL,
+    ciudad_pais_id       NUMBER NOT NULL
+);
+
+CREATE UNIQUE INDEX oficina_principal__idx ON
+    oficina_principal (
+        empleado_jefe_id
+    ASC );
+
+CREATE UNIQUE INDEX oficina_principal__idxv1 ON
+    oficina_principal (
+        ciudad_id_ciudad
+    ASC,
+        ciudad_pais_id_pais
+    ASC );
+
 
 CREATE TABLE hecho_crudo (
-    id_hecho_cdo                                      NUMBER NOT NULL,
+    id_hecho_cdo                                      NUMBER NOT NULL PRIMARY KEY,
     resumen                                           VARCHAR2 (22) NOT NULL,
     fuente                                            VARCHAR(1) NOT NULL,
     tipo_contenido                                    VARCHAR2 (12) NOT NULL,
     contenido                                         VARCHAR2 (80) NOT NULL,
-    nivel_confiabilidad_inicial                       Number NOT NULL,
-    fecha_obtencion                                   DATE NOT NULL,
-    nivel_confiabilidad_final                         NUMBER,
-    fecha_final_cierre                                DATE,
+    nivel_confi_ini                                   Number NOT NULL,
+    fec_obten                                         DATE NOT NULL,
+    nivel_confi_fin                                   NUMBER,
+    fecha_fin_cierre                                  DATE,
     cantidad_analistas                                NUMBER NOT NULL,
     historico_pago_id_pago_infor                      NUMBER, 
     hist_pag_inf_id_inf                               NUMBER,
@@ -158,8 +177,7 @@ CREATE UNIQUE INDEX hecho_crudo__idx ON
         hist_pag_inf_id_inf
     ASC );
 
-ALTER TABLE hecho_crudo ADD CONSTRAINT hecho_crudo_pk PRIMARY KEY ( id_hecho_cdo );
-
+----------------------------------------------------------------------------------------------
 CREATE TABLE hist_venta (
     id                     NUMBER NOT NULL,
     fecha_venta            DATE NOT NULL,
@@ -241,28 +259,6 @@ ALTER TABLE informante
 
 ALTER TABLE informante ADD CONSTRAINT informante_pk PRIMARY KEY ( id_informante );
 
-CREATE TABLE oficina_principal (
-    id_oficina           NUMBER NOT NULL,
-    nombre               VARCHAR2 (22) NOT NULL,
-    sede                 NUMBER NOT NULL,
-    empleado_jefe_id     NUMBER NOT NULL,
-    ciudad_id_ciudad     NUMBER NOT NULL,
-    ciudad_pais_id_pais  NUMBER NOT NULL
-);
-
-CREATE UNIQUE INDEX oficina_principal__idx ON
-    oficina_principal (
-        empleado_jefe_id
-    ASC );
-
-CREATE UNIQUE INDEX oficina_principal__idxv1 ON
-    oficina_principal (
-        ciudad_id_ciudad
-    ASC,
-        ciudad_pais_id_pais
-    ASC );
-
-ALTER TABLE oficina_principal ADD CONSTRAINT oficina_principal_pk PRIMARY KEY ( id_oficina );
 
 CREATE TABLE p_h (
     hecho_crudo_id_hecho_cdo  NUMBER NOT NULL,
@@ -367,22 +363,24 @@ ALTER TABLE empleado_inteligencia
 ALTER TABLE empleado_jefe
     ADD CONSTRAINT empleado_jefe_empleado_jefe_fk FOREIGN KEY ( empleado_jefe_id )
         REFERENCES empleado_jefe ( id );
-------------------------------------------------------------------------------
 
+-- Relacion de Estacion
 
 ALTER TABLE estacion
-    ADD CONSTRAINT estacion_ciudad_fk FOREIGN KEY ( ciudad_id_ciudad,
-                                                    ciudad_pais_id_pais )
-        REFERENCES ciudad ( id_ciudad,
-                            pais_id );
+    ADD CONSTRAINT estacion_ciudad_fk FOREIGN KEY ( ciudad_id,ciudad_pais_id )
+        REFERENCES ciudad ( id_ciudad,pais_id );
 
 ALTER TABLE estacion
     ADD CONSTRAINT estacion_empleado_jefe_fk FOREIGN KEY ( empleado_jefe_id )
         REFERENCES empleado_jefe ( id );
 
 ALTER TABLE estacion
-    ADD CONSTRAINT estacion_oficina_principal_fk FOREIGN KEY ( oficina_principal_id_oficina )
+    ADD CONSTRAINT estacion_oficina_principal_fk FOREIGN KEY ( oficina_principal_id )
         REFERENCES oficina_principal ( id_oficina );
+
+
+
+----------------------------------------------------------------------------
 
 ALTER TABLE hecho_crudo
     ADD CONSTRAINT hecho_crudo_historico_cargo_fk FOREIGN KEY ( historico_cargo_fecha_inicio,
@@ -441,15 +439,17 @@ ALTER TABLE informante
                                      estacion_id_estacion,
                                      est_ofic_prin_id_ofic );
 
+
+-- Relaciones de Oficina Principal
 ALTER TABLE oficina_principal
-    ADD CONSTRAINT oficina_principal_ciudad_fk FOREIGN KEY ( ciudad_id_ciudad,
-                                                             ciudad_pais_id_pais )
-        REFERENCES ciudad ( id_ciudad,
-                            pais_id );
+    ADD CONSTRAINT oficina_principal_ciudad_fk FOREIGN KEY ( ciudad_id,ciudad_pais_id)
+        REFERENCES ciudad ( id_ciudad,pais_id );
 
 ALTER TABLE oficina_principal
     ADD CONSTRAINT ofi_p_emp_jefe_fk FOREIGN KEY ( empleado_jefe_id )
         REFERENCES empleado_jefe ( id );
+
+--------------------------------------------------------------------------
 
 ALTER TABLE p_h
     ADD CONSTRAINT p_h_cliente_fk FOREIGN KEY ( cliente_id )
