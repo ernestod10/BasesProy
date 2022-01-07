@@ -151,6 +151,83 @@ CREATE UNIQUE INDEX oficina_principal__idxv1 ON
     ASC );
 
 
+
+CREATE TABLE historico_cargo (
+    fec_inicio                           DATE NOT NULL,
+    fec_fin                              DATE,
+    cargo                                Varchar(1) NOT NULL, 
+    emp_int_id                           NUMBER NOT NULL,
+    estacion_id                          NUMBER NOT NULL, 
+    est_ofic_prin_id                     NUMBER NOT NULL,
+    CONSTRAINT historico_cargo_pk PRIMARY KEY ( fec_inicio,emp_int_id,estacion_id,est_ofic_prin_id)
+);
+
+CREATE TABLE informante (
+    id_informante                                      NUMBER NOT NULL PRIMARY KEY,
+    nombre_clave                                       VARCHAR2 (22) NOT NULL,
+    empleado_jefe_id_A                                 NUMBER,
+    hist_cg_fec_ini_A                                  DATE, 
+    hist_cg_emp_int_id_A                               NUMBER, 
+    hist_cg_est_id_A                                   NUMBER, 
+    hist_cg_ofic_id_A                                  NUMBER,
+    hist_cg_fec_ini                                    DATE NOT NULL, 
+    hist_cg_emp_int_id                                 NUMBER NOT NULL, 
+    hist_cg_est_id                                     NUMBER NOT NULL, 
+    hist_cg_ofic_id                                    NUMBER NOT NULL,
+    CONSTRAINT arc_1 CHECK ( ( ( hist_cg_fec_ini_A IS NOT NULL )AND ( hist_cg_emp_int_id IS NOT NULL )AND ( hist_cg_est_id_A IS NOT NULL )AND ( hist_cg_ofic_id_A IS NOT NULL )AND ( empleado_jefe_id_A IS NULL ) )
+                                 OR ( ( empleado_jefe_id_A IS NOT NULL )AND ( hist_cg_fec_ini_A IS NULL )AND ( hist_cg_emp_int_id_A IS NULL )AND ( hist_cg_est_id_A IS NULL )AND ( hist_cg_ofic_id_A IS NULL ) ) )
+);
+
+CREATE TABLE historico_pago (
+    id_pago_infor                          NUMBER NOT NULL,
+    fecha                                  DATE NOT NULL,
+    pago                                   NUMBER NOT NULL,
+    hecho_crudo_id_hecho_cdo               NUMBER,
+    informante_id                          NUMBER NOT NULL,
+    CONSTRAINT historico_pago_pk PRIMARY KEY ( id_pago_infor,informante_id)
+
+);
+
+CREATE UNIQUE INDEX historico_pago__idx ON
+    historico_pago (
+        hecho_crudo_id_hecho_cdo
+    ASC );
+
+
+
+CREATE TABLE pieza_inteligencia (
+    id                                                NUMBER NOT NULL PRIMARY KEY,
+    precio_aproximado                                 NUMBER,
+    fecha_construccion                                DATE,
+    nivel_confiabilidad                               NUMBER,
+    nivel_clasificado                                 NUMBER NOT NULL,
+    tema_id                                           NUMBER NOT NULL,
+    hist_cg_fec_ini                                   DATE NOT NULL, 
+    hist_cg_emp_int_id                                NUMBER NOT NULL, 
+    hist_cg_est_id                                    NUMBER NOT NULL, 
+    hist_cg_ofic_id                                   NUMBER NOT NULL
+);
+
+
+CREATE TABLE hist_venta (
+    id                     NUMBER NOT NULL,
+    fecha_venta            DATE NOT NULL,
+    total_precio_final     NUMBER NOT NULL,
+    pieza_inteligencia_id  NUMBER NOT NULL,
+    cliente_id             NUMBER NOT NULL,
+    CONSTRAINT hist_venta_pk PRIMARY KEY ( id,pieza_inteligencia_id,cliente_id )
+);
+
+CREATE TABLE tema (
+    id           NUMBER NOT NULL PRIMARY KEY,
+    nombre       VARCHAR2 (22) NOT NULL,
+    descripcion  VARCHAR2 (22) NOT NULL,
+    topico       VARCHAR2 (22) NOT NULL
+);
+
+
+----------------------------------------------------------------------------------------------
+
 CREATE TABLE hecho_crudo (
     id_hecho_cdo                                      NUMBER NOT NULL PRIMARY KEY,
     resumen                                           VARCHAR2 (22) NOT NULL,
@@ -161,7 +238,7 @@ CREATE TABLE hecho_crudo (
     fec_obten                                         DATE NOT NULL,
     nivel_confi_fin                                   NUMBER,
     fecha_fin_cierre                                  DATE,
-    cantidad_analistas                                NUMBER NOT NULL,
+    cantidad_analistas                                NUMBER NOT NULL, -- Revisar las claves foraneas de hecho crudo
     historico_pago_id_pago_infor                      NUMBER, 
     hist_pag_inf_id_inf                               NUMBER,
     historico_cargo_fecha_inicio                      DATE NOT NULL, 
@@ -177,87 +254,14 @@ CREATE UNIQUE INDEX hecho_crudo__idx ON
         hist_pag_inf_id_inf
     ASC );
 
-----------------------------------------------------------------------------------------------
-CREATE TABLE hist_venta (
-    id                     NUMBER NOT NULL,
-    fecha_venta            DATE NOT NULL,
-    total_precio_final     NUMBER NOT NULL,
-    pieza_inteligencia_id  NUMBER NOT NULL,
-    cliente_id             NUMBER NOT NULL
-);
 
-ALTER TABLE hist_venta
-    ADD CONSTRAINT hist_venta_pk PRIMARY KEY ( id,
-                                               pieza_inteligencia_id,
-                                               cliente_id );
 
-CREATE TABLE historico_cargo (
-    fecha_inicio                           DATE NOT NULL,
-    fecha_fin                              DATE,
-    cargo                                  Varchar(1) NOT NULL, 
-    emp_int_id_emp_int                     NUMBER NOT NULL,
-    estacion_id_estacion                   NUMBER NOT NULL, 
-    est_ofic_prin_id_ofic  NUMBER NOT NULL
-);
-
-ALTER TABLE historico_cargo
-    ADD CONSTRAINT historico_cargo_pk PRIMARY KEY ( fecha_inicio,
-                                                    emp_int_id_emp_int,
-                                                    estacion_id_estacion,
-                                                    est_ofic_prin_id_ofic );
-
-CREATE TABLE historico_pago (
-    id_pago_infor                          NUMBER NOT NULL,
-    fecha                                  DATE NOT NULL,
-    pago                                   NUMBER NOT NULL,
-    hecho_crudo_id_hecho_cdo               NUMBER,
-    informante_id_informante               NUMBER NOT NULL,
-
-);
-
-CREATE UNIQUE INDEX historico_pago__idx ON
-    historico_pago (
-        hecho_crudo_id_hecho_cdo
-    ASC );
-
-ALTER TABLE historico_pago ADD CONSTRAINT historico_pago_pk PRIMARY KEY ( id_pago_infor,
-                                                                          informante_id_informante );
 
 CREATE TABLE historico_seguridad (
-    id           NUMBER NOT NULL,
+    id           NUMBER NOT NULL PRIMARY KEY,
     id_empleado  NUMBER NOT NULL,
     id_pieza     NUMBER NOT NULL
 );
-
-ALTER TABLE historico_seguridad ADD CONSTRAINT historico_seguridad_pk PRIMARY KEY ( id );
-
-CREATE TABLE informante (
-    id_informante                                      NUMBER NOT NULL,
-    nombre_clave                                       VARCHAR2 (22) NOT NULL,
-    empleado_jefe_id                                   NUMBER,
-    historico_cargo_fecha_inicio                       DATE, 
-    hist_cg_emp_int_id_emp_int                         NUMBER, 
-    hist_carg_est_id_est                               NUMBER, 
-    hist_carg_est_id_ofic                              NUMBER,
-    historico_cargo_fecha_inicio1                      DATE NOT NULL, 
-    hist_cg_emp_int_id_emp_int1                        NUMBER NOT NULL, 
-    hist_carg_est_id_est1                              NUMBER NOT NULL, 
-    hist_carg_est_id_ofic1                             NUMBER NOT NULL
-);
-
-ALTER TABLE informante
-    ADD CONSTRAINT arc_1 CHECK ( ( ( historico_cargo_fecha_inicio IS NOT NULL )
-                                   AND ( hist_cg_emp_int_id_emp_int IS NOT NULL )
-                                   AND ( hist_carg_est_id_est IS NOT NULL )
-                                   AND ( hist_carg_est_id_ofic IS NOT NULL )
-                                   AND ( empleado_jefe_id IS NULL ) )
-                                 OR ( ( empleado_jefe_id IS NOT NULL )
-                                      AND ( historico_cargo_fecha_inicio IS NULL )
-                                      AND ( hist_cg_emp_int_id_emp_int IS NULL )
-                                      AND ( hist_carg_est_id_est IS NULL )
-                                      AND ( hist_carg_est_id_ofic IS NULL ) ) );
-
-ALTER TABLE informante ADD CONSTRAINT informante_pk PRIMARY KEY ( id_informante );
 
 
 CREATE TABLE p_h (
@@ -277,27 +281,7 @@ ALTER TABLE p_t ADD CONSTRAINT p_t_pk PRIMARY KEY ( pieza_inteligencia_id,
                                                     tema_id );
 
 
-CREATE TABLE pieza_inteligencia (
-    id                                                NUMBER NOT NULL,
-    precio_aproximado                                 NUMBER,
-    fecha_construccion                                DATE,
-    nivel_confiabilidad                               NUMBER,
-    nivel_clasificado                                 NUMBER NOT NULL,
-    tema_id                                           NUMBER NOT NULL,
-    historico_cargo_fecha_inicio                      DATE NOT NULL, 
-    hist_cg_emp_int_id_emp_int                        NUMBER NOT NULL, 
-    hist_carg_est_id_est                              NUMBER NOT NULL, 
-    hist_carg_est_id_ofic                             NUMBER NOT NULL
-);
 
-ALTER TABLE pieza_inteligencia ADD CONSTRAINT pieza_inteligencia_pk PRIMARY KEY ( id );
-
-CREATE TABLE tema (
-    id           NUMBER NOT NULL PRIMARY KEY,
-    nombre       VARCHAR2 (22) NOT NULL,
-    descripcion  VARCHAR2 (22) NOT NULL,
-    topico       VARCHAR2 (22) NOT NULL
-);
 
 
 CREATE TABLE verificacion_hecho (
@@ -321,7 +305,7 @@ ALTER TABLE verificacion_hecho
 
 
 
--- RELACIONES 
+--------------------------------------------------                RELACIONES                 ------------------------------------------------------------------------------- 
 
 
 -- Relacion de Tabla Analista Temas
@@ -352,7 +336,7 @@ ALTER TABLE cliente
         REFERENCES ciudad ( id_ciudad,pais_id );
 
 
--- Relacion de empleado inteilgencia
+-- Relacion de empleado inteligencia
 
 ALTER TABLE empleado_inteligencia
     ADD CONSTRAINT emp_int_ciudad_fk FOREIGN KEY ( ciudad_id,ciudad_pais_id)
@@ -392,6 +376,10 @@ ALTER TABLE hecho_crudo
                                      estacion_id_estacion,
                                      est_ofic_prin_id_ofic );
 
+----------------------------------------------------------------------------
+
+-- Relacion de Historico de Venta
+
 ALTER TABLE hist_venta
     ADD CONSTRAINT hist_venta_cliente_fk FOREIGN KEY ( cliente_id )
         REFERENCES cliente ( id );
@@ -400,44 +388,36 @@ ALTER TABLE hist_venta
     ADD CONSTRAINT hist_venta_pieza_int_fk FOREIGN KEY ( pieza_inteligencia_id )
         REFERENCES pieza_inteligencia ( id );
 
+-- Relacion de Historico de Cargo
+
 ALTER TABLE historico_cargo
-    ADD CONSTRAINT hist_cargo_emp_int_fk FOREIGN KEY ( emp_int_id_emp_int )
+    ADD CONSTRAINT hist_cargo_emp_int_fk FOREIGN KEY ( emp_int_id )
         REFERENCES empleado_inteligencia ( id_emp_int );
 
 ALTER TABLE historico_cargo
-    ADD CONSTRAINT historico_cargo_estacion_fk FOREIGN KEY ( estacion_id_estacion,
-                                                             est_ofic_prin_id_ofic )
-        REFERENCES estacion ( id_estacion,
-                              oficina_principal_id_oficina );
+    ADD CONSTRAINT historico_cargo_estacion_fk FOREIGN KEY ( estacion_id,est_ofic_prin_id )
+        REFERENCES estacion ( id_estacion,oficina_principal_id);
 
+-- Relacion de Historico de Pago
 
 ALTER TABLE historico_pago
-    ADD CONSTRAINT historico_pago_informante_fk FOREIGN KEY ( informante_id_informante )
+    ADD CONSTRAINT historico_pago_informante_fk FOREIGN KEY ( informante_id )
         REFERENCES informante ( id_informante );
 
+
+-- Relacion de Informante
+
 ALTER TABLE informante
-    ADD CONSTRAINT informante_empleado_jefe_fk FOREIGN KEY ( empleado_jefe_id )
+    ADD CONSTRAINT informante_empleado_jefe_fk FOREIGN KEY ( empleado_jefe_id_A )
         REFERENCES empleado_jefe ( id );
 
 ALTER TABLE informante
-    ADD CONSTRAINT informante_historico_cargo_fk FOREIGN KEY ( historico_cargo_fecha_inicio,
-                                                               hist_cg_emp_int_id_emp_int,
-                                                               hist_carg_est_id_est,
-                                                               hist_carg_est_id_ofic )
-        REFERENCES historico_cargo ( fecha_inicio,
-                                     emp_int_id_emp_int,
-                                     estacion_id_estacion,
-                                     est_ofic_prin_id_ofic );
+    ADD CONSTRAINT Acceso_Infor_fk FOREIGN KEY ( hist_cg_fec_ini_A, hist_cg_emp_int_id_A,hist_cg_est_id_A,hist_cg_ofic_id_A )
+        REFERENCES historico_cargo ( fec_inicio,emp_int_id,estacion_id,est_ofic_prin_id);
 
 ALTER TABLE informante
-    ADD CONSTRAINT inf_hist_cargo_fkv1 FOREIGN KEY ( historico_cargo_fecha_inicio1,
-                                                                 hist_cg_emp_int_id_emp_int1,
-                                                                 hist_carg_est_id_est1,
-                                                                 hist_carg_est_id_ofic1 )
-        REFERENCES historico_cargo ( fecha_inicio,
-                                     emp_int_id_emp_int,
-                                     estacion_id_estacion,
-                                     est_ofic_prin_id_ofic );
+    ADD CONSTRAINT Agente_fkv1 FOREIGN KEY ( hist_cg_fec_ini,hist_cg_emp_int_id,hist_cg_est_id,hist_cg_ofic_id )
+        REFERENCES historico_cargo ( fec_inicio,emp_int_id,estacion_id,est_ofic_prin_id);
 
 
 -- Relaciones de Oficina Principal
@@ -449,8 +429,20 @@ ALTER TABLE oficina_principal
     ADD CONSTRAINT ofi_p_emp_jefe_fk FOREIGN KEY ( empleado_jefe_id )
         REFERENCES empleado_jefe ( id );
 
---------------------------------------------------------------------------
 
+-- Relaciones de Pieza de Inteligencia
+
+ALTER TABLE pieza_inteligencia
+    ADD CONSTRAINT pieza_int_hist_ca_fk FOREIGN KEY ( hist_cg_fec_ini,hist_cg_emp_int_id,hist_cg_est_id,hist_cg_ofic_id)
+        REFERENCES historico_cargo ( fec_inicio ,emp_int_id ,estacion_id,est_ofic_prin_id);
+
+ALTER TABLE pieza_inteligencia
+    ADD CONSTRAINT pieza_inteligencia_tema_fk FOREIGN KEY ( tema_id )
+        REFERENCES tema ( id );
+
+
+
+------------------------------------------------------------------------------------
 ALTER TABLE p_h
     ADD CONSTRAINT p_h_cliente_fk FOREIGN KEY ( cliente_id )
         REFERENCES cliente ( id );
@@ -465,20 +457,6 @@ ALTER TABLE p_t
 
 ALTER TABLE p_t
     ADD CONSTRAINT p_t_tema_fk FOREIGN KEY ( tema_id )
-        REFERENCES tema ( id );
-
-ALTER TABLE pieza_inteligencia
-    ADD CONSTRAINT pieza_int_hist_ca_fk FOREIGN KEY ( historico_cargo_fecha_inicio,
-                                                                       hist_cg_emp_int_id_emp_int,
-                                                                       hist_carg_est_id_est,
-                                                                       hist_carg_est_id_ofic )
-        REFERENCES historico_cargo ( fecha_inicio,
-                                     emp_int_id_emp_int,
-                                     estacion_id_estacion,
-                                     est_ofic_prin_id_ofic );
-
-ALTER TABLE pieza_inteligencia
-    ADD CONSTRAINT pieza_inteligencia_tema_fk FOREIGN KEY ( tema_id )
         REFERENCES tema ( id );
 
 ALTER TABLE verificacion_hecho
