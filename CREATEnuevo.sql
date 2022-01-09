@@ -1,7 +1,9 @@
 --Creacion objetos
 create or replace type LIC as object
-(Pais varchar2(15),
-Numero Number); 
+(
+    Pais VARCHAR2(15),
+    Numero NUMBER
+); 
 
 create or replace type CARACT as object
 (   
@@ -14,6 +16,16 @@ create or replace type CARACT as object
     vision VARCHAR2(15)
 ); 
 
+create or replace type FAMILIAR as object
+(   
+    nombre VARCHAR2(25), 
+    fec_nac DATE, 
+    parentesco VARCHAR2(15), 
+    tel_contacto NUMBER(10)
+); 
+
+create or replace type IDIOM as varray(6) of VARCHAR2(10); 
+
 create or replace type ALIAS_ as object
 (
     nombre VARCHAR2(25),
@@ -25,29 +37,35 @@ create or replace type ALIAS_ as object
     direccion VARCHAR2(50),
     ult_fec_uso DATE
     -- Falta atributo tabla anidada para los familiares
+
+    -- CREO QUE NO HACE FALTA LA TABLA ANIDADA PORQUE LOS FAMILIARES NO FORMAN PARTE DEL ALIAS SINO DEL 
+    -- AGENTE COMO TAL, LOS PUSE COMO DOS ATRIBUTOS MÁS Y CREÉ EL TIPO DE DATO "FAMILIAR"
+
 ); 
 
  
-create or replace type IDIOM as varray(6) of varchar2(10); 
+create or replace type IDIOM as varray(6) of VARCHAR2(10); 
 
 create or replace type INFORMAC as object
-(Pais varchar2(15),
-Numero Number); 
+(
+    Pais VARCHAR2(15),
+    Numero NUMBER
+); 
 
 create or replace type CONTACT as object
-(Nombre varchar2(15),
-apellido varchar2(15),
-apellido2 varchar2(15),
-telefono Number(10),
-email varchar2(15)); 
-
-
+(
+    Nombre VARCHAR2(15),
+    apellido VARCHAR2(15),
+    apellido2 VARCHAR2(15),
+    telefono NUMBER(10),
+    email VARCHAR2(15)
+); 
 
 
 ---------------------------------------------------------------------------                TABLAS                ------------------------------------------------------------------------------- 
 
-CREATE TABLE analistas_temas ( 
 
+CREATE TABLE analistas_temas ( 
     emp_int_id               NUMBER NOT NULL,
     tema_id                  NUMBER NOT NULL,
     CONSTRAINT analistas_temas_pk PRIMARY KEY ( emp_int_id,tema_id )
@@ -94,14 +112,18 @@ CREATE TABLE empleado_inteligencia (
     apellido2            VARCHAR2(25) NOT NULL,
     claseseguridad       VARCHAR2(1) NOT NULL,
     licencia             LIC NOT NULL,
-    caracteristicas      CARACT NOT NULL,
+    caract               CARACT NOT NULL,
     telefono             NUMBER NOT NULL,
-    ali                  ALIAS_ ,
+    alias                ALIAS_,
     calle                VARCHAR2(30) NOT NULL,
     idiomas              IDIOM NOT NULL,
     nivel_educativo      VARCHAR2 (22) NOT NULL,
     ciudad_id            NUMBER NOT NULL,
-    ciudad_pais_id       NUMBER NOT NULL
+    ciudad_pais_id       NUMBER NOT NULL,
+    familiar1            FAMILIAR,
+    familiar2            FAMILIAR,
+    CONSTRAINT ck_caract_peso CHECK (caract.peso > 0),
+    CONSTRAINT ck_caract_altura CHECK (caract.altura_cm > 0)
 );
 
 
@@ -121,7 +143,8 @@ CREATE TABLE estacion (
     ciudad_id                     NUMBER NOT NULL,
     ciudad_pais_id                NUMBER NOT NULL,
     oficina_principal_id          NUMBER NOT NULL,
-    CONSTRAINT estacion_pk PRIMARY KEY ( id_estacion,oficina_principal_id )
+    CONSTRAINT estacion_pk PRIMARY KEY (id_estacion,oficina_principal_id),
+    CONSTRAINT ck_presupuesto_anual CHECK (presupuesto_anual >= 0)
 );
 
 CREATE UNIQUE INDEX estacion__idx ON
@@ -152,7 +175,6 @@ CREATE UNIQUE INDEX oficina_principal__idxv1 ON
     ASC );
 
 
-
 CREATE TABLE historico_cargo (
     fec_inicio                           DATE NOT NULL,
     fec_fin                              DATE,
@@ -160,7 +182,8 @@ CREATE TABLE historico_cargo (
     emp_int_id                           NUMBER NOT NULL,
     estacion_id                          NUMBER NOT NULL, 
     est_ofic_prin_id                     NUMBER NOT NULL,
-    CONSTRAINT historico_cargo_pk PRIMARY KEY ( fec_inicio,emp_int_id,estacion_id,est_ofic_prin_id)
+    CONSTRAINT historico_cargo_pk PRIMARY KEY ( fec_inicio,emp_int_id,estacion_id,est_ofic_prin_id),
+    CONSTRAINT ck_fec_hist_cargo CHECK (fec_fin >= fec_inicio)
 );
 
 CREATE TABLE informante (
@@ -185,15 +208,14 @@ CREATE TABLE historico_pago (
     pago                                   NUMBER NOT NULL,
     hecho_crudo_id_hecho_cdo               NUMBER,
     informante_id                          NUMBER NOT NULL,
-    CONSTRAINT historico_pago_pk PRIMARY KEY ( id_pago_infor,informante_id)
-
+    CONSTRAINT historico_pago_pk PRIMARY KEY ( id_pago_infor,informante_id),
+    CONSTRAINT ck_pago CHECK (pago >= 0)
 );
 
 CREATE UNIQUE INDEX historico_pago__idx ON
     historico_pago (
         hecho_crudo_id_hecho_cdo
     ASC );
-
 
 
 CREATE TABLE pieza_inteligencia (
@@ -206,7 +228,9 @@ CREATE TABLE pieza_inteligencia (
     hist_cg_fec_ini                                   DATE NOT NULL, 
     hist_cg_emp_int_id                                NUMBER NOT NULL, 
     hist_cg_est_id                                    NUMBER NOT NULL, 
-    hist_cg_ofic_id                                   NUMBER NOT NULL
+    hist_cg_ofic_id                                   NUMBER NOT NULL,
+    CONSTRAINT ck_precio_aproximado CHECK (precio_aproximado >= 0),
+    CONSTRAINT ck_nivel_confiabilidad CHECK (nivel_confiabilidad >= 0 and nivel_confiabilidad <= 100)
 );
 
 
@@ -216,7 +240,8 @@ CREATE TABLE hist_venta (
     total_precio_final     NUMBER NOT NULL,
     pieza_inteligencia_id  NUMBER NOT NULL,
     cliente_id             NUMBER NOT NULL,
-    CONSTRAINT hist_venta_pk PRIMARY KEY ( id,pieza_inteligencia_id,cliente_id )
+    CONSTRAINT hist_venta_pk PRIMARY KEY ( id,pieza_inteligencia_id,cliente_id ),
+    CONSTRAINT ck_total_precio_final CHECK (total_precio_final >= 0)
 );
 
 CREATE TABLE tema (
@@ -250,17 +275,20 @@ CREATE TABLE hecho_crudo (
     fuente                                            VARCHAR(1) NOT NULL,
     tipo_contenido                                    VARCHAR2 (12) NOT NULL,
     contenido                                         VARCHAR2 (80) NOT NULL,
-    nivel_confi_ini                                   Number NOT NULL,
+    nivel_confi_ini                                   NUMBER NOT NULL,
     fec_obten                                         DATE NOT NULL,
     nivel_confi_fin                                   NUMBER,
-    fecha_fin_cierre                                  DATE,
+    fec_fin_cierre                                    DATE,
     cantidad_analistas                                NUMBER NOT NULL, 
     hist_pago_id                                      NUMBER, -- Este es el id del pago
     inf_id                                            NUMBER, -- Este es el id del informante
     hist_cg_fec_ini                                   DATE NOT NULL, 
     hist_cg_emp_int_id                                NUMBER NOT NULL, 
-    hist_carg_est_id                              NUMBER NOT NULL, 
-    hist_carg_ofic_id                             NUMBER NOT NULL
+    hist_carg_est_id                                  NUMBER NOT NULL, 
+    hist_carg_ofic_id                                 NUMBER NOT NULL,
+    CONSTRAINT ck_fec_ini_fin CHECK (fec_fin_cierre >= fec_obten),
+    CONSTRAINT ck_nivel_confi_ini CHECK (nivel_confi_ini >= 0 and nivel_confi_ini <= 100),
+    CONSTRAINT ck_nivel_confi_fin CHECK (nivel_confi_fin >= 0 and nivel_confi_fin <= 100)
 );
 
 CREATE UNIQUE INDEX hecho_crudo__idx ON
@@ -279,9 +307,9 @@ CREATE TABLE verificacion_hecho (
     hist_cg_emp_int_id                            NUMBER NOT NULL, 
     hist_cg_est_id                                NUMBER NOT NULL, 
     hist_cg_ofic_id                               NUMBER NOT NULL,
-    CONSTRAINT verificacion_hecho_pk PRIMARY KEY ( id,hecho_cdo_id,hist_cg_fec_ini,hist_cg_emp_int_id,hist_cg_est_id,hist_cg_ofic_id)
+    CONSTRAINT verificacion_hecho_pk PRIMARY KEY ( id,hecho_cdo_id,hist_cg_fec_ini,hist_cg_emp_int_id,hist_cg_est_id,hist_cg_ofic_id),
+    CONSTRAINT ck_niv_confi CHECK (niv_confi >= 0 and niv_confi <= 100)
 );
-
 
 
 
