@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 -- Inserts de la aplicacion 
 
 CREATE SEQUENCE incremento_id_pais
