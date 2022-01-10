@@ -89,7 +89,8 @@ CREATE TABLE ciudad (
 CREATE TABLE pais (
     id_pais  NUMBER NOT NULL PRIMARY KEY,
     nombre   VARCHAR2 (22)NOT NULL,
-    region   VARCHAR2(10) NOT NULL
+    region   VARCHAR2(10) NOT NULL,
+    CONSTRAINT ck_region CHECK( region IN ('EU','AS','AMN', 'AMC', 'AMS', 'AF', 'OC'))
 );
 
 CREATE TABLE cliente (
