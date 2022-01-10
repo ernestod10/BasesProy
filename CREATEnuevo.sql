@@ -111,7 +111,7 @@ CREATE TABLE empleado_inteligencia (
     segundo_nombre       VARCHAR2(25),
     apellido1            VARCHAR2(30) NOT NULL,
     apellido2            VARCHAR2(25) NOT NULL,
-    claseseguridad       VARCHAR2(1) NOT NULL,
+    nivel_seguridad      INT NOT NULL,
     licencia             LIC NOT NULL,
     caract               CARACT NOT NULL,
     telefono             NUMBER NOT NULL,
@@ -124,7 +124,8 @@ CREATE TABLE empleado_inteligencia (
     familiar1            FAMILIAR,
     familiar2            FAMILIAR,
     CONSTRAINT ck_caract_peso CHECK (caract.peso > 0),
-    CONSTRAINT ck_caract_altura CHECK (caract.altura_cm > 0)
+    CONSTRAINT ck_caract_altura CHECK (caract.altura_cm > 0),
+    CONSTRAINT ck_emp_nivel_seguridad CHECK (nivel_seguridad > 0 and nivel_seguridad < 4)
 );
 
 
@@ -224,14 +225,15 @@ CREATE TABLE pieza_inteligencia (
     precio_aproximado                                 NUMBER,
     fecha_construccion                                DATE,
     nivel_confiabilidad                               NUMBER,
-    nivel_clasificado                                 NUMBER NOT NULL,
+    nivel_seguridad                                   INT NOT NULL,
     tema_id                                           NUMBER NOT NULL,
     hist_cg_fec_ini                                   DATE NOT NULL, 
     hist_cg_emp_int_id                                NUMBER NOT NULL, 
     hist_cg_est_id                                    NUMBER NOT NULL, 
     hist_cg_ofic_id                                   NUMBER NOT NULL,
     CONSTRAINT ck_precio_aproximado CHECK (precio_aproximado >= 0),
-    CONSTRAINT ck_nivel_confiabilidad CHECK (nivel_confiabilidad >= 0 and nivel_confiabilidad <= 100)
+    CONSTRAINT ck_nivel_confiabilidad CHECK (nivel_confiabilidad >= 0 and nivel_confiabilidad <= 100),
+    CONSTRAINT ck_pz_nivel_seguridad CHECK (nivel_seguridad > 0 and nivel_seguridad < 4)
 );
 
 
