@@ -14,5 +14,6 @@ DECLARE
     E_region VARCHAR2(3);
     O_region VARCHAR2(3);
 BEGIN
-    SELECT ofi.ciudad_pais_id, es.ciudad_pais_id, pa.region FROM oficina_principal ofi, estacion es,Pais pa where pa.id_pais = ofi.ciudad_pais_id AND pa.id_pais = es.ciudad_pais_id 
+    SELECT e.region into E_region, o.region into O_region from detalle_estacion e, detalle_oficina o where e.oficina = o.oficina;
+    if :new.
 END;

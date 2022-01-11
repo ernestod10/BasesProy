@@ -494,7 +494,7 @@ FROM pais pa, ciudad ci
 WHERE pa.id_pais = ci.pais_id;
 
 -- Vista de detalle_estacion
-create or replace view detalle_estacion(Estacion, Nombre,Ciudad,Pais,Region, Jefe)
-AS SELECT es.id_estacion,es.nombre,ci.nombre,pa.nombre,pa.region, em.nombre || ' ' || em.apellido
+create or replace view detalle_estacion(Estacion, Nombre,Ciudad,Pais,Region, Jefe,Oficina)
+AS SELECT es.id_estacion,es.nombre,ci.nombre,pa.nombre,pa.region, em.nombre || ' ' || em.apellido, es.oficina_principal_id
 FROM estacion es, ciudad ci, pais pa, empleado_jefe em
 where es.ciudad_id = ci.id_ciudad AND es.empleado_jefe_id = em.id AND pa.id_pais = es.ciudad_pais_id;
