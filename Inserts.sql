@@ -3,11 +3,11 @@
 
 CREATE SEQUENCE incremento_id_pais
 INCREMENT BY 1
-START WITH 100
+START WITH 100;
 
 CREATE SEQUENCE incremento_id_ciudad
 INCREMENT BY 1
-START WITH 10
+START WITH 10;
 
 
 -- Pais --
@@ -61,5 +61,55 @@ INSERT INTO ciudad VALUES(incremento_id_ciudad.nextval,'Sydney',113);-- Central
 INSERT INTO ciudad VALUES(incremento_id_ciudad.nextval,'Auckland',114);
 INSERT INTO ciudad VALUES(incremento_id_ciudad.nextval,'Wellington',114);
 INSERT INTO ciudad VALUES(incremento_id_ciudad.nextval,'Hamilton',114);
+
+-- Empleado Jefe --
+
+INSERT INTO empleado_jefe VALUES (1,'Dannel','Conring','CEO',NULL);
+INSERT INTO empleado_jefe VALUES (2,'Wilmar','Cisland','Area',NULL);
+INSERT INTO empleado_jefe VALUES (3,'Kile','Smith','Area',NULL);
+INSERT INTO empleado_jefe VALUES (4,'Leon','Rodriguez','Area',NULL);
+INSERT INTO empleado_jefe VALUES (5,'Mirabelle','Braley','Area',NULL);
+INSERT INTO empleado_jefe VALUES (6,'Andrew','Jordan','Area',NULL);
+
+
+-- Oficina Principal -- 
+
+INSERT INTO oficina_principal VALUES (1,'Director AII',true,1,10,100);
+INSERT INTO oficina_principal VALUES (2,'Denesik',false,2,17,103);
+INSERT INTO oficina_principal VALUES (3,'Hexagono',false,3,24,106);
+INSERT INTO oficina_principal VALUES (4,'Latina',false,4,28,108);
+INSERT INTO oficina_principal VALUES (5,'Effertz',false,5,32,110);
+INSERT INTO oficina_principal VALUES (6,'Bechtelar',false,6,39,113);
+
+
+
+-- Vista de Oficina_principal con jefe y localizacion
+
+Create view 
+detalle_oficina AS
+SELECT oficina_principal.nombre,oficina_principal.ciudad_id,oficina_principal.ciudad_pais_id,oficina_principal.empleado_jefe_id
+p.nombre as 'Pais',
+ci.nombre as 'Ciudad',
+e.nombre || e.apellido as 'Director',
+e.tipo 'Rango'
+FROM oficina_principal
+JOIN pais p ON id_pais = oficina_principal.ciudad_pais_id
+JOIN ciudad ci ON id_ciudad = oficina_principal.ciudad_id
+JOIN empleado_jefe e ON id = oficina_principal.empleado_jefe_id
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
