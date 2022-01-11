@@ -74,6 +74,7 @@ INSERT INTO empleado_jefe VALUES (4,'Leon','Rodriguez','Area',NULL);
 INSERT INTO empleado_jefe VALUES (5,'Mirabelle','Braley','Area',NULL);
 INSERT INTO empleado_jefe VALUES (6,'Andrew','Jordan','Area',NULL);
 INSERT INTO empleado_jefe VALUES (7,'Luis','Jurado','Estacion',1);
+INSERT INTO empleado_jefe VALUES (8,'Marcos','Perez','Estacion',1); -- ahi deberia ser 1 
 
 
 -- Oficina Principal -- 
@@ -88,3 +89,4 @@ INSERT INTO oficina_principal VALUES (6,'Bechtelar',false,6,39,113);
 
 -- Estacion -- 
 INSERT INTO estacion VALUES (incremento_id_estacion.nextval,'Parrot',50000,7,11,101,1);
+INSERT INTO estacion VALUES (incremento_id_estacion.nextval,'Monkey',20000,8,12,101,2); -- insert de prueba
