@@ -82,9 +82,3 @@ INSERT INTO oficina_principal VALUES (6,'Bechtelar',false,6,39,113);
 
 
 
--- Vista de Oficina_principal con jefe y localizacion
-
-create or replace view detalle_oficina(Oficina,Nombre,Ciudad,Pais,Director)
-As SELECT ofi.id_oficina,ofi.nombre,ci.nombre,pa.nombre,e.nombre ||' '|| e.apellido 
-from oficina_principal ofi, ciudad ci, pais pa, empleado_jefe e
-where ofi.ciudad_id=ci.id_ciudad and ofi.ciudad_pais_id = pa.id_pais and ofi.empleado_jefe_id = e.id;
