@@ -8,6 +8,10 @@ CREATE SEQUENCE incremento_id_ciudad
 INCREMENT BY 1
 START WITH 10;
 
+CREATE SEQUENCE incremento_id_estacion
+INCREMENT BY 1
+START WITH 300;
+
 
 -- Pais --
 INSERT INTO pais VALUES (incremento_id_pais.nextval,'Suiza','Eu'); -- Sede Central
@@ -69,6 +73,7 @@ INSERT INTO empleado_jefe VALUES (3,'Kile','Smith','Area',NULL);
 INSERT INTO empleado_jefe VALUES (4,'Leon','Rodriguez','Area',NULL);
 INSERT INTO empleado_jefe VALUES (5,'Mirabelle','Braley','Area',NULL);
 INSERT INTO empleado_jefe VALUES (6,'Andrew','Jordan','Area',NULL);
+INSERT INTO empleado_jefe VALUES (7,'Luis','Jurado','Estacion',1);
 
 
 -- Oficina Principal -- 
@@ -81,4 +86,5 @@ INSERT INTO oficina_principal VALUES (5,'Effertz',false,5,32,110);
 INSERT INTO oficina_principal VALUES (6,'Bechtelar',false,6,39,113);
 
 
-
+-- Estacion -- 
+INSERT INTO estacion VALUES (incremento_id_estacion.nextval,'Parrot',50000,7,11,101,1);
