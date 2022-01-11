@@ -21,7 +21,7 @@ create or replace type FAMILIAR as object
     nombre VARCHAR2(25), 
     fec_nac DATE, 
     parentesco VARCHAR2(15), 
-    tel_contacto NUMBER(10)
+    tel_contacto VARCHAR2(10)
 ); 
 
 create or replace type IDIOM as varray(6) of VARCHAR2(10); 
@@ -57,7 +57,7 @@ create or replace type CONTACT as object
     Nombre VARCHAR2(15),
     apellido VARCHAR2(15),
     apellido2 VARCHAR2(15),
-    telefono NUMBER(10),
+    telefono VARCHAR2(10),
     email VARCHAR2(15)
 ); 
 
@@ -80,14 +80,14 @@ CREATE TABLE area_interes (
 
 
 CREATE TABLE ciudad (
-    id_ciudad     NUMBER GENERATED ALWAYS as IDENTITY(START with 10 INCREMENT by 1),
+    id_ciudad     NUMBER NOT NULL,
     nombre        VARCHAR2 (22) NOT NULL,
     pais_id       NUMBER NOT NULL,
     CONSTRAINT ciudad_pk PRIMARY KEY ( id_ciudad,pais_id )
 );
 
 CREATE TABLE pais (
-    id_pais  NUMBER GENERATED ALWAYS as IDENTITY(START with 100 INCREMENT by 1) PRIMARY KEY,
+    id_pais  NUMBER NOT NULL PRIMARY KEY,
     nombre   VARCHAR2 (22)NOT NULL,
     region   VARCHAR2(10) NOT NULL,
     CONSTRAINT ck_region CHECK( region IN ('Eu','As','AmN', 'AmC', 'AmS', 'Af', 'Oc'))
@@ -114,7 +114,7 @@ CREATE TABLE empleado_inteligencia (
     nivel_seguridad      INT NOT NULL,
     licencia             LIC NOT NULL,
     caract               CARACT NOT NULL,
-    telefono             NUMBER NOT NULL,
+    telefono             VARCHAR2 NOT NULL,
     alias                ALIAS_,
     calle                VARCHAR2(30) NOT NULL,
     idiomas              IDIOM NOT NULL,
