@@ -1,54 +1,65 @@
+-- Inserts de la aplicacion 
+
+CREATE SEQUENCE incremento_id_pais
+INCREMENT BY 1
+START WITH 100;
+
+CREATE SEQUENCE incremento_id_ciudad
+INCREMENT BY 1
+START WITH 10;
+
+
 -- Pais --
-INSERT INTO pais (nombre, region) VALUES ('Suiza','Eu'); -- Sede Central
-INSERT INTO pais (nombre, region) VALUES ('Grecia','Eu');
-INSERT INTO pais (nombre, region) VALUES ('Portugal','Eu');
-INSERT INTO pais (nombre, region) VALUES ('Singapur','As'); -- Oficina de area
-INSERT INTO pais (nombre, region) VALUES ('Qatar','As');
-INSERT INTO pais (nombre, region) VALUES ('Indonesia','As');
-INSERT INTO pais (nombre, region) VALUES ('Estados Unidos','AmN'); -- Oficina de area
-INSERT INTO pais (nombre, region) VALUES ('Costa Rica','AmN');
-INSERT INTO pais (nombre, region) VALUES ('Argentina','AmS');-- Oficina de area
-INSERT INTO pais (nombre, region) VALUES ('Ecuador','AmS');
-INSERT INTO pais (nombre, region) VALUES ('Egipto','Af');-- Oficina de area
-INSERT INTO pais (nombre, region) VALUES ('Marruecos','Af');
-INSERT INTO pais (nombre, region) VALUES ('Cabo Verde','Af');
-INSERT INTO pais (nombre, region) VALUES ('Australia','Oc');-- Oficina de area
-INSERT INTO pais (nombre, region) VALUES ('Nueva Zelanda','Oc');
+INSERT INTO pais VALUES (incremento_id_pais.nextval,'Suiza','Eu'); -- Sede Central
+INSERT INTO pais VALUES (incremento_id_pais.nextval,'Grecia','Eu');
+INSERT INTO pais VALUES (incremento_id_pais.nextval,'Portugal','Eu');
+INSERT INTO pais VALUES (incremento_id_pais.nextval,'Singapur','As'); -- Oficina de area
+INSERT INTO pais VALUES (incremento_id_pais.nextval,'Qatar','As');
+INSERT INTO pais VALUES (incremento_id_pais.nextval,'Indonesia','As');
+INSERT INTO pais VALUES (incremento_id_pais.nextval,'Estados Unidos','AmN'); -- Oficina de area
+INSERT INTO pais VALUES (incremento_id_pais.nextval,'Costa Rica','AmN');
+INSERT INTO pais VALUES (incremento_id_pais.nextval,'Argentina','AmS');-- Oficina de area
+INSERT INTO pais VALUES (incremento_id_pais.nextval,'Ecuador','AmS');
+INSERT INTO pais VALUES (incremento_id_pais.nextval,'Egipto','Af');-- Oficina de area
+INSERT INTO pais VALUES (incremento_id_pais.nextval,'Marruecos','Af');
+INSERT INTO pais VALUES (incremento_id_pais.nextval,'Cabo Verde','Af');
+INSERT INTO pais VALUES (incremento_id_pais.nextval,'Australia','Oc');-- Oficina de area
+INSERT INTO pais VALUES (incremento_id_pais.nextval,'Nueva Zelanda','Oc');
 
 -- Ciudad --
-INSERT INTO ciudad (nombre,pais_id) VALUES ('Ginebra',100); -- central
-INSERT INTO ciudad (nombre,pais_id) VALUES('Atenas',101);
-INSERT INTO ciudad (nombre,pais_id) VALUES('Oya',101);
-INSERT INTO ciudad (nombre,pais_id) VALUES('Argos',101);
-INSERT INTO ciudad (nombre,pais_id) VALUES('Lisboa',102);
-INSERT INTO ciudad (nombre,pais_id) VALUES('Amadora',102);
-INSERT INTO ciudad (nombre,pais_id) VALUES('Esposende',102);
-INSERT INTO ciudad (nombre,pais_id) VALUES('Ciudad de Singapur',103); -- Central
-INSERT INTO ciudad (nombre,pais_id) VALUES('Doha',104);
-INSERT INTO ciudad (nombre,pais_id) VALUES('Dukhan',104);
-INSERT INTO ciudad (nombre,pais_id) VALUES('Lusail',104);
-INSERT INTO ciudad (nombre,pais_id) VALUES('Yakarta',105);
-INSERT INTO ciudad (nombre,pais_id) VALUES('Surabaya',105);
-INSERT INTO ciudad (nombre,pais_id) VALUES('Medan',105);
-INSERT INTO ciudad (nombre,pais_id) VALUES('Washington D. C.',106); -- Central
-INSERT INTO ciudad (nombre,pais_id) VALUES('Heredia',107);
-INSERT INTO ciudad (nombre,pais_id) VALUES('Escazú',107);
-INSERT INTO ciudad (nombre,pais_id) VALUES('Puntarenas',107);
-INSERT INTO ciudad (nombre,pais_id) VALUES('Buenos Aires',108);-- Central
-INSERT INTO ciudad (nombre,pais_id) VALUES('Machala',109);
-INSERT INTO ciudad (nombre,pais_id) VALUES('Quito',109);
-INSERT INTO ciudad (nombre,pais_id) VALUES('Salinas',109);
-INSERT INTO ciudad (nombre,pais_id) VALUES('El Cairo',110);-- Central
-INSERT INTO ciudad (nombre,pais_id) VALUES('Casablanca',111);
-INSERT INTO ciudad (nombre,pais_id) VALUES('Fez',111);
-INSERT INTO ciudad (nombre,pais_id) VALUES('Salé',111);
-INSERT INTO ciudad (nombre,pais_id) VALUES('Praia',112);
-INSERT INTO ciudad (nombre,pais_id) VALUES('Mindelo',112);
-INSERT INTO ciudad (nombre,pais_id) VALUES('Santa Maria',112);
-INSERT INTO ciudad (nombre,pais_id) VALUES('Sydney',113);-- Central
-INSERT INTO ciudad (nombre,pais_id) VALUES('Auckland',114);
-INSERT INTO ciudad (nombre,pais_id) VALUES('Wellington',114);
-INSERT INTO ciudad (nombre,pais_id) VALUES('Hamilton',114);
+INSERT INTO ciudad VALUES(incremento_id_ciudad.nextval,'Ginebra',100); -- central
+INSERT INTO ciudad VALUES(incremento_id_ciudad.nextval,'Atenas',101);
+INSERT INTO ciudad VALUES(incremento_id_ciudad.nextval,'Oya',101);
+INSERT INTO ciudad VALUES(incremento_id_ciudad.nextval,'Argos',101);
+INSERT INTO ciudad VALUES(incremento_id_ciudad.nextval,'Lisboa',102);
+INSERT INTO ciudad VALUES(incremento_id_ciudad.nextval,'Amadora',102);
+INSERT INTO ciudad VALUES(incremento_id_ciudad.nextval,'Esposende',102);
+INSERT INTO ciudad VALUES(incremento_id_ciudad.nextval,'Ciudad de Singapur',103); -- Central
+INSERT INTO ciudad VALUES(incremento_id_ciudad.nextval,'Doha',104);
+INSERT INTO ciudad VALUES(incremento_id_ciudad.nextval,'Dukhan',104);
+INSERT INTO ciudad VALUES(incremento_id_ciudad.nextval,'Lusail',104);
+INSERT INTO ciudad VALUES(incremento_id_ciudad.nextval,'Yakarta',105);
+INSERT INTO ciudad VALUES(incremento_id_ciudad.nextval,'Surabaya',105);
+INSERT INTO ciudad VALUES(incremento_id_ciudad.nextval,'Medan',105);
+INSERT INTO ciudad VALUES(incremento_id_ciudad.nextval,'Washington D. C.',106); -- Central
+INSERT INTO ciudad VALUES(incremento_id_ciudad.nextval,'Heredia',107);
+INSERT INTO ciudad VALUES(incremento_id_ciudad.nextval,'Escazú',107);
+INSERT INTO ciudad VALUES(incremento_id_ciudad.nextval,'Puntarenas',107);
+INSERT INTO ciudad VALUES(incremento_id_ciudad.nextval,'Buenos Aires',108);-- Central
+INSERT INTO ciudad VALUES(incremento_id_ciudad.nextval,'Machala',109);
+INSERT INTO ciudad VALUES(incremento_id_ciudad.nextval,'Quito',109);
+INSERT INTO ciudad VALUES(incremento_id_ciudad.nextval,'Salinas',109);
+INSERT INTO ciudad VALUES(incremento_id_ciudad.nextval,'El Cairo',110);-- Central
+INSERT INTO ciudad VALUES(incremento_id_ciudad.nextval,'Casablanca',111);
+INSERT INTO ciudad VALUES(incremento_id_ciudad.nextval,'Fez',111);
+INSERT INTO ciudad VALUES(incremento_id_ciudad.nextval,'Salé',111);
+INSERT INTO ciudad VALUES(incremento_id_ciudad.nextval,'Praia',112);
+INSERT INTO ciudad VALUES(incremento_id_ciudad.nextval,'Mindelo',112);
+INSERT INTO ciudad VALUES(incremento_id_ciudad.nextval,'Santa Maria',112);
+INSERT INTO ciudad VALUES(incremento_id_ciudad.nextval,'Sydney',113);-- Central
+INSERT INTO ciudad VALUES(incremento_id_ciudad.nextval,'Auckland',114);
+INSERT INTO ciudad VALUES(incremento_id_ciudad.nextval,'Wellington',114);
+INSERT INTO ciudad VALUES(incremento_id_ciudad.nextval,'Hamilton',114);
 
 -- Empleado Jefe --
 
@@ -73,14 +84,7 @@ INSERT INTO oficina_principal VALUES (6,'Bechtelar',false,6,39,113);
 
 -- Vista de Oficina_principal con jefe y localizacion
 
-Create view 
-detalle_oficina AS
-SELECT oficina_principal.nombre,oficina_principal.ciudad_id,oficina_principal.ciudad_pais_id,oficina_principal.empleado_jefe_id
-p.nombre as 'Pais',
-ci.nombre as 'Ciudad',
-e.nombre || e.apellido as 'Director',
-e.tipo 'Rango'
-FROM oficina_principal
-JOIN pais p ON id_pais = oficina_principal.ciudad_pais_id
-JOIN ciudad ci ON id_ciudad = oficina_principal.ciudad_id
-JOIN empleado_jefe e ON id = oficina_principal.empleado_jefe_id
+create or replace view detalle_oficina(Oficina,Nombre,Ciudad,Pais,Director)
+As SELECT ofi.id_oficina,ofi.nombre,ci.nombre,pa.nombre,e.nombre ||' '|| e.apellido 
+from oficina_principal ofi, ciudad ci, pais pa, empleado_jefe e
+where ofi.ciudad_id=ci.id_ciudad and ofi.ciudad_pais_id = pa.id_pais and ofi.empleado_jefe_id = e.id;
