@@ -84,21 +84,3 @@ FROM oficina_principal
 JOIN pais p ON id_pais = oficina_principal.ciudad_pais_id
 JOIN ciudad ci ON id_ciudad = oficina_principal.ciudad_id
 JOIN empleado_jefe e ON id = oficina_principal.empleado_jefe_id
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
->>>>>>> f194c48e95410feb7a5b8c27bfe0c3eb3892336a
