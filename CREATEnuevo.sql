@@ -80,17 +80,17 @@ CREATE TABLE area_interes (
 
 
 CREATE TABLE ciudad (
-    id_ciudad     NUMBER NOT NULL,
+    id_ciudad     NUMBER GENERATED ALWAYS as IDENTITY(START with 1 INCREMENT by 1),
     nombre        VARCHAR2 (22) NOT NULL,
     pais_id       NUMBER NOT NULL,
     CONSTRAINT ciudad_pk PRIMARY KEY ( id_ciudad,pais_id )
 );
 
 CREATE TABLE pais (
-    id_pais  NUMBER NOT NULL PRIMARY KEY,
+    id_pais  NUMBER GENERATED ALWAYS as IDENTITY(START with 1 INCREMENT by 1) PRIMARY KEY,
     nombre   VARCHAR2 (22)NOT NULL,
     region   VARCHAR2(10) NOT NULL,
-    CONSTRAINT ck_region CHECK( region IN ('EU','AS','AMN', 'AMC', 'AMS', 'AF', 'OC'))
+    CONSTRAINT ck_region CHECK( region IN ('Eu','As','AmN', 'AmC', 'AmS', 'Af', 'Oc'))
 );
 
 CREATE TABLE cliente (
