@@ -97,9 +97,10 @@ CREATE TABLE cliente (
     id                   NUMBER NOT NULL PRIMARY KEY,
     nombre               VARCHAR2 (22)NOT NULL,
     contacto_empresa     CONTACT NOT NULL,
-    exclusivo            BOOLEAN NOT NULL,
+    exclusivo            CHAR(1) NOT NULL,
     ciudad_id            NUMBER NOT NULL,
-    ciudad_pais_id       NUMBER NOT NULL
+    ciudad_pais_id       NUMBER NOT NULL,
+    CONSTRAINT exclusivo CHECK( region IN ('Y','N'))
 );
 
 
