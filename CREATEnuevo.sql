@@ -100,7 +100,7 @@ CREATE TABLE cliente (
     exclusivo            CHAR(1) NOT NULL,
     ciudad_id            NUMBER NOT NULL,
     ciudad_pais_id       NUMBER NOT NULL,
-    CONSTRAINT exclusivo CHECK( region IN ('Y','N'))
+    CONSTRAINT ck_exclusivo CHECK( exclusivo IN ('Y','N'))
 );
 
 
