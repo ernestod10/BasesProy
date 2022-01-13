@@ -59,7 +59,7 @@ BEGIN
     RAISE_APPLICATION_ERROR(-20008,'Oficina ubicada en la direccion de area equivocado');
 END;
 ---------------------------------------------------------------------------------------------
--- Trigger Para crear cuentas de usuario para directores de area
+-- Trigger Para crear cuentas de usuario para directores de area ## EN DESARROLLO ##
 CREATE OR REPLACE TRIGGER asignacion_cuenta_director
 BEFORE INSERT ON empleado_jefe
 REFERENCING NEW AS NEW OLD AS OLD
