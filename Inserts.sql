@@ -89,4 +89,4 @@ INSERT INTO oficina_principal VALUES (6,'Bechtelar',false,6,39,113);
 
 -- Estacion -- 
 INSERT INTO estacion VALUES (incremento_id_estacion.nextval,'Parrot',50000,7,11,101,1);
-INSERT INTO estacion VALUES (incremento_id_estacion.nextval,'Monkey',20000,8,12,101,2); -- insert de prueba
+INSERT INTO estacion VALUES (incremento_id_estacion.nextval,'Monkey',20000,8,12,101,1); -- insert de prueba
