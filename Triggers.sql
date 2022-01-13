@@ -13,7 +13,7 @@ DECLARE
 BEGIN
     SELECT pa.region into O_region 
     from ciudad ci, pais pa, oficina_principal ofi
-    WHERE ofi.ciudad_id = ci.id_ciudad AND pa.id_pais = ofi.ciudad_pais_id AND ofi.empleado_jefe_id  = :new.empleado_jefe_id;
+    WHERE ofi.ciudad_id = ci.id_ciudad AND pa.id_pais = ofi.ciudad_pais_id AND ofi.empleado_jefe_id  = :new.id;
 
     SELECT pa.region into R_Director
     FROM ciudad ci, pais pa, estacion es
