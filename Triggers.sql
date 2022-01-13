@@ -58,7 +58,48 @@ BEGIN
     when lugar_incorrecto THEN  
     RAISE_APPLICATION_ERROR(-20008,'Oficina ubicada en la direccion de area equivocado');
 END;
+---------------------------------------------------------------------------------------------
+-- Trigger Para crear cuentas de usuario para directores de area
+CREATE OR REPLACE TRIGGER asignacion_cuenta_director
+BEFORE INSERT ON empleado_jefe
+REFERENCING NEW AS NEW OLD AS OLD
 
+FOR EACH ROW
+DECLARE
+    Director empleado_jefe_id%TYPE;
+    emp_nombre nombre%TYPE;
+    error_cuenta_jefe EXCEPTION;
+
+BEGIN
+    
+    Director := :new.empleado_jefe_id;
+    emp_nombre := :new.nombre;
+    if Director <> NULL THEN
+        RAISE error_cuenta_jefe; -- por ahora arrojara un error 
+    END if;
+    
+    EXECUTE creacion_cuenta(emp_nombre);
+
+    EXCEPTION
+    when error_cuenta_jefe THEN  
+    RAISE_APPLICATION_ERROR(-20030,'No es un jefe de Area');
+END;
+
+-- Procedimiento Para crear Usuario 
+
+CREATE OR REPLACE PROCEDURE creacion_cuenta(nombre in varchar2)
+ IS
+ v_sql  VARCHAR2 (32767);
+ BEGIN
+ v_sql := 'CREATE USER '||nombre|| ' IDENTIFIED BY '||nombre||';';
+ DBMS_OUTPUT.PUT_LINE (v_sql);
+ EXECUTE IMMEDIATE v_sql;
+ END creacion_cuenta;
+
+
+
+
+-----------------------------------------------------------------------------------------------------------
 --VALIDAR FECHA DE NACIMIENTO DE FAMILIAR DEL EMPLEADO
 create or replace TRIGGER VALIDA_FECHA_FAMILIAR
 BEFORE INSERT ON empleado_inteligencia FOR EACH ROW
