@@ -74,8 +74,12 @@ INSERT INTO empleado_jefe VALUES (4,'Leon','Rodriguez','Area',NULL);
 INSERT INTO empleado_jefe VALUES (5,'Mirabelle','Braley','Area',NULL);
 INSERT INTO empleado_jefe VALUES (6,'Andrew','Jordan','Area',NULL);
 INSERT INTO empleado_jefe VALUES (7,'Luis','Jurado','Estacion',1);
-INSERT INTO empleado_jefe VALUES (8,'Marcos','Perez','Estacion',1); -- ahi deberia ser 1 
-
+INSERT INTO empleado_jefe VALUES (8,'Marcos','Perez','Estacion',1);
+INSERT INTO empleado_jefe VALUES (9,'Juan', 'Castro','Estacion',1);
+INSERT INTO empleado_jefe VALUES (10,'Diego', 'Jurado','Estacion',1); 
+INSERT INTO empleado_jefe VALUES (11,'Kevin', 'Sibila','Estacion',1);
+INSERT INTO empleado_jefe VALUES (12,'Pablo', 'Martinez','Estacion',1);
+INSERT INTO empleado_jefe VALUES (13,'Marlen', 'Ramirez','Estacion',2);
 
 -- Oficina Principal -- 
 
@@ -89,4 +93,9 @@ INSERT INTO oficina_principal VALUES (6,'Bechtelar',false,6,39,113);
 
 -- Estacion -- 
 INSERT INTO estacion VALUES (incremento_id_estacion.nextval,'Parrot',50000,7,11,101,1);
-INSERT INTO estacion VALUES (incremento_id_estacion.nextval,'Monkey',20000,8,12,101,1); -- insert de prueba
+INSERT INTO estacion VALUES (incremento_id_estacion.nextval,'Monkey',20000,8,12,101,1); 
+INSERT INTO estacion VALUES (incremento_id_estacion.nextval,'Eagle',30000,9,13,101,1);
+INSERT INTO estacion VALUES (incremento_id_estacion.nextval,'Wolf',35000,10,14,102,1);
+INSERT INTO estacion VALUES (incremento_id_estacion.nextval,'bear',40000,11,15,102,1);
+INSERT INTO estacion VALUES (incremento_id_estacion.nextval,'Buffalo',20000,12,16,102,1);
+INSERT INTO estacion VALUES (incremento_id_estacion.nextval,'Lizard',60000,13,18,104,2);
