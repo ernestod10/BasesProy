@@ -1,8 +1,32 @@
 
--- Trigger de confirmacion de jerarquia de jefe de estacion y director de area
+-- Trigger de confirmacion de jerarquia de jefe de estacion y director de area ### EN DESARROLLO ##
 
 CREATE OR REPLACE TRIGGER jefe_director_correspondientes
-BEFORE INSERT or update of 
+BEFORE INSERT ON empleado_jefe
+REFERENCING NEW AS NEW OLD AS OLD
+
+FOR EACH ROW
+DECLARE 
+    director_invalido EXCEPTION;
+    R_Director VARCHAR2(3);
+    O_region VARCHAR2(3);
+BEGIN
+    SELECT pa.region into O_region 
+    from ciudad ci, pais pa, oficina_principal ofi
+    WHERE ofi.ciudad_id = ci.id_ciudad AND pa.id_pais = ofi.ciudad_pais_id AND ofi.empleado_jefe_id  = :new.empleado_jefe_id;
+
+    SELECT pa.region into R_Director
+    FROM ciudad ci, pais pa, estacion es
+    where es.ciudad_id = ci.id_ciudad AND pa.id_pais = es.ciudad_pais_id AND es.empleado_jefe_id = :new.id;
+
+    if R_Director <> O_region then
+        raise director_invalido;
+    end if;
+
+    EXCEPTION
+    when director_invalido THEN  
+    RAISE_APPLICATION_ERROR(-20009,'Director de Area incorrecto para el jefe de estacion');
+END;
 
 
 

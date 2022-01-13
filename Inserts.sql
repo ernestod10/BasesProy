@@ -80,6 +80,7 @@ INSERT INTO empleado_jefe VALUES (10,'Diego', 'Jurado','Estacion',1);
 INSERT INTO empleado_jefe VALUES (11,'Kevin', 'Sibila','Estacion',1);
 INSERT INTO empleado_jefe VALUES (12,'Pablo', 'Martinez','Estacion',1);
 INSERT INTO empleado_jefe VALUES (13,'Marlen', 'Ramirez','Estacion',2);
+INSERT INTO empleado_jefe VALUES (14,'MAssimo','Piccioni','Estacion',3); -- Prueba, deberia ser 2
 
 -- Oficina Principal -- 
 
@@ -99,3 +100,4 @@ INSERT INTO estacion VALUES (incremento_id_estacion.nextval,'Wolf',35000,10,14,1
 INSERT INTO estacion VALUES (incremento_id_estacion.nextval,'bear',40000,11,15,102,1);
 INSERT INTO estacion VALUES (incremento_id_estacion.nextval,'Buffalo',20000,12,16,102,1);
 INSERT INTO estacion VALUES (incremento_id_estacion.nextval,'Lizard',60000,13,18,104,2);
+INSERT INTO estacion VALUES (incremento_id_estacion.nextval,'Lemur',60000,14,19,104,2);-- Prueba surgio un error por que deberia estar registrada la estacion primero
