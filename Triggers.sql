@@ -24,6 +24,7 @@ end if;
             hola('Diego');
  END;
 
+create or replace NONEDITIONABLE procedure hola(nombre in varchar2) is begin DBMS_OUTPUT.PUT_LINE('Hola '||nombre); end hola;
 
 
 -- Trigger para validar que al insertar una estacion su oficina pertenezca a la misma region 
