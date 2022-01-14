@@ -101,12 +101,23 @@ BEGIN
 END;
 
 --DESPIDO DE AGENTE 
-create or replace TRIGGER DESPIDO_AGENTEv2
+CREATE OR REPLACE TRIGGER DESPIDO_AGENTEv2
 BEFORE DELETE ON empleado_inteligencia FOR EACH ROW
 DECLARE 
-
+    informante NUMBER;
 BEGIN
+    select inf.id_informante into informante from informante inf, historico_cargo cg where :OLD.id_emp_int = cg.emp_int_id AND cg.emp_int_id = inf.hist_cg_emp_int_id;
+ 
+
     update historico_cargo set emp_int_id = 0 where emp_int_id = :OLD.id;
     update informante set hist_cg_emp_int_id_A  = 0 where hist_cg_emp_int_id_A  = :OLD.id;
     update informante set hist_cg_emp_int_id  = 0 where hist_cg_emp_int_id  = :OLD.id;
+
+    DESPEDIR_AGENTE(informante);
 END;
+
+create or replace procedure DESPEDIR_AGENTE (id_informante IN NUMBER) 
+IS
+BEGIN
+    DELETE from historico_pago where id_informante = informante_id ; 
+END; 
