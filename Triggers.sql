@@ -58,6 +58,36 @@ BEGIN
     when lugar_incorrecto THEN  
     RAISE_APPLICATION_ERROR(-20008,'Oficina ubicada en la direccion de area equivocado');
 END;
+
+-- Trigger para que el director que actualiza presupuesto anual sea de una estacion de su area ## EN DESARROLLO ##
+
+-- cuando se va a actualizar el presupuesto necesito que el director que lo actualice corresponda a las estaciones 
+-- necesito el id del director o el nombre de la oficina que representa y segun el dato otorgado por el usuario es que se va a realizar la actualizacion
+
+-- Otra forma pudiera ser mediante un procedimiento el cual va a realizar el update
+
+CREATE OR REPLACE TRIGGER presupuesto_area_correcta
+BEFORE UPDATE Of presupuesto_anual ON estacion
+REFERENCING NEW AS NEW OLD AS OLD
+
+FOR EACH ROW
+DECLARE
+    area_incorrecta EXCEPTION;
+    Oficina NUMBER(1);
+    E_oficina NUMBER(1);
+BEGIN
+    SELECT ofi.id_oficina into Oficina 
+    FROM oficina_principal ofi, empleado_jefe emp
+    WHERE ofi.id_oficina = :old.oficina_principal_id;
+
+END;
+
+
+
+
+
+
+
 ---------------------------------------------------------------------------------------------
 -- Trigger Para crear cuentas de usuario para directores de area ## EN DESARROLLO ##
 CREATE OR REPLACE TRIGGER asignacion_cuenta_director
