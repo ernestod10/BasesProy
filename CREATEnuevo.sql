@@ -276,10 +276,10 @@ CREATE TABLE p_t (
 
 CREATE TABLE hecho_crudo (
     id_hecho_cdo                                      NUMBER NOT NULL PRIMARY KEY,
-    resumen                                           VARCHAR2 (22) NOT NULL,
+    resumen                                           VARCHAR2 (50) NOT NULL,
     fuente                                            VARCHAR2(8) NOT NULL,
     tipo_contenido                                    VARCHAR2 (12) NOT NULL,
-    contenido                                         VARCHAR2 (80) NOT NULL,
+    contenido                                         VARCHAR2 (1000) NOT NULL,
     nivel_confi_ini                                   NUMBER NOT NULL,
     fec_obten                                         DATE NOT NULL,
     nivel_confi_fin                                   NUMBER,
@@ -294,7 +294,8 @@ CREATE TABLE hecho_crudo (
     CONSTRAINT ck_fec_ini_fin CHECK (fec_fin_cierre >= fec_obten),
     CONSTRAINT ck_nivel_confi_ini CHECK (nivel_confi_ini >= 0 and nivel_confi_ini <= 100),
     CONSTRAINT ck_nivel_confi_fin CHECK (nivel_confi_fin >= 0 and nivel_confi_fin <= 100),
-    CONSTRAINT ck_fuente CHECK( fuente IN ('abierta','secreta','técnica'))
+    CONSTRAINT ck_fuente CHECK( fuente IN ('abierta','secreta','técnica')),
+    CONSTRAINT ck_tipo_contenido CHECK (tipo_contenido IN ('países', 'individuos', 'eventos', 'empresas'))
 );
 
 CREATE UNIQUE INDEX hecho_crudo__idx ON

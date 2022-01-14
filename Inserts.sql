@@ -1,13 +1,19 @@
 -- Inserts de la aplicacion 
 
+
+-- Incremento pais
 CREATE SEQUENCE incremento_id_pais
 INCREMENT BY 1
 START WITH 100;
 
-CREATE SEQUENCE incremento_id_ciudad
-INCREMENT BY 1
-START WITH 10;
+-- Incremento ciudad
+CREATE SEQUENCE incremento_id_ciudad INCREMENT BY 1 START WITH 10;
 
+-- Incremento hecho crudo
+CREATE SEQUENCE incr_hc INCREMENT BY 1 START WITH 1;
+
+-- Incremento Pieza inteligencia
+CREATE SEQUENCE incr_pi INCREMENT BY 1 START WITH 1;
 
 -- Pais --
 INSERT INTO pais VALUES (incremento_id_pais.nextval,'Suiza','Eu'); -- Sede Central
@@ -80,6 +86,20 @@ INSERT INTO oficina_principal VALUES (4,'Latina',false,4,28,108);
 INSERT INTO oficina_principal VALUES (5,'Effertz',false,5,32,110);
 INSERT INTO oficina_principal VALUES (6,'Bechtelar',false,6,39,113);
 
+
+-- Hecho Crudo -- 
+
+INSERT INTO hecho_crudo VALUES (incr_hc.nextval,'Este es un ejemplo de Hecho Crudo',
+'abierta', 'individuos',
+'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry"s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.',
+95, TO_DATE('2031/12/24 14:31:05', 'yyyy/mm/dd hh24:mi:ss'), 90, TO_DATE('2032/01/09 11:20:04', 'yyyy/mm/dd hh24:mi:ss'),
+2, null, null, TO_DATE('2032/01/24 14:31:05', 'yyyy/mm/dd hh24:mi:ss'), 0, 0, 0);
+
+
+-- Pieza Inteligencia --
+
+INSERT INTO pieza_inteligencia VALUES (incr_pi.nextval, 120.50, TO_DATE('2032/02/14 17:20:15', 'yyyy/mm/dd hh24:mi:ss'),
+null, 1, 1, TO_DATE('2032/02/14 17:20:15', 'yyyy/mm/dd hh24:mi:ss'), 0, 0, 0);
 
 
 -- Vista de Oficina_principal con jefe y localizacion
