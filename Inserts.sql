@@ -92,14 +92,26 @@ INSERT INTO oficina_principal VALUES (6,'Bechtelar',false,6,39,113);
 INSERT INTO hecho_crudo VALUES (incr_hc.nextval,'Este es un ejemplo de Hecho Crudo',
 'abierta', 'individuos',
 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry"s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.',
-95, TO_DATE('2031/12/24 14:31:05', 'yyyy/mm/dd hh24:mi:ss'), 90, TO_DATE('2032/01/09 11:20:04', 'yyyy/mm/dd hh24:mi:ss'),
+91, TO_DATE('2031/12/24 14:31:05', 'yyyy/mm/dd hh24:mi:ss'), 90, TO_DATE('2032/01/09 11:20:04', 'yyyy/mm/dd hh24:mi:ss'),
 2, null, null, TO_DATE('2032/01/24 14:31:05', 'yyyy/mm/dd hh24:mi:ss'), 0, 0, 0);
+
+INSERT INTO hecho_crudo VALUES (incr_hc.nextval,'Este es un ejemplo dos',
+'técnica', 'eventos',
+'Proyecto de bases de took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.',
+95, TO_DATE('2031/12/01 07:31:05', 'yyyy/mm/dd hh24:mi:ss'), 100, TO_DATE('2032/01/01 09:20:04', 'yyyy/mm/dd hh24:mi:ss'),
+1, null, null, TO_DATE('2031/12/01 07:31:05', 'yyyy/mm/dd hh24:mi:ss'), 0, 0, 0);
 
 
 -- Pieza Inteligencia --
 
 INSERT INTO pieza_inteligencia VALUES (incr_pi.nextval, 120.50, TO_DATE('2032/02/14 17:20:15', 'yyyy/mm/dd hh24:mi:ss'),
 null, 1, 1, TO_DATE('2032/02/14 17:20:15', 'yyyy/mm/dd hh24:mi:ss'), 0, 0, 0);
+
+
+-- Pieza Inteligencia Hecho Crudo --
+
+INSERT INTO p_h VALUES (4,2);
+INSERT INTO p_h VALUES (21,2);
 
 
 -- Vista de Oficina_principal con jefe y localizacion
