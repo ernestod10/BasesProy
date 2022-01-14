@@ -1,32 +1,28 @@
 
--- Trigger de confirmacion de jerarquia de jefe de estacion y director de area ### EN DESARROLLO ##
+-- VALIDAR QUE LA ESTACION TENGA 1 SOLO JEFE  
 
-CREATE OR REPLACE TRIGGER jefe_director_correspondientes
-BEFORE INSERT ON empleado_jefe
+CREATE OR REPLACE TRIGGER jefe_estacion_uno
+BEFORE INSERT ON estacion
 REFERENCING NEW AS NEW OLD AS OLD
-
 FOR EACH ROW
-DECLARE 
-    director_invalido EXCEPTION;
-    R_Director VARCHAR2(3);
-    O_region VARCHAR2(3);
+
+DECLARE
+e_nombre estacion.nombre%type;
+e_jefe estacion.empleado_jefe_id%type;
 BEGIN
-    SELECT pa.region into O_region 
-    from ciudad ci, pais pa, oficina_principal ofi
-    WHERE ofi.ciudad_id = ci.id_ciudad AND pa.id_pais = ofi.ciudad_pais_id AND ofi.empleado_jefe_id  = :new.id;
 
-    SELECT pa.region into R_Director
-    FROM ciudad ci, pais pa, estacion es
-    where es.ciudad_id = ci.id_ciudad AND pa.id_pais = es.ciudad_pais_id AND es.empleado_jefe_id = :new.id;
+select nombre,empleado_jefe_id into e_nombre, e_jefe
+from estacion
+where nombre = :new.nombre;
 
-    if R_Director <> O_region then
-        raise director_invalido;
-    end if;
+if e_jefe <> :new.empleado_jefe_id then
+raise_application_error( -20010,'La estacion ya tiene jefe asignado');
+end if;
 
-    EXCEPTION
-    when director_invalido THEN  
-    RAISE_APPLICATION_ERROR(-20009,'Director de Area incorrecto para el jefe de estacion');
-END;
+ EXCEPTION
+        WHEN NO_DATA_FOUND THEN
+            hola('Diego');
+ END;
 
 
 
