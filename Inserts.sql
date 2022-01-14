@@ -100,6 +100,7 @@ INSERT INTO empleado_jefe VALUES (30,'Fredia','Charke','Estacion',5);
 INSERT INTO empleado_jefe VALUES (31,'Renato','Torella','Estacion',6);
 INSERT INTO empleado_jefe VALUES (32,'Carolina','Gomez','Estacion',6);
 INSERT INTO empleado_jefe VALUES (33,'Valentina','Bautizta','Estacion',6);
+INSERT INTO empleado_jefe VALUES (34,'Cristiano','Ronald0','Estacion',6); -- Jefe de prueba
 
 -- Oficina Principal -- 
 

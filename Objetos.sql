@@ -142,7 +142,7 @@ CREATE TABLE estacion (
     id_estacion                   NUMBER NOT NULL,
     nombre                        VARCHAR2 (22) NOT NULL,
     presupuesto_anual             NUMBER NOT NULL,
-    empleado_jefe_id              NUMBER NOT NULL,
+    empleado_jefe_id              NUMBER NOT NULL UNIQUE,
     ciudad_id                     NUMBER NOT NULL,
     ciudad_pais_id                NUMBER NOT NULL,
     oficina_principal_id          NUMBER NOT NULL,
