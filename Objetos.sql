@@ -36,12 +36,8 @@ create or replace type ALIAS_ as object
     color_ojos VARCHAR2(15),
     direccion VARCHAR2(50),
     ult_fec_uso DATE
-    -- Falta atributo tabla anidada para los familiares
-
-    -- CREO QUE NO HACE FALTA LA TABLA ANIDADA PORQUE LOS FAMILIARES NO FORMAN PARTE DEL ALIAS SINO DEL 
-    -- AGENTE COMO TAL, LOS PUSE COMO DOS ATRIBUTOS MÁS Y CREÉ EL TIPO DE DATO "FAMILIAR"
-
-); 
+);
+create or replace type alias_nt as table of ALIAS_; 
 
  
 create or replace type IDIOM as varray(6) of VARCHAR2(10); 
