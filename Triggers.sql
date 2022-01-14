@@ -75,3 +75,25 @@ BEGIN
     END IF;
     
 END;
+
+--VALIDAR FUENTE HECHO CRUDO 
+create or replace TRIGGER VALIDA_FUENTE_SECRETA
+BEFORE INSERT ON hecho_crudo FOR EACH ROW
+DECLARE 
+
+BEGIN
+    IF ((:new.fuente=='s') and (:new.inf_id is null)) THEN
+        raise_application_error(-20900,'No se puede registrar un hecho crudo sin una fuente');
+    END IF;
+END;
+
+--DESPIDO DE AGENTE 
+create or replace TRIGGER DESPIDO_AGENTEv2
+BEFORE DELETE ON empleado_inteligencia FOR EACH ROW
+DECLARE 
+
+BEGIN
+    update historico_cargo set emp_int_id = 0 where emp_int_id = :OLD.id;
+    update informante set hist_cg_emp_int_id_A  = 0 where hist_cg_emp_int_id_A  = :OLD.id;
+    update informante set hist_cg_emp_int_id  = 0 where hist_cg_emp_int_id  = :OLD.id;
+END;
