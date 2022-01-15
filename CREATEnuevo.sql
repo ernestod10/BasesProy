@@ -115,7 +115,7 @@ CREATE TABLE empleado_inteligencia (
     nivel_seguridad      INT NOT NULL,
     licencia             LIC NOT NULL,
     caract               CARACT NOT NULL,
-    telefono             VARCHAR2 NOT NULL,
+    telefono             VARCHAR2 (14) NOT NULL, --puse 14 porque es el maximo que puede tener un telefono cod area (4) + localizador (3) + numero (7)
     alias                ALIAS_,
     calle                VARCHAR2(30) NOT NULL,
     idiomas              IDIOM NOT NULL,
