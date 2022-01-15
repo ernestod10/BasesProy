@@ -112,7 +112,7 @@ CREATE TABLE empleado_inteligencia (
     licencia             LIC NOT NULL,
     caract               CARACT NOT NULL,
     telefono             NUMBER NOT NULL,
-    alias_agente             alias_nt,
+    alias_agente         alias_nt,
     calle                VARCHAR2(30) NOT NULL,
     idiomas              IDIOM NOT NULL,
     nivel_educativo      VARCHAR2 (22) NOT NULL,
@@ -123,7 +123,7 @@ CREATE TABLE empleado_inteligencia (
     CONSTRAINT ck_caract_peso CHECK (caract.peso > 0),
     CONSTRAINT ck_caract_altura CHECK (caract.altura_cm > 0),
     CONSTRAINT ck_emp_nivel_seguridad CHECK (nivel_seguridad > 0 and nivel_seguridad < 4)
-);
+) nested table alias_agente store as alias_nt_1;
 
 
 CREATE TABLE empleado_jefe (
