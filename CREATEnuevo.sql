@@ -4,7 +4,7 @@ create or replace type LIC as object
     Pais VARCHAR2(15),
     Numero NUMBER
 ); 
-
+/
 create or replace type CARACT as object
 (   
     fotografia BFILE,
@@ -15,7 +15,7 @@ create or replace type CARACT as object
     color_ojos VARCHAR2(15),
     vision VARCHAR2(15)
 ); 
-
+/
 create or replace type FAMILIAR as object
 (   
     nombre VARCHAR2(25), 
@@ -23,9 +23,9 @@ create or replace type FAMILIAR as object
     parentesco VARCHAR2(15), 
     tel_contacto VARCHAR2(10)
 ); 
-
+/
 create or replace type IDIOM as varray(6) of VARCHAR2(10); 
-
+/
 create or replace type ALIAS_ as object
 (
     nombre VARCHAR2(25),
@@ -42,16 +42,16 @@ create or replace type ALIAS_ as object
     -- AGENTE COMO TAL, LOS PUSE COMO DOS ATRIBUTOS MÁS Y CREÉ EL TIPO DE DATO "FAMILIAR"
 
 ); 
-
+/
  
 create or replace type IDIOM as varray(6) of VARCHAR2(10); 
-
+/
 create or replace type INFORMAC as object
 (
     Pais VARCHAR2(15),
     Numero NUMBER
 ); 
-
+/
 create or replace type CONTACT as object
 (
     Nombre VARCHAR2(15),
@@ -60,7 +60,7 @@ create or replace type CONTACT as object
     telefono VARCHAR2(10),
     email VARCHAR2(15)
 ); 
-
+/
 
 ---------------------------------------------------------------------------                TABLAS                ------------------------------------------------------------------------------- 
 
