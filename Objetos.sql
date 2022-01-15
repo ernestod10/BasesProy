@@ -54,7 +54,7 @@ create or replace type CONTACT as object
     Nombre VARCHAR2(15),
     apellido VARCHAR2(15),
     apellido2 VARCHAR2(15),
-    telefono NUMBER(10),
+    telefono VARCHAR2(14),
     email VARCHAR2(15)
 ); 
 
