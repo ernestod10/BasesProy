@@ -140,3 +140,7 @@ INSERT INTO estacion VALUES (incremento_id_estacion.nextval,'Fisher',60000,30,38
 INSERT INTO estacion VALUES (incremento_id_estacion.nextval,'Crane',50000,31,40,114,6);
 INSERT INTO estacion VALUES (incremento_id_estacion.nextval,'Gecko',50000,32,41,114,6);
 INSERT INTO estacion VALUES (incremento_id_estacion.nextval,'Capuchin',50000,33,42,114,6);
+
+
+-- Empleado_inteligencia --
+

@@ -112,7 +112,7 @@ CREATE TABLE empleado_inteligencia (
     licencia             LIC NOT NULL,
     caract               CARACT NOT NULL,
     telefono             NUMBER NOT NULL,
-    alias                ALIAS_,
+    alias_agente             alias_nt,
     calle                VARCHAR2(30) NOT NULL,
     idiomas              IDIOM NOT NULL,
     nivel_educativo      VARCHAR2 (22) NOT NULL,
