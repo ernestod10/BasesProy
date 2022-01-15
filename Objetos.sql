@@ -123,7 +123,7 @@ CREATE TABLE empleado_inteligencia (
     CONSTRAINT ck_caract_peso CHECK (caract.peso > 0),
     CONSTRAINT ck_caract_altura CHECK (caract.altura_cm > 0),
     CONSTRAINT ck_emp_nivel_seguridad CHECK (nivel_seguridad > 0 and nivel_seguridad < 4)
-) nested table alias_agente store as alias_nt_1;
+) nested table alias_agente store as alias_nt_2;
 
 
 CREATE TABLE empleado_jefe (
