@@ -4,6 +4,7 @@ create or replace type LIC as object
     Pais VARCHAR2(15),
     Numero NUMBER
 ); 
+/
 
 create or replace type CARACT as object
 (   
@@ -15,7 +16,7 @@ create or replace type CARACT as object
     color_ojos VARCHAR2(15),
     vision VARCHAR2(15)
 ); 
-
+/
 create or replace type FAMILIAR as object
 (   
     nombre VARCHAR2(25), 
@@ -23,9 +24,9 @@ create or replace type FAMILIAR as object
     parentesco VARCHAR2(15), 
     tel_contacto NUMBER(10)
 ); 
-
+/
 create or replace type IDIOM as varray(6) of VARCHAR2(10); 
-
+/
 create or replace type ALIAS_ as object
 (
     nombre VARCHAR2(25),
@@ -38,16 +39,16 @@ create or replace type ALIAS_ as object
     ult_fec_uso DATE
 );
 create or replace type alias_nt as table of ALIAS_; 
-
+/
  
 create or replace type IDIOM as varray(6) of VARCHAR2(10); 
-
+/
 create or replace type INFORMAC as object
 (
     Pais VARCHAR2(15),
     Numero NUMBER
 ); 
-
+/
 create or replace type CONTACT as object
 (
     Nombre VARCHAR2(15),
@@ -57,7 +58,7 @@ create or replace type CONTACT as object
     email VARCHAR2(15)
 ); 
 
-
+/
 ---------------------------------------------------------------------------                TABLAS                ------------------------------------------------------------------------------- 
 
 
@@ -93,7 +94,7 @@ CREATE TABLE cliente (
     id                   NUMBER NOT NULL PRIMARY KEY,
     nombre               VARCHAR2 (22)NOT NULL,
     contacto_empresa     CONTACT NOT NULL,
-    exclusivo            BOOLEAN NOT NULL,
+    exclusivo            NUMBER NOT NULL,
     ciudad_id            NUMBER NOT NULL,
     ciudad_pais_id       NUMBER NOT NULL
 );
@@ -166,12 +167,12 @@ CREATE UNIQUE INDEX oficina_principal__idx ON
         empleado_jefe_id
     ASC );
 
-CREATE UNIQUE INDEX oficina_principal__idxv1 ON
-    oficina_principal (
-        ciudad_id_ciudad
-    ASC,
-        ciudad_pais_id_pais
-    ASC );
+--CREATE UNIQUE INDEX oficina_principal__idxv1 ON
+--  oficina_principal (
+--        ciudad_id_ciudad
+--    ASC,
+--        ciudad_pais_id_pais
+--    ASC );
 
 
 CREATE TABLE historico_cargo (
