@@ -12,6 +12,12 @@ CREATE SEQUENCE incremento_id_estacion
 INCREMENT BY 1
 START WITH 300;
 
+-- Incremento hecho crudo
+CREATE SEQUENCE incr_hc INCREMENT BY 1 START WITH 1;
+
+-- Incremento Pieza inteligencia
+CREATE SEQUENCE incr_pi INCREMENT BY 1 START WITH 1;
+
 
 -- Pais --
 INSERT INTO pais VALUES (incremento_id_pais.nextval,'Suiza','Eu'); -- Sede Central
@@ -158,19 +164,19 @@ FAMILIAR('Cristy Jurado','24-NOV-1971','Mama',0425841436)
 
 
 -- Historico_cargo --
-INSERT into historico_cargo values ('2-DIC-2031',null,'Agente',1,300,1);
+INSERT into historico_cargo values ('02-DEC-2031',null,'Agente',1,300,1);
 
 
 
 
 -- Informantes --
-INSERT (id_informante,nombre_clave,hist_cg_fec_ini,hist_cg_emp_int_id,hist_cg_est_id,hist_cg_ofic_id) INTO historico_cargo (1,'Nepistedes','2-DIC-2031',1,300,1); 
-INSERT (id_informante,nombre_clave,hist_cg_fec_ini,hist_cg_emp_int_id,hist_cg_est_id,hist_cg_ofic_id) INTO historico_cargo (2,'Proteo','2-DIC-2031',1,300,1);
-INSERT (id_informante,nombre_clave,hist_cg_fec_ini,hist_cg_emp_int_id,hist_cg_est_id,hist_cg_ofic_id) INTO historico_cargo (3,'Altair','2-DIC-2031',1,300,1);  
+INSERT INTO informante VALUES(1,'Nepistedes',2,null,null,null,null,'02-DEC-2031',1,300,1);
+INSERT INTO informante VALUES(2,'Proteo',3,null,null,null,null,'02-DEC-2031',1,300,1);
+INSERT INTO informante VALUES (3,'Altair',2,null,null,null,null,'02-DEC-2031',1,300,1);  
 
 -- Historico de Pago --
 
-INSERT INTO historico_pago values (1,'24-DIC-2031',200,id del hecho crudo,2);
+INSERT INTO historico_pago values (1,'24-DIC-2031',200,1,2);
 
 
 -- Hecho crudo -- 
