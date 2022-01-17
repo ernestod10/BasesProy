@@ -178,7 +178,7 @@ CREATE UNIQUE INDEX oficina_principal__idx ON
 CREATE TABLE historico_cargo (
     fec_inicio                           DATE NOT NULL,
     fec_fin                              DATE,
-    cargo                                Varchar(1) NOT NULL, 
+    cargo                                Varchar(15) NOT NULL, 
     emp_int_id                           NUMBER NOT NULL,
     estacion_id                          NUMBER NOT NULL, 
     est_ofic_prin_id                     NUMBER NOT NULL,

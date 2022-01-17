@@ -144,3 +144,23 @@ INSERT INTO estacion VALUES (incremento_id_estacion.nextval,'Capuchin',50000,33,
 
 -- Empleado_inteligencia --
 
+insert into empleado_inteligencia VALUES (1,27948046,'09-JAN-2001','Diego','Miguel','Bastardo','Jurado',2,
+LIC('Venezuela','5555'),
+CARACT(bfilename('MEDIA_DIR','empleado_ing.jpg'),bfilename('MEDIA_DIR','huella_dactilar.jpg'),bfilename('MEDIA_DIR','huella_retina.jpg'),179,71,'Verdes','Buena'),
+04248569544,
+alias_nt(ALIAS_('Juan Luis Gomez',bfilename('MEDIA_DIR','alias1.jpg'),'21-OCT-1999','Rusia','2154879','Marron','AV Centuri prim 1234','30-SEP-2020')),
+'AV ALitisis',
+IDIOM('Español','Ingles','Arabe','Frances','Italiano','Ruso'),
+'Universitario',11,101,
+FAMILIAR('Miguel BAstardo','03-MAY-1970','Papa',0425841436),
+FAMILIAR('Cristy Jurado','24-NOV-1971','Mama',0425841436)
+);
+
+
+
+-- Historico_cargo --
+INSERT into historico_cargo values ('2-DIC-2031',null,'Agente',1,300,1);
+
+
+
+
