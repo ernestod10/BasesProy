@@ -19,18 +19,19 @@ SELECT TO_NUMBER(SUBSTR(GRANTED_ROLE, -1)) into nivel from USER_ROLE_PRIVS where
 end;
 /
 --Trigger venta revisa si el analista tiene el clearance 
-create or replace trigger venta_trigger
+Create or replace trigger venta_trigger
 before insert on hist_venta
-REFERENCING OLD AS OLD NEW AS NEW
+
 for each row
+DECLARE ns number;
+
 begin 
-    if :NEW.NIVEL_SEGURIDAD < Nivel_acceso() then
+    Select NIVEL_SEGURIDAD into ns from pieza_inteligencia where id = :new.PIEZA_INTELIGENCIA_ID ;
+    if ns < Nivel_acceso() then
         raise_application_error(-20001,'El analista no tiene el clearance necesario para realizar la venta');
     end if;
 end;
 /
--- No entiendo xq el trigger no funciona :C
-
 
 -- vista q muestra todas las piezas de inteligencia a las que el analista tiene acceso
 create view VER_PIEZAS 
