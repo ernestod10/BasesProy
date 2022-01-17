@@ -181,13 +181,13 @@ INSERT INTO historico_pago values (1,'02-DEC-2031',200,6,2);
 
 -- Hecho crudo -- 
 
-INSERT INTO hecho_crudo VALUES (incr_hc.nextval,'Este es un ejemplo de Hecho Crudo',
+INSERT INTO hecho_crudo VALUES (5,'Este es un ejemplo de Hecho Crudo',
 'abierta', 'individuos',
 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry"s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.',
 91, TO_DATE('2031/12/24 14:31:05', 'yyyy/mm/dd hh24:mi:ss'), 90, TO_DATE('2032/01/09 11:20:04', 'yyyy/mm/dd hh24:mi:ss'),
 2, null, null, '02-DEC-2031', 1, 300,1);
 
-INSERT INTO hecho_crudo VALUES (incr_hc.nextval,'Por que los estudiantes aprenden solos',
+INSERT INTO hecho_crudo VALUES (6,'Por que los estudiantes aprenden solos',
 'abierta', 'individuos',
 'Eso significa que el paradigma constructivista actual que lidera el mundo educativo sitúa al alumno como protagonista absoluto y casi solitario del proceso de enseñanza/aprendizaje. Posiblemente se trate de una reacción exagerada a la postura anterior en la que únicamente contaba la enseñanza del maestro y el estudiante quedaba relegado a un pasivo segundo plano. Como casi siempre, la verdad está en el medio. “Es cierto que los alumnos pueden aprender algunas destrezas a través del descubrimiento personal.',
 91, TO_DATE('2031/12/24 14:31:05', 'yyyy/mm/dd hh24:mi:ss'), 90, TO_DATE('2032/01/09 11:20:04', 'yyyy/mm/dd hh24:mi:ss'),
