@@ -206,7 +206,7 @@ CREATE TABLE historico_pago (
     id_pago_infor                          NUMBER NOT NULL,
     fecha                                  DATE NOT NULL,
     pago                                   NUMBER NOT NULL,
-    hecho_crudo_id              NUMBER,
+    hecho_crudo_id                         NUMBER,
     informante_id                          NUMBER NOT NULL,
     CONSTRAINT historico_pago_pk PRIMARY KEY ( id_pago_infor,informante_id),
     CONSTRAINT ck_pago CHECK (pago >= 0)
