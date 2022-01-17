@@ -164,3 +164,7 @@ INSERT into historico_cargo values ('2-DIC-2031',null,'Agente',1,300,1);
 
 
 
+-- Informantes --
+INSERT (id_informante,nombre_clave,hist_cg_fec_ini,hist_cg_emp_int_id,hist_cg_est_id,hist_cg_ofic_id) INTO historico_cargo (); 
+
+-- Historico de Pago --
