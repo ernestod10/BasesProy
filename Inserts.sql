@@ -100,7 +100,6 @@ INSERT INTO empleado_jefe VALUES (30,'Fredia','Charke','Estacion',5);
 INSERT INTO empleado_jefe VALUES (31,'Renato','Torella','Estacion',6);
 INSERT INTO empleado_jefe VALUES (32,'Carolina','Gomez','Estacion',6);
 INSERT INTO empleado_jefe VALUES (33,'Valentina','Bautizta','Estacion',6);
-INSERT INTO empleado_jefe VALUES (34,'Cristiano','Ronald0','Estacion',6); -- Jefe de prueba
 
 -- Oficina Principal -- 
 
@@ -165,6 +164,12 @@ INSERT into historico_cargo values ('2-DIC-2031',null,'Agente',1,300,1);
 
 
 -- Informantes --
-INSERT (id_informante,nombre_clave,hist_cg_fec_ini,hist_cg_emp_int_id,hist_cg_est_id,hist_cg_ofic_id) INTO historico_cargo (); 
+INSERT (id_informante,nombre_clave,hist_cg_fec_ini,hist_cg_emp_int_id,hist_cg_est_id,hist_cg_ofic_id) INTO historico_cargo (1,'Nepistedes','2-DIC-2031',1,300,1); 
+INSERT (id_informante,nombre_clave,hist_cg_fec_ini,hist_cg_emp_int_id,hist_cg_est_id,hist_cg_ofic_id) INTO historico_cargo (2,'Proteo','2-DIC-2031',1,300,1);
+INSERT (id_informante,nombre_clave,hist_cg_fec_ini,hist_cg_emp_int_id,hist_cg_est_id,hist_cg_ofic_id) INTO historico_cargo (3,'Altair','2-DIC-2031',1,300,1);  
 
 -- Historico de Pago --
+
+
+-- Hecho crudo -- 
+
