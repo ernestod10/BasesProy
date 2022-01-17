@@ -4,7 +4,7 @@ create or replace type LIC as object
     Pais VARCHAR2(15),
     Numero NUMBER
 ); 
-
+/
 create or replace type CARACT as object
 (   
     fotografia BFILE,
@@ -15,17 +15,17 @@ create or replace type CARACT as object
     color_ojos VARCHAR2(15),
     vision VARCHAR2(15)
 ); 
-
+/
 create or replace type FAMILIAR as object
 (   
     nombre VARCHAR2(25), 
     fec_nac DATE, 
     parentesco VARCHAR2(15), 
-    tel_contacto NUMBER(10)
+    tel_contacto VARCHAR2(10)
 ); 
-
+/
 create or replace type IDIOM as varray(6) of VARCHAR2(10); 
-
+/
 create or replace type ALIAS_ as object
 (
     nombre VARCHAR2(25),
@@ -42,25 +42,25 @@ create or replace type ALIAS_ as object
     -- AGENTE COMO TAL, LOS PUSE COMO DOS ATRIBUTOS MÁS Y CREÉ EL TIPO DE DATO "FAMILIAR"
 
 ); 
-
+/
  
 create or replace type IDIOM as varray(6) of VARCHAR2(10); 
-
+/
 create or replace type INFORMAC as object
 (
     Pais VARCHAR2(15),
     Numero NUMBER
 ); 
-
+/
 create or replace type CONTACT as object
 (
     Nombre VARCHAR2(15),
     apellido VARCHAR2(15),
     apellido2 VARCHAR2(15),
-    telefono NUMBER(10),
+    telefono VARCHAR2(10),
     email VARCHAR2(15)
 ); 
-
+/
 
 ---------------------------------------------------------------------------                TABLAS                ------------------------------------------------------------------------------- 
 
@@ -80,14 +80,14 @@ CREATE TABLE area_interes (
 
 
 CREATE TABLE ciudad (
-    id_ciudad     NUMBER GENERATED ALWAYS as IDENTITY(START with 10 INCREMENT by 1),
+    id_ciudad     NUMBER NOT NULL,
     nombre        VARCHAR2 (22) NOT NULL,
     pais_id       NUMBER NOT NULL,
     CONSTRAINT ciudad_pk PRIMARY KEY ( id_ciudad,pais_id )
 );
 
 CREATE TABLE pais (
-    id_pais  NUMBER GENERATED ALWAYS as IDENTITY(START with 100 INCREMENT by 1) PRIMARY KEY,
+    id_pais  NUMBER NOT NULL PRIMARY KEY,
     nombre   VARCHAR2 (22)NOT NULL,
     region   VARCHAR2(10) NOT NULL,
     CONSTRAINT ck_region CHECK( region IN ('Eu','As','AmN', 'AmC', 'AmS', 'Af', 'Oc'))
@@ -97,9 +97,10 @@ CREATE TABLE cliente (
     id                   NUMBER NOT NULL PRIMARY KEY,
     nombre               VARCHAR2 (22)NOT NULL,
     contacto_empresa     CONTACT NOT NULL,
-    exclusivo            BOOLEAN NOT NULL,
+    exclusivo            CHAR(1) NOT NULL,
     ciudad_id            NUMBER NOT NULL,
-    ciudad_pais_id       NUMBER NOT NULL
+    ciudad_pais_id       NUMBER NOT NULL,
+    CONSTRAINT ck_exclusivo CHECK( exclusivo IN ('Y','N'))
 );
 
 
@@ -114,7 +115,7 @@ CREATE TABLE empleado_inteligencia (
     nivel_seguridad      INT NOT NULL,
     licencia             LIC NOT NULL,
     caract               CARACT NOT NULL,
-    telefono             NUMBER NOT NULL,
+    telefono             VARCHAR2 (14) NOT NULL, --puse 14 porque es el maximo que puede tener un telefono cod area (4) + localizador (3) + numero (7)
     alias                ALIAS_,
     calle                VARCHAR2(30) NOT NULL,
     idiomas              IDIOM NOT NULL,
@@ -275,10 +276,10 @@ CREATE TABLE p_t (
 
 CREATE TABLE hecho_crudo (
     id_hecho_cdo                                      NUMBER NOT NULL PRIMARY KEY,
-    resumen                                           VARCHAR2 (22) NOT NULL,
-    fuente                                            VARCHAR(1) NOT NULL,
+    resumen                                           VARCHAR2 (50) NOT NULL,
+    fuente                                            VARCHAR2(8) NOT NULL,
     tipo_contenido                                    VARCHAR2 (12) NOT NULL,
-    contenido                                         VARCHAR2 (80) NOT NULL,
+    contenido                                         VARCHAR2 (1000) NOT NULL,
     nivel_confi_ini                                   NUMBER NOT NULL,
     fec_obten                                         DATE NOT NULL,
     nivel_confi_fin                                   NUMBER,
@@ -292,7 +293,9 @@ CREATE TABLE hecho_crudo (
     hist_carg_ofic_id                                 NUMBER NOT NULL,
     CONSTRAINT ck_fec_ini_fin CHECK (fec_fin_cierre >= fec_obten),
     CONSTRAINT ck_nivel_confi_ini CHECK (nivel_confi_ini >= 0 and nivel_confi_ini <= 100),
-    CONSTRAINT ck_nivel_confi_fin CHECK (nivel_confi_fin >= 0 and nivel_confi_fin <= 100)
+    CONSTRAINT ck_nivel_confi_fin CHECK (nivel_confi_fin >= 0 and nivel_confi_fin <= 100),
+    CONSTRAINT ck_fuente CHECK( fuente IN ('abierta','secreta','técnica')),
+    CONSTRAINT ck_tipo_contenido CHECK (tipo_contenido IN ('países', 'individuos', 'eventos', 'empresas'))
 );
 
 CREATE UNIQUE INDEX hecho_crudo__idx ON
@@ -476,28 +479,4 @@ ALTER TABLE verificacion_hecho
         REFERENCES historico_cargo (fec_inicio,emp_int_id,estacion_id,est_ofic_prin_id);
 
 
-
-
------------------------------------------------------------------------                Vistas                 ------------------------------------------------------------------------------- 
-
--- Vista de Oficina_principal con jefe y localizacion
-
-create or replace view detalle_oficina(Oficina,Nombre,Ciudad,Pais,Director)
-As SELECT ofi.id_oficina,ofi.nombre,ci.nombre,pa.nombre,e.nombre ||' '|| e.apellido 
-from oficina_principal ofi, ciudad ci, pais pa, empleado_jefe e
-where ofi.ciudad_id=ci.id_ciudad and ofi.ciudad_pais_id = pa.id_pais and ofi.empleado_jefe_id = e.id;
-
--- Vista de las regiones de las ciudades
-create or replace view detalle_ubicaciones(id_pais,id_ciudad, Ciudad, Pais, Region)
-AS SELECT pa.id_pais,ci.id_ciudad,ci.nombre,pa.nombre,pa.region 
-FROM pais pa, ciudad ci
-WHERE pa.id_pais = ci.pais_id;
-
--- Vista de detalle_estacion
-create or replace view detalle_estacion(Estacion, Nombre,Ciudad,Pais,Region, Jefe,Oficina)
-AS SELECT es.id_estacion,es.nombre,ci.nombre,pa.nombre,pa.region, em.nombre || ' ' || em.apellido, es.oficina_principal_id
-FROM estacion es, ciudad ci, pais pa, empleado_jefe em
-where es.ciudad_id = ci.id_ciudad AND es.empleado_jefe_id = em.id AND pa.id_pais = es.ciudad_pais_id;
-
-
-
+--

@@ -4,8 +4,7 @@ is id NUMBER;
 (
   )
 BEGIN
-    INSERT INTO pieza_inteligencia (hist_cg_fec_ini,hist_cg_emp_int_id,hist_cg_est_id,hist_cg_ofic_id,pieza_int_id,tema_id,p_t_id,p_h_id,hecho_cdo_id,v_hecho_cdo_id)
-    VALUES (_hist_cg_fec_ini,_hist_cg_emp_int_id,_hist_cg_est_id,_hist_cg_ofic_id,_pieza_int_id,_tema_id,_p_t_id,_p_h_id,_hecho_cdo_id,_v_hecho_cdo_id);
+    INSERT INTO pieza_inteligencia (HCFI,EMP_ID,EST_ID,OFIC_ID,pieza_int_id,tema_   VALUES (_hist_cg_fec_ini,_hist_cg_emp_int_id,_hist_cg_est_id,_hist_cg_ofic_id,_pieza_int_id,_tema_id,_p_t_id,_p_h_id,_hecho_cdo_id,_v_hecho_cdo_id);
 END;
 
 
@@ -22,3 +21,12 @@ end;
 Create or Replace procedure PIERZA_CREACION (
 
 )
+
+create or replace function Nivel_acceso
+return NUMBER
+is nivel number;   
+begin
+SELECT TO_NUMBER(SUBSTR(GRANTED_ROLE, -1)) into nivel from USER_ROLE_PRIVS where USERNAME=user and GRANTED_ROLE like  'ACCESO%';
+    return nivel;
+end;
+/

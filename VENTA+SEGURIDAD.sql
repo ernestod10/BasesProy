@@ -39,3 +39,10 @@ AS SELECT id, NIVEL_SEGURIDAD,NIVEL_CONFIABILIDAD,PRECIO_APROXIMADO,FECHA_CONSTR
 FROM pieza_inteligencia 
 WHERE pieza_inteligencia.nivel_seguridad >= Nivel_acceso();
 
+Create or replace trigger venta_ex_trigger
+after insert on hist_venta
+for each row
+begin
+  
+end;
+/
