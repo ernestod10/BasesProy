@@ -103,30 +103,39 @@ BEFORE DELETE ON empleado_inteligencia
 REFERENCING NEW AS NEW OLD AS OLD
 
 FOR EACH ROW
-
+DECLARE
+   v_username varchar2(10);
+   
 BEGIN
     -- Insertar los datos del agente que se despidio 
-  
-    INSERT INTO agente_despedido select  cag.emp_int_id,:OLD.nombre_pila ||' '|| :OLD.apellido1, :OLD.doc_identidad, :OLD.telefono, sysdate
-    from historico_cargo cag where  :OLD.id_emp_int = cag.emp_int_id;
-   
-    -- Insertar los datos de los informantes del agente despedido
-
-    INSERT INTO informante_agente_despedido select inf.id_informante, inf.nombre_clave,cag.emp_int_id 
-    from informante inf, historico_cargo cag where :OLD.id_emp_int = cag.emp_int_id and :OLD.id_emp_int = inf.hist_cg_emp_int_id;                    
+    select user into v_username from dual;
     
-    -- Insertar los datos de los pagos a informantes del agente despedido
-   
-    INSERT INTO pago_informante_despedido select pg.id_pago_infor, pg.fecha,pg.pago, hc.resumen, inf.id_informante
-    from informante inf, historico_cargo cag,historico_pago pg, hecho_crudo hc 
-    where :OLD.id_emp_int = cag.emp_int_id and :OLD.id_emp_int = inf.hist_cg_emp_int_id and inf.id_informante = pg.informante_id and hc.id_hecho_cdo = pg.hecho_crudo_id; 
-   
+    INSERT INTO agente_despedido(id_antiguo,nombre,doc_identidad,telefono,fecha_despido) 
+    VALUES (:OLD.id_emp_int,:OLD.nombre_pila ||' '|| :OLD.apellido1, :OLD.doc_identidad, :OLD.telefono, sysdate);
+END;
 
-    -- Insertar Los hechos crudos Proporcionados por los informantes del agente despedido
-    INSERT INTO hechos_informante_despedido select hc.id_hecho_cdo, hc.resumen,hc.tipo_contenido,hc.contenido,hc.nivel_confi_ini,hc.fec_obten, pg.id_pago_infor 
-    from informante inf, historico_cargo cag,historico_pago pg, hecho_crudo hc 
-    where :OLD.id_emp_int = cag.emp_int_id and :OLD.id_emp_int = inf.hist_cg_emp_int_id and inf.id_informante = pg.informante_id and hc.id_hecho_cdo = pg.hecho_crudo_id; 
+CREATE OR REPLACE TRIGGER DESPIDO_AGENTE_INFORMANTE
+BEFORE DELETE ON informante
+REFERENCING NEW AS NEW OLD AS OLD
+
+FOR EACH ROW
+DECLARE
+   v_username varchar2(10);
+   agente number;
+BEGIN
+    -- Insertar los datos de informantes del agente despedido 
+    select user into v_username from dual;
     
+    select id_antiguo into agente from agente_despedido where id_antiguo = :OLD.hist_cg_emp_int_id;
+    
+    if agente = :OLD.hist_cg_emp_int_id then
+    INSERT INTO informante_agente_despedido(id_inf_antiguo,nombre_clave,agente)
+    VALUES (:OLD.id_informante,:OLD.nombre_clave , :OLD.hist_cg_emp_int_id);
+    end if;
+    
+     EXCEPTION
+        WHEN NO_DATA_FOUND THEN
+            hola('Diego');
 END;
 
 
@@ -199,3 +208,6 @@ from informante inf, historico_cargo cag,historico_pago pg, hecho_crudo hc,emple
 -- Vista de detalles sobre agentes despedidos
 
 -----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+

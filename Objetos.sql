@@ -448,7 +448,7 @@ ALTER TABLE p_t
 
 ALTER TABLE hecho_crudo
     ADD CONSTRAINT hecho_crudo_historico_cargo_fk FOREIGN KEY ( hist_cg_fec_ini, hist_cg_emp_int_id,hist_carg_est_id,hist_carg_ofic_id )
-        REFERENCES historico_cargo ( fec_inicio,emp_int_id,estacion_id,est_ofic_prin_id);
+        REFERENCES historico_cargo ( fec_inicio,emp_int_id,estacion_id,est_ofic_prin_id) ON DELETE cascade;
 
     -- Creo que falta un constraint para el historico de pago que puede ser null y tiene que ser unico.
     
