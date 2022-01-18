@@ -95,7 +95,7 @@ CREATE TABLE pais (
 
 CREATE TABLE cliente (
     id                   NUMBER NOT NULL PRIMARY KEY,
-    nombre               VARCHAR2 (22)NOT NULL,
+    nombre               VARCHAR2 (50)NOT NULL,
     contacto_empresa     CONTACT NOT NULL,
     exclusivo            CHAR(1) NOT NULL,
     ciudad_id            NUMBER NOT NULL,
@@ -252,7 +252,7 @@ CREATE TABLE hist_venta (
 CREATE TABLE tema (
     id           NUMBER NOT NULL PRIMARY KEY,
     nombre       VARCHAR2 (22) NOT NULL,
-    descripcion  VARCHAR2 (22) NOT NULL,
+    descripcion  VARCHAR2 (500) NOT NULL,
     topico       VARCHAR2 (22) NOT NULL
 );
 
