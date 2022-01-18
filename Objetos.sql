@@ -501,3 +501,20 @@ where es.ciudad_id = ci.id_ciudad AND es.empleado_jefe_id = em.id AND pa.id_pais
 
 
 
+create table agente_despedido(
+    id_antiguo          number not null primary key,
+    nombre              varchar2(25) not null,
+    doc_identidad       number not null,
+    telefono            number not null
+);
+
+create table informante_agente_despedido(
+    id_inf_antiguo      number not null primary key,
+    nombre_clave        varchar2(25) not null,
+    agente              number not null
+  
+);
+
+
+
+ALTER TABLE informante_agente_despedido ADD CONSTRAINT inf_agente_desp_fk FOREIGN KEY  (agente) REFERENCES agente_despido (id_antiguo);

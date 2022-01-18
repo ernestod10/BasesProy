@@ -1,9 +1,3 @@
-
-
-
-
-
-
 CREATE or replace procedure agregar_hecho (
     id_hecho in Number,
     id_pieza in Number
@@ -11,15 +5,6 @@ CREATE or replace procedure agregar_hecho (
 begin
   insert into P_H (HECHO_CDO_ID,PIEZA_INT_ID)
   values (id_hecho,id_pieza);
-end;
-
-
-
-
-Create or Replace procedure PIERZA_CREACION (id_h in number)
-is 
-begin
-  agregar_hecho(id_h,CREA_PIEZA());
 end;
 
 -- funciones  para obtener los datos para crear una pieza 
