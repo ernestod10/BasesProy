@@ -97,24 +97,102 @@ BEGIN
     END IF;
 END;
 
---DESPIDO DE AGENTE 
-CREATE OR REPLACE TRIGGER DESPIDO_AGENTEv2
+--DESPIDO DE AGENTE -- ## EN DESARROLLO ------------------------------------------------------------------------------------------------------------------------------------------------
+CREATE OR REPLACE TRIGGER DESPIDO_AGENTE
 BEFORE DELETE ON empleado_inteligencia FOR EACH ROW
 DECLARE 
     informante NUMBER;
 BEGIN
-    select inf.id_informante into informante from informante inf, historico_cargo cg where :OLD.id_emp_int = cg.emp_int_id AND cg.emp_int_id = inf.hist_cg_emp_int_id;
- 
+    -- Insertar los datos del agente que se despidio 
+  
+    INSERT INTO agente_despedido select  cag.emp_int_id,:OLD.nombre_pila ||' '|| :OLD.apellido1, :OLD.doc_identidad, :OLD.telefono, cag.fec_fin
+    from empleado_inteligencia emp,historico_cargo cag where  :OLD.id_emp_int = cag.emp_int_id;
+    
+    -- Insertar los datos de los informantes del agente despedido
 
-    update historico_cargo set emp_int_id = 0 where emp_int_id = :OLD.id;
-    update informante set hist_cg_emp_int_id_A  = 0 where hist_cg_emp_int_id_A  = :OLD.id;
-    update informante set hist_cg_emp_int_id  = 0 where hist_cg_emp_int_id  = :OLD.id;
+    INSERT INTO informante_agente_despedido select inf.id_informante, inf.nombre_clave,cag.emp_int_id 
+    from informante inf, historico_cargo cag where :OLD.id_emp_int = cag.emp_int_id and :OLD.id_emp_int = inf.hist_cg_emp_int_id;                    
+   
+    -- Insertar los datos de los pagos a informantes del agente despedido
+   
+    INSERT INTO pago_informante_despedido select pg.id_pago_infor, pg.fecha,pg.pago, hc.resumen, inf.id_informante
+    from informante inf, historico_cargo cag,historico_pago pg, hecho_crudo hc 
+    where :OLD.id_emp_int = cag.emp_int_id and :OLD.id_emp_int = inf.hist_cg_emp_int_id and inf.id_informante = pg.informante_id and hc.id_hecho_cdo = pg.hecho_crudo_id; 
+
+    -- Insertar Los hechos crudos Proporcionados por los informantes del agente despedido
+    -- EN DESARROLLO
 
     DESPEDIR_AGENTE(informante);
 END;
 
+
+
+-- Procedimiento de eliminacion de datos
 create or replace procedure DESPEDIR_AGENTE (id_informante IN NUMBER) 
 IS
 BEGIN
     DELETE from historico_pago where id_informante = informante_id ; 
 END; 
+
+
+
+-- quiero todos sus informantes
+-- guardaria el id del informante I_informante ... deberia guardar todos lso informantes relacionado
+-- guardaria el id del empleado I_empleado
+select  inf.id_informante, inf.nombre_clave,inf.hist_cg_fec_ini,inf.hist_cg_emp_int_id "Agente ID",emp.nombre_pila ||' '|| emp.apellido1 "Agente"
+from informante inf,empleado_inteligencia emp  ,historico_cargo cag where cag.emp_int_id = inf.hist_cg_emp_int_id and emp.id_emp_int = cag.emp_int_id and 1 = emp.id_emp_int;
+
+-- quiero los historicos de pago 
+select pg.id_pago_infor, pg.fecha, pg.pago, hc.resumen from historico_pago pg, hecho_crudo hc where pg.informante_id = hc.inf_id;
+
+-- quiere los hechos crudos
+
+
+
+-- Tablas paralelas Restringidas -- 
+create table agente_despedido(
+    id_antiguo          number primary key,
+    nombre              varchar2(25) not null,
+    doc_identidad       number not null,
+    telefono            number not null,
+    fecha_despido       date   not null
+);
+
+create table informante_agente_despedido(
+    id_inf_antiguo      number not null primary key,
+    nombre_clave        varchar2(25) not null,
+    agente              number not null
+  
+);
+
+select * from informante_agente_despedido;
+ALTER TABLE informante_agente_despedido ADD CONSTRAINT inf_despedido_fk FOREIGN KEY (agente) REFERENCES agente_despedido (id_antiguo);
+
+
+create table pago_informante_despedido(
+    id_pago number primary key,
+    fecha   date not null,
+    pago    number not null,
+    resumen_hc  varchar2(1000) not null,
+    informante number not null
+    
+);
+
+alter table  pago_informante_despedido add constraint fk_pg_despido_inf FOREIGN KEY (informante) references informante_agente_despedido (id_inf_antiguo);
+
+-- insert de prueba
+INSERT INTO agente_despedido select  cag.emp_int_id,emp.nombre_pila ||' '|| emp.apellido1, emp.doc_identidad, emp.telefono, cag.fec_fin
+    from empleado_inteligencia emp,historico_cargo cag where  emp.id_emp_int =1;
+    
+
+insert into informante_agente_despedido select inf.id_informante, inf.nombre_clave,cag.emp_int_id 
+ from informante inf, historico_cargo cag,empleado_inteligencia emp where emp.id_emp_int = cag.emp_int_id and emp.id_emp_int = inf.hist_cg_emp_int_id and emp.id_emp_int = 1;     
+
+select pg.id_pago_infor, pg.fecha,pg.pago, hc.resumen, inf.id_informante
+    from informante inf, historico_cargo cag,historico_pago pg, hecho_crudo hc,empleado_inteligencia emp where emp.id_emp_int=1 and emp.id_emp_int = cag.emp_int_id and emp.id_emp_int = inf.hist_cg_emp_int_id and inf.id_informante = pg.informante_id and hc.id_hecho_cdo = pg.hecho_crudo_id; 
+
+
+
+-- Vista de detalles sobre agentes despedidos
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------

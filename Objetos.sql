@@ -197,7 +197,7 @@ CREATE TABLE informante (
     hist_cg_fec_ini                                    DATE NOT NULL, 
     hist_cg_emp_int_id                                 NUMBER NOT NULL, 
     hist_cg_est_id                                     NUMBER NOT NULL, 
-    hist_cg_ofic_id                                    NUMBER NOT NULL,
+    hist_cg_ofic_id                                    NUMBER NOT NULL,d
     CONSTRAINT arc_1 CHECK ( ( ( hist_cg_fec_ini_A IS NOT NULL )AND ( hist_cg_emp_int_id IS NOT NULL )AND ( hist_cg_est_id_A IS NOT NULL )AND ( hist_cg_ofic_id_A IS NOT NULL )AND ( empleado_jefe_id_A IS NULL ) )
                                  OR ( ( empleado_jefe_id_A IS NOT NULL )AND ( hist_cg_fec_ini_A IS NULL )AND ( hist_cg_emp_int_id_A IS NULL )AND ( hist_cg_est_id_A IS NULL )AND ( hist_cg_ofic_id_A IS NULL ) ) )
 );

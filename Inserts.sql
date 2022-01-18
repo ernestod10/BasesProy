@@ -163,6 +163,8 @@ FAMILIAR('Cristy Jurado','24-NOV-1971','Mama',0425841436)
 
 
 
+
+
 -- Historico_cargo --
 INSERT into historico_cargo values ('02-DEC-2031',null,'Agente',1,300,1);
 
@@ -172,7 +174,8 @@ INSERT into historico_cargo values ('02-DEC-2031',null,'Agente',1,300,1);
 -- Informantes --
 INSERT INTO informante VALUES(1,'Nepistedes',2,null,null,null,null,'02-DEC-2031',1,300,1);
 INSERT INTO informante VALUES(2,'Proteo',3,null,null,null,null,'02-DEC-2031',1,300,1);
-INSERT INTO informante VALUES (3,'Altair',2,null,null,null,null,'02-DEC-2031',1,300,1);  
+INSERT INTO informante VALUES (3,'Altair',2,null,null,null,null,'02-DEC-2031',1,300,1);
+INSERT INTO informante VALUES (4,'Chuo',3,null,null,null,null,'02-DEC-2031',1,300,1); -- informante de segundo empleado de inteligencia 
 
 -- Historico de Pago --
 
