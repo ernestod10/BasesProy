@@ -385,7 +385,7 @@ ALTER TABLE hist_venta
 
 ALTER TABLE historico_cargo
     ADD CONSTRAINT hist_cargo_emp_int_fk FOREIGN KEY ( emp_int_id )
-        REFERENCES empleado_inteligencia ( id_emp_int );
+        REFERENCES empleado_inteligencia ( id_emp_int ) ON DELETE CASCADE;
 
 ALTER TABLE historico_cargo
     ADD CONSTRAINT historico_cargo_estacion_fk FOREIGN KEY ( estacion_id,est_ofic_prin_id )
@@ -393,10 +393,11 @@ ALTER TABLE historico_cargo
 
 -- Relacion de Historico de Pago
 
-ALTER TABLE historico_pago
+ ALTER TABLE historico_pago
     ADD CONSTRAINT historico_pago_informante_fk FOREIGN KEY ( informante_id )
-        REFERENCES informante ( id_informante );
+        REFERENCES informante ( id_informante ) ON DELETE CASCADE;
 
+       
 
 -- Relacion de Informante
 
@@ -410,8 +411,7 @@ ALTER TABLE informante
 
 ALTER TABLE informante
     ADD CONSTRAINT Agente_fkv1 FOREIGN KEY ( hist_cg_fec_ini,hist_cg_emp_int_id,hist_cg_est_id,hist_cg_ofic_id )
-        REFERENCES historico_cargo ( fec_inicio,emp_int_id,estacion_id,est_ofic_prin_id);
-
+        REFERENCES historico_cargo ( fec_inicio,emp_int_id,estacion_id,est_ofic_prin_id) ON DELETE CASCADE;
 
 -- Relaciones de Oficina Principal
 
@@ -450,7 +450,8 @@ ALTER TABLE hecho_crudo
     ADD CONSTRAINT hecho_crudo_historico_cargo_fk FOREIGN KEY ( hist_cg_fec_ini, hist_cg_emp_int_id,hist_carg_est_id,hist_carg_ofic_id )
         REFERENCES historico_cargo ( fec_inicio,emp_int_id,estacion_id,est_ofic_prin_id);
 
-
+    -- Creo que falta un constraint para el historico de pago que puede ser null y tiene que ser unico.
+    
 -- Relacion de P_H
 
 ALTER TABLE p_h
