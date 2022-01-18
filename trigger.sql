@@ -56,3 +56,29 @@ BEGIN
     update informante set hist_cg_emp_int_id_A  = 0 where hist_cg_emp_int_id_A  = :OLD.id;
     update informante set hist_cg_emp_int_id  = 0 where hist_cg_emp_int_id  = :OLD.id;
 END;
+
+
+--
+create or replace TRIGGER T_PROMEDIO_PIEZA
+BEFORE INSERT ON p_h FOR EACH ROW
+DECLARE 
+PROM_CONFI_LOOP NUMBER;
+COUNT_HC NUMBER;
+FINCONF NUMBER;
+PROM_CONFI NUMBER;
+PROMEDIO_PI NUMBER;
+BEGIN
+    SELECT nivel_confiabilidad INTO PROMEDIO_PI FROM pieza_inteligencia WHERE id = :NEW.pieza_int_id;
+    SELECT nivel_confi_fin INTO PROM_CONFI FROM hecho_crudo WHERE id_hecho_cdo = :NEW.hecho_cdo_id;
+
+    IF PROMEDIO_PI IS NULL THEN
+        UPDATE pieza_inteligencia set nivel_confiabilidad = PROM_CONFI where id = :NEW.pieza_int_id;
+    ELSE
+
+    P_NIVEL_CONF_PZ (:NEW.hecho_cdo_id, :NEW.pieza_int_id, PROM_CONFI_LOOP, COUNT_HC); -- # ES EL ID DEL HC Y LA PI
+    --COMMIT;
+    FINCONF := (PROM_CONFI + PROM_CONFI_LOOP) / (COUNT_HC + 1);
+    UPDATE pieza_inteligencia set nivel_confiabilidad = FINCONF where id = :NEW.pieza_int_id;
+    
+    END IF;
+END;

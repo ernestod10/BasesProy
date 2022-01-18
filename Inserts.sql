@@ -108,6 +108,12 @@ INSERT INTO pieza_inteligencia VALUES (incr_pi.nextval, 120.50, TO_DATE('2032/02
 null, 1, 1, TO_DATE('2032/02/14 17:20:15', 'yyyy/mm/dd hh24:mi:ss'), 0, 0, 0);
 
 
+-- Pieza Inteligencia Hecho Crudo --
+
+INSERT INTO p_h VALUES (4,2);
+INSERT INTO p_h VALUES (21,2);
+
+
 -- Vista de Oficina_principal con jefe y localizacion
 
 create or replace view detalle_oficina(Oficina,Nombre,Ciudad,Pais,Director)
