@@ -97,56 +97,102 @@ BEGIN
     END IF;
 END;
 
---DESPIDO DE AGENTE -- ## EN DESARROLLO ------------------------------------------------------------------------------------------------------------------------------------------------
-CREATE OR REPLACE TRIGGER DESPIDO_AGENTE
-BEFORE DELETE ON empleado_inteligencia 
-REFERENCING NEW AS NEW OLD AS OLD
+--  VALIDAR DESPIDO DE AGENTE   Se descompone en 4 triggers--
+  --1
+        CREATE OR REPLACE TRIGGER DESPIDO_AGENTE
+        BEFORE DELETE ON empleado_inteligencia 
+        REFERENCING NEW AS NEW OLD AS OLD
 
-FOR EACH ROW
-DECLARE
-   v_username varchar2(10);
-   
-BEGIN
-    -- Insertar los datos del agente que se despidio 
-    select user into v_username from dual;
+        FOR EACH ROW
+        DECLARE
+        v_username varchar2(10);
+        
+        BEGIN
+            -- Insertar los datos del agente que se despidio 
+            select user into v_username from dual;
+            
+            INSERT INTO agente_despedido(id_antiguo,nombre,doc_identidad,telefono,fecha_despido) 
+            VALUES (:OLD.id_emp_int,:OLD.nombre_pila ||' '|| :OLD.apellido1, :OLD.doc_identidad, :OLD.telefono, sysdate);
+        END;
+  --2
+        CREATE OR REPLACE TRIGGER DESPIDO_AGENTE_INFORMANTE
+        BEFORE DELETE ON informante
+        REFERENCING NEW AS NEW OLD AS OLD
+
+        FOR EACH ROW
+        DECLARE
+        v_username varchar2(10);
+        agente number;
+        BEGIN
+            -- Insertar los datos de informantes del agente despedido 
+            select user into v_username from dual;
+            
+            select id_antiguo into agente from agente_despedido where id_antiguo = :OLD.hist_cg_emp_int_id;
+            
+            if agente = :OLD.hist_cg_emp_int_id then
+            INSERT INTO informante_agente_despedido(id_inf_antiguo,nombre_clave,agente)
+            VALUES (:OLD.id_informante,:OLD.nombre_clave , :OLD.hist_cg_emp_int_id);
+            end if;
+            
+            EXCEPTION
+                WHEN NO_DATA_FOUND THEN
+                    hola('Diego');
+        END;
+
+   --3
+        CREATE OR REPLACE TRIGGER PAGO_INFORMANTE_DESPIDO
+        BEFORE DELETE ON historico_pago
+        REFERENCING NEW AS NEW OLD AS OLD
+
+        FOR EACH ROW
+        DECLARE
+        v_username varchar2(10);
+        informante number;
+        
+        BEGIN
+            -- Insertar los datos de informantes del agente despedido 
+            select user into v_username from dual;
+            
+            select id_inf_antiguo into informante from informante_agente_despedido where id_inf_antiguo = :OLD.informante_ID;
+            
+            if informante = :OLD.informante_ID then
+            INSERT INTO pago_informante_despedido( id_pago,fecha,pago,informante)
+            VALUES (:OLD.id_pago_infor,:OLD.fecha , :OLD.pago,:OLD.informante_ID);
+            end if;
+            
+            EXCEPTION
+                WHEN NO_DATA_FOUND THEN
+                    hola('Diego');
+        END;
+
+   --4
+    CREATE OR REPLACE TRIGGER HECHO_INFORMANTE_DESPIDO
+    BEFORE DELETE ON hecho_crudo
+    REFERENCING NEW AS NEW OLD AS OLD
+
+    FOR EACH ROW
+    DECLARE
+    v_username varchar2(10);
+    hecho number;
     
-    INSERT INTO agente_despedido(id_antiguo,nombre,doc_identidad,telefono,fecha_despido) 
-    VALUES (:OLD.id_emp_int,:OLD.nombre_pila ||' '|| :OLD.apellido1, :OLD.doc_identidad, :OLD.telefono, sysdate);
-END;
-
-CREATE OR REPLACE TRIGGER DESPIDO_AGENTE_INFORMANTE
-BEFORE DELETE ON informante
-REFERENCING NEW AS NEW OLD AS OLD
-
-FOR EACH ROW
-DECLARE
-   v_username varchar2(10);
-   agente number;
-BEGIN
-    -- Insertar los datos de informantes del agente despedido 
-    select user into v_username from dual;
-    
-    select id_antiguo into agente from agente_despedido where id_antiguo = :OLD.hist_cg_emp_int_id;
-    
-    if agente = :OLD.hist_cg_emp_int_id then
-    INSERT INTO informante_agente_despedido(id_inf_antiguo,nombre_clave,agente)
-    VALUES (:OLD.id_informante,:OLD.nombre_clave , :OLD.hist_cg_emp_int_id);
-    end if;
-    
-     EXCEPTION
-        WHEN NO_DATA_FOUND THEN
-            hola('Diego');
-END;
-
-
--- Procedimiento de eliminacion de datos
-create or replace procedure DESPEDIR_AGENTE (id_informante IN NUMBER) 
-IS
-BEGIN
-    DELETE from historico_pago where id_informante = informante_id ; 
-END; 
+    BEGIN
+        -- Insertar los datos de informantes del agente despedido 
+        select user into v_username from dual;
+        
+        select id_pago into hecho from pago_informante_despedido where id_pago = :OLD.hist_pago_id;
+        
+        if hecho = :OLD.hist_pago_id then
+        INSERT INTO hechos_informante_despedido( id_hecho_Eliminado,resumen,tipo_contenido,contenido,nivel_confi_ini,fec_obten,id_pago)
+        VALUES (:OLD.id_hecho_cdo,:OLD.resumen , :OLD.tipo_contenido,:OLD.contenido,:OLD.nivel_confi_ini,:OLD.fec_obten,:OLD.hist_pago_id);
+        end if;
+        
+        EXCEPTION
+            WHEN NO_DATA_FOUND THEN
+                hola('Diego');
+    END;
 
 -- Tablas paralelas Restringidas -- 
+
 create table agente_despedido(
     id_antiguo          number primary key,
     nombre              varchar2(25) not null,
@@ -170,7 +216,6 @@ create table pago_informante_despedido(
     id_pago number primary key,
     fecha   date not null,
     pago    number not null,
-    resumen_hc  varchar2(1000) not null,
     informante number not null
     
 );
@@ -190,24 +235,5 @@ create table hechos_informante_despedido(
 alter table hechos_informante_despedido add constraint fk_hc_despido_inf FOREIGN KEY (id_pago ) REFERENCES pago_informante_despedido(id_pago);
 
 
--- insert de prueba
-INSERT INTO agente_despedido select  cag.emp_int_id,emp.nombre_pila ||' '|| emp.apellido1, emp.doc_identidad, emp.telefono, cag.fec_fin
-    from empleado_inteligencia emp,historico_cargo cag where  emp.id_emp_int =1;
-    
-
-insert into informante_agente_despedido select inf.id_informante, inf.nombre_clave,cag.emp_int_id 
- from informante inf, historico_cargo cag,empleado_inteligencia emp where emp.id_emp_int = cag.emp_int_id and emp.id_emp_int = inf.hist_cg_emp_int_id and emp.id_emp_int = 1;     
-
-select pg.id_pago_infor, pg.fecha,pg.pago, hc.resumen, inf.id_informante
-    from informante inf, historico_cargo cag,historico_pago pg, hecho_crudo hc,empleado_inteligencia emp where emp.id_emp_int=1 and emp.id_emp_int = cag.emp_int_id and emp.id_emp_int = inf.hist_cg_emp_int_id and inf.id_informante = pg.informante_id and hc.id_hecho_cdo = pg.hecho_crudo_id; 
-
-insert into hechos_informante_despedido select hc.id_hecho_cdo, hc.resumen,hc.tipo_contenido,hc.contenido,hc.nivel_confi_ini,hc.fec_obten,pg.id_pago_infor 
-from informante inf, historico_cargo cag,historico_pago pg, hecho_crudo hc,empleado_inteligencia emp where emp.id_emp_int=1 and emp.id_emp_int = cag.emp_int_id and emp.id_emp_int = inf.hist_cg_emp_int_id and inf.id_informante = pg.informante_id and hc.id_hecho_cdo = pg.hecho_crudo_id; 
-
-
--- Vista de detalles sobre agentes despedidos
-
------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-
-
+-- VALIDAR CAMBIO DE ROL AGENTE/ANALISTA
 
