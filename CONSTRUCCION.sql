@@ -46,3 +46,32 @@ begin
 VALUES(SYSDATE,(TO_NUMBER(SUBSTR(user, -1))), get_estacion_id,get_fecha_inicio,get_oficina,NIVEL_CONFIABILIDAD,NIVEL_SEGURIDAD,PRECIO_APROXIMADO,TEMA_ID);
 
 END;
+
+
+Create or replace trigger hecho_confi_trigger
+before insert on P_H
+
+for each row
+DECLARE ns number;
+
+begin 
+    Select NIVEL_CONFI_FIN into ns from hecho_crudo where ID_HECHO_CDO = :new.HECHO_CDO_ID ;
+    if ns <= 85 then
+        raise_application_error(-20001,'El nivel de confiabilidad del hecho es menor a 85%');
+    end if;
+end;
+/
+
+Create or replace trigger seguridad_creacion_trigger
+before insert on pieza_inteligencia
+
+for each row
+
+
+begin 
+
+    if :new.NIVEL_SEGURIDAD < Nivel_acceso() then
+        raise_application_error(-20001,'El analista no tiene el clearance necesario para realizar la operacion');
+    end if;
+end;
+/
