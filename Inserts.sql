@@ -8,9 +8,7 @@ CREATE SEQUENCE incremento_id_ciudad
 INCREMENT BY 1
 START WITH 10;
 
-CREATE SEQUENCE incremento_id_estacion
-INCREMENT BY 1
-START WITH 300;
+
 
 -- Incremento hecho crudo
 CREATE SEQUENCE incr_hc INCREMENT BY 1 START WITH 1;
