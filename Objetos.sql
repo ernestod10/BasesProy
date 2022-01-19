@@ -182,9 +182,11 @@ CREATE TABLE historico_cargo (
     emp_int_id                           NUMBER NOT NULL,
     estacion_id                          NUMBER NOT NULL, 
     est_ofic_prin_id                     NUMBER NOT NULL,
+    CONSTRAINT ck_cargo CHECK( cargo IN ('Agente','Analista')),
     CONSTRAINT historico_cargo_pk PRIMARY KEY ( fec_inicio,emp_int_id,estacion_id,est_ofic_prin_id),
     CONSTRAINT ck_fec_hist_cargo CHECK (fec_fin >= fec_inicio)
 );
+
 
 CREATE TABLE informante (
     id_informante                                      NUMBER NOT NULL PRIMARY KEY,

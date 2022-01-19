@@ -237,7 +237,25 @@ alter table hechos_informante_despedido add constraint fk_hc_despido_inf FOREIGN
 
 -- VALIDAR CAMBIO DE ROL AGENTE/ANALISTA
 
+CREATE OR REPLACE trigger CAMBIO_ROL
+BEFORE UPDATE OF fec_fin ON historico_cargo
+FOR EACH ROW
 
+BEGIN
+    
+   if :OLD.cargo = 'Agente' then
+   INSERT into historico_cargo values (sysdate,null,'Analista',:OLD.emp_int_id,:OLD.estacion_id, :OLD.est_ofic_prin_id);
+   DELETE from informante where hist_cg_emp_int = :OLD.emp_int_id; 
+   end if;
+   
+   if :OLD.cargo = 'Analista' then
+   INSERT into historico_cargo values (sysdate,null,'Agente',:OLD.emp_int_id,:OLD.estacion_id, :OLD.est_ofic_prin_id);
+   insertar_alias(:OLD.emp_int_id);
+   end if;
+END;
 
-
-
+CREATE OR REPLACE PROCEDURE insertar_alias(id_empleado in number) is
+begin 
+    INSERT INTO TABLE(select alias_agente from empleado_inteligencia where id_emp_int = id_empleado) 
+   VALUES (&nombre_agente,BFILENAME('MEDIA_DIR',&foto),&nacimiento,&pais,&doc_identidad,&color_ojos,&direccion,&ultimo_uso);
+end;
