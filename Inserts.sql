@@ -1,6 +1,5 @@
 -- Inserts de la aplicacion 
 
-
 -- Incremento pais
 CREATE SEQUENCE incremento_id_pais
 INCREMENT BY 1
@@ -145,7 +144,7 @@ INSERT INTO hist_venta VALUES (1, TO_DATE('2032/02/27 11:20:15', 'yyyy/mm/dd hh2
 
 -- Hecho Crudo -- 
 INSERT INTO hecho_crudo VALUES (4,'Todo sobre los hombres que vendieron la Copa del Mundo a Qatar',
-'abierta', 'individuos',
+'secreta', 'países',
 'En los últimos años, numerosos escándalos de corrupción, sospechas de sobornos y posibles extorsiones han rodeado muchas de las decisiones anunciadas por la FIFA. En diciembre de 2010, la mayor institución del fútbol mundial protagonizó uno de los episodios que más controversia ha generado en la historia de la FIFA al anunciar la elección de Qatar como país anfitrión de la edición de 2022 de la Copa del Mundo. ¿Cómo es posible que un país con un clima tan cálido como para no poder albergar la competición en verano al finalizar la temporada regular de fútbol, cuya afición al fútbol es residual, pero que está regido por mandatarios ricos y poderosos, sea el mejor candidato posible?'
 97, TO_DATE('2032/01/14 07:00:22', 'yyyy/mm/dd hh24:mi:ss'), 100, TO_DATE('2032/03/19 17:20:04', 'yyyy/mm/dd hh24:mi:ss'),
 3, null, null, TO_DATE('2032/01/14 07:00:22', 'yyyy/mm/dd hh24:mi:ss'), 0, 0, 0);
@@ -172,14 +171,58 @@ INSERT INTO p_h VALUES (5,2);
 INSERT INTO p_h VALUES (6,2);
 
 -- Tema Pieza Inteligencia
-INSERT INTO tema VALUES (1,'Deportes', 'Investigaciones en la actualidad del mundo del deporte',
-'Fútbol', 19, );
+INSERT INTO tema VALUES (2,'Deportes', 'Investigaciones en la actualidad del mundo del deporte',
+'Fútbol');
 
 -- Relacion Tema
 INSERT INTO p_t VALUES (2,2);
 
 -- Cliente
-INSERT INTO cliente VALUES (1,'DirecTV Sports', CONTACT('Pablo', 'Giralt', 'Total', '089445161'), 'N', );
+INSERT INTO cliente VALUES (2,'DirecTV Sports', CONTACT('Pablo', 'Giralt', 'Total', '089445161'), 'N', 18, 104);
 
 -- historico de venta
-INSERT INTO hist_venta VALUES (1, TO_DATE('2032/02/27 11:20:15', 'yyyy/mm/dd hh24:mi:ss'), 180, 1, 1);
+INSERT INTO hist_venta VALUES (2, TO_DATE('2032/04/04 18:20:15', 'yyyy/mm/dd hh24:mi:ss'), 1100, 2, 2);
+
+
+-- ////////////////////// PIEZA DE INTELIGENCIA 3 ///////////////////////////////
+
+-- Hecho Crudo -- 
+INSERT INTO hecho_crudo VALUES (7,'Qué dice el mensaje oculto en el paracaídas del robot espacial de la NASA',
+'técnica', 'eventos',
+'La Nasa logró el pasado jueves un importante avance en la exploración espacial. El robot explorador Perseverance de la agencia espacial estadounidense llegó a Marte, tras un viaje de cerca de 480 millones de kilómetros que inició en julio de 2020. Se trata del robot más sofisticado jamás enviado al espacio y tendrá como objetivo buscar evidencia para responder grandes preguntas como si hay señales concretas de vida microbiana pasada en Marte.'
+75, TO_DATE('2032/07/24 17:00:22', 'yyyy/mm/dd hh24:mi:ss'), 80, TO_DATE('2032/08/01 23:00:00', 'yyyy/mm/dd hh24:mi:ss'),
+2, null, null, TO_DATE('2032/07/24 17:00:22', 'yyyy/mm/dd hh24:mi:ss'), 0, 0, 0);
+
+INSERT INTO hecho_crudo VALUES (8,'Descubren el mensaje secreto de la NASA en el Perseverance que llegó a Marte',
+'técnica', 'eventos',
+'Hasta la fecha, nunca antes la NASA había sido capaz de conseguir emitir en directo el momento exacto en el que el 'rover' se posaba sobre la superficie de ningún planeta y, por ello, el logro técnico conseguido en esta ocasión era sobresaliente: poder emitir en perfecto 'streaming' el gran momento de la misión era fundamental. Y, por esta razón, la NASA incluyó un guiño en la misión solo al alcance de los ojos más avezados'
+89, TO_DATE('2032/07/28 10:31:05', 'yyyy/mm/dd hh24:mi:ss'), 100, TO_DATE('2032/09/09 09:09:14', 'yyyy/mm/dd hh24:mi:ss'),
+2, null, null, TO_DATE('2032/07/28 10:31:05', 'yyyy/mm/dd hh24:mi:ss'), 0, 0, 0);
+
+INSERT INTO hecho_crudo VALUES (9,'El enorme paracaídas que utilizó el rover para posarse sobre suelo marciano',
+'técnica', 'eventos',
+'Clark usó un código binario oculto en las tiras naranjas y blancas del paracaídas para deletrear la famosa frase del vigesimosexto presidente de los Estados Unidos, que también es una suerte de mantra para la agencia espacial estadounidense y puede leerse en muchas de sus instalaciones.'
+100, TO_DATE('2032/08/30 11:46:51', 'yyyy/mm/dd hh24:mi:ss'), 99, TO_DATE('2032/09/05 15:04:07', 'yyyy/mm/dd hh24:mi:ss'),
+2, null, null, TO_DATE('2032/08/30 11:46:51', 'yyyy/mm/dd hh24:mi:ss'), 0, 0, 0);
+
+-- Pieza Inteligencia --
+INSERT INTO pieza_inteligencia VALUES (3, 9990, TO_DATE('2032/08/31 11:46:51', 'yyyy/mm/dd hh24:mi:ss'),
+null, 2, 3, TO_DATE('2032/08/31 11:46:51', 'yyyy/mm/dd hh24:mi:ss'), 0, 0, 0);
+
+-- Relacion  Pieza Hecho
+INSERT INTO p_h VALUES (7,3);
+INSERT INTO p_h VALUES (8,3);
+INSERT INTO p_h VALUES (9,3);
+
+-- Tema Pieza Inteligencia
+INSERT INTO tema VALUES (3,'Astronomía', 'el estudio del universo, las teorías cosmológicas y los diversos cuerpos celestes, entre otros',
+'La NASA');
+
+-- Relacion Tema
+INSERT INTO p_t VALUES (3,3);
+
+-- Cliente
+INSERT INTO cliente VALUES (3,'SpaceX', CONTACT('Elon', 'Musk', 'Reeve', '189445161'), 'N', 24, 106);
+
+-- historico de venta
+INSERT INTO hist_venta VALUES (3, TO_DATE('2032/08/31 11:46:51', 'yyyy/mm/dd hh24:mi:ss'), 9991, 3, 3);
