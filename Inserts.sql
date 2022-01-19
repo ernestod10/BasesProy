@@ -75,7 +75,6 @@ INSERT INTO empleado_jefe VALUES (4,'Leon','Rodriguez','Area',NULL);
 INSERT INTO empleado_jefe VALUES (5,'Mirabelle','Braley','Area',NULL);
 INSERT INTO empleado_jefe VALUES (6,'Andrew','Jordan','Area',NULL);
 
-
 -- Oficina Principal -- 
 
 INSERT INTO oficina_principal VALUES (1,'Director AII',true,1,10,100);
@@ -84,7 +83,6 @@ INSERT INTO oficina_principal VALUES (3,'Hexagono',false,3,24,106);
 INSERT INTO oficina_principal VALUES (4,'Latina',false,4,28,108);
 INSERT INTO oficina_principal VALUES (5,'Effertz',false,5,32,110);
 INSERT INTO oficina_principal VALUES (6,'Bechtelar',false,6,39,113);
-
 
 -- Vista de Oficina_principal con jefe y localizacion
 
