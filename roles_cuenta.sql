@@ -22,6 +22,7 @@ grant select,delete on historico_seguridad to D_area;
 grant select on historico_cargo to D_area;
 grant select on ciudad to D_area;
 grant select on pais to D_area;
+grant SEQUENCE incremento_id_estacion to D_area;
 
 
 -- Jefe_Estacion

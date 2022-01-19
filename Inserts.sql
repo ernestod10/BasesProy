@@ -8,9 +8,7 @@ CREATE SEQUENCE incremento_id_ciudad
 INCREMENT BY 1
 START WITH 10;
 
-CREATE SEQUENCE incremento_id_estacion
-INCREMENT BY 1
-START WITH 300;
+
 
 -- Incremento hecho crudo
 CREATE SEQUENCE incr_hc INCREMENT BY 1 START WITH 1;
@@ -118,33 +116,33 @@ INSERT INTO oficina_principal VALUES (6,'Bechtelar',false,6,39,113);
 
 
 -- Estacion -- 
-INSERT INTO estacion VALUES (incremento_id_estacion.nextval,'Parrot',50000,7,11,101,1);
-INSERT INTO estacion VALUES (incremento_id_estacion.nextval,'Monkey',20000,8,12,101,1); 
-INSERT INTO estacion VALUES (incremento_id_estacion.nextval,'Eagle',30000,9,13,101,1);
-INSERT INTO estacion VALUES (incremento_id_estacion.nextval,'Wolf',35000,10,14,102,1);
-INSERT INTO estacion VALUES (incremento_id_estacion.nextval,'bear',40000,11,15,102,1);
-INSERT INTO estacion VALUES (incremento_id_estacion.nextval,'Buffalo',20000,12,16,102,1);
-INSERT INTO estacion VALUES (incremento_id_estacion.nextval,'Lizard',60000,13,18,104,2);
-INSERT INTO estacion VALUES (incremento_id_estacion.nextval,'Lemur',60000,14,19,104,2);
-INSERT INTO estacion VALUES (incremento_id_estacion.nextval,'Seal',30000,15,20,104,2);
-INSERT INTO estacion VALUES (incremento_id_estacion.nextval,'fox',30000,16,21,105,2);
-INSERT INTO estacion VALUES (incremento_id_estacion.nextval,'Bird',20000,17,22,105,2);
-INSERT INTO estacion VALUES (incremento_id_estacion.nextval,'Goose',50000,18,23,105,2);
-INSERT INTO estacion VALUES (incremento_id_estacion.nextval,'Winterfel',50000,19,25,107,3);
-INSERT INTO estacion VALUES (incremento_id_estacion.nextval,'Koala',40000,20,26,107,3);
-INSERT INTO estacion VALUES (incremento_id_estacion.nextval,'Orca',300000,21,27,107,3);
-INSERT INTO estacion VALUES (incremento_id_estacion.nextval,'Vulture',30000,22,29,109,4);
-INSERT INTO estacion VALUES (incremento_id_estacion.nextval,'Duck',10000,23,30,109,4);
-INSERT INTO estacion VALUES (incremento_id_estacion.nextval,'Cat',60000,24,31,109,4);
-INSERT INTO estacion VALUES (incremento_id_estacion.nextval,'Pelican',70000,25,33,111,5);
-INSERT INTO estacion VALUES (incremento_id_estacion.nextval,'Jaguar',80000,26,34,111,5); 
-INSERT INTO estacion VALUES (incremento_id_estacion.nextval,'Armadillo',90000,27,35,111,5); 
-INSERT INTO estacion VALUES (incremento_id_estacion.nextval,'Snake',90000,28,36,112,5); 
-INSERT INTO estacion VALUES (incremento_id_estacion.nextval,'Oasis',9000,29,37,112,5);
-INSERT INTO estacion VALUES (incremento_id_estacion.nextval,'Fisher',60000,30,38,112,5);
-INSERT INTO estacion VALUES (incremento_id_estacion.nextval,'Crane',50000,31,40,114,6);
-INSERT INTO estacion VALUES (incremento_id_estacion.nextval,'Gecko',50000,32,41,114,6);
-INSERT INTO estacion VALUES (incremento_id_estacion.nextval,'Capuchin',50000,33,42,114,6);
+INSERT INTO estacion VALUES (300,'Parrot',50000,7,11,101,1);
+INSERT INTO estacion VALUES (301,'Monkey',20000,8,12,101,1); 
+INSERT INTO estacion VALUES (302,'Eagle',30000,9,13,101,1);
+INSERT INTO estacion VALUES (303,'Wolf',35000,10,14,102,1);
+INSERT INTO estacion VALUES (304,'bear',40000,11,15,102,1);
+INSERT INTO estacion VALUES (305,'Buffalo',20000,12,16,102,1);
+INSERT INTO estacion VALUES (306,'Lizard',60000,13,18,104,2);
+INSERT INTO estacion VALUES (307,'Lemur',60000,14,19,104,2);
+INSERT INTO estacion VALUES (308,'Seal',30000,15,20,104,2);
+INSERT INTO estacion VALUES (309,'fox',30000,16,21,105,2);
+INSERT INTO estacion VALUES (310,'Bird',20000,17,22,105,2);
+INSERT INTO estacion VALUES (311,'Goose',50000,18,23,105,2);
+INSERT INTO estacion VALUES (312,'Winterfel',50000,19,25,107,3);
+INSERT INTO estacion VALUES (313,'Koala',40000,20,26,107,3);
+INSERT INTO estacion VALUES (314,'Orca',300000,21,27,107,3);
+INSERT INTO estacion VALUES (315,'Vulture',30000,22,29,109,4);
+INSERT INTO estacion VALUES (316,'Duck',10000,23,30,109,4);
+INSERT INTO estacion VALUES (317,'Cat',60000,24,31,109,4);
+INSERT INTO estacion VALUES (318,'Pelican',70000,25,33,111,5);
+INSERT INTO estacion VALUES (319,'Jaguar',80000,26,34,111,5); 
+INSERT INTO estacion VALUES (320,'Armadillo',90000,27,35,111,5); 
+INSERT INTO estacion VALUES (321,'Snake',90000,28,36,112,5); 
+INSERT INTO estacion VALUES (322,'Oasis',9000,29,37,112,5);
+INSERT INTO estacion VALUES (323,'Fisher',60000,30,38,112,5);
+INSERT INTO estacion VALUES (324,'Crane',50000,31,40,114,6);
+INSERT INTO estacion VALUES (325,'Gecko',50000,32,41,114,6);
+INSERT INTO estacion VALUES (326,'Capuchin',50000,33,42,114,6);
 
 
 -- Empleado_inteligencia --
