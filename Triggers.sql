@@ -237,3 +237,7 @@ alter table hechos_informante_despedido add constraint fk_hc_despido_inf FOREIGN
 
 -- VALIDAR CAMBIO DE ROL AGENTE/ANALISTA
 
+
+
+
+
