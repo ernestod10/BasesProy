@@ -23,6 +23,9 @@ grant select on historico_cargo to D_area;
 grant select on ciudad to D_area;
 grant select on pais to D_area;
 grant insert on empleado_jefe to D_area;
+grant EXECUTE ANY TYPE to D_area;
+
+
 
 
 -- Jefe_Estacion
@@ -37,6 +40,7 @@ grant select on pais to D_estacion;
 grant select on pieza_inteligencia to D_estacion;
 grant select on hecho_crudo to D_estacion;
 grant select,insert,delete,update on hist_venta to D_estacion;
+grant EXECUTE ANY TYPE to D_estacion;
 
 
 
