@@ -458,11 +458,11 @@ ALTER TABLE hecho_crudo
 
 ALTER TABLE p_h
     ADD CONSTRAINT p_h_cliente_fk FOREIGN KEY ( pieza_int_id )
-        REFERENCES pieza_inteligencia ( id ) DELETE ON CASCADE;
+        REFERENCES pieza_inteligencia ( id )  ON DELETE CASCADE;
 
 ALTER TABLE p_h
     ADD CONSTRAINT p_h_hecho_crudo_fk FOREIGN KEY ( hecho_cdo_id )
-        REFERENCES hecho_crudo ( id_hecho_cdo ) DELETE ON CASCADE;
+        REFERENCES hecho_crudo ( id_hecho_cdo ) ON DELETE CASCADE;
 
 -- Relacion de Verificcion de Hecho crudo
 
