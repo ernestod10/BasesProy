@@ -429,7 +429,7 @@ ALTER TABLE oficina_principal
 
 ALTER TABLE pieza_inteligencia
     ADD CONSTRAINT pieza_int_hist_ca_fk FOREIGN KEY ( hist_cg_fec_ini,hist_cg_emp_int_id,hist_cg_est_id,hist_cg_ofic_id)
-        REFERENCES historico_cargo ( fec_inicio ,emp_int_id ,estacion_id,est_ofic_prin_id);
+        REFERENCES historico_cargo ( fec_inicio ,emp_int_id ,estacion_id,est_ofic_prin_id) ON DELETE CASCADE;
 
 ALTER TABLE pieza_inteligencia
     ADD CONSTRAINT pieza_inteligencia_tema_fk FOREIGN KEY ( tema_id )
@@ -458,11 +458,11 @@ ALTER TABLE hecho_crudo
 
 ALTER TABLE p_h
     ADD CONSTRAINT p_h_cliente_fk FOREIGN KEY ( pieza_int_id )
-        REFERENCES pieza_inteligencia ( id );
+        REFERENCES pieza_inteligencia ( id ) DELETE ON CASCADE;
 
 ALTER TABLE p_h
     ADD CONSTRAINT p_h_hecho_crudo_fk FOREIGN KEY ( hecho_cdo_id )
-        REFERENCES hecho_crudo ( id_hecho_cdo );
+        REFERENCES hecho_crudo ( id_hecho_cdo ) DELETE ON CASCADE;
 
 -- Relacion de Verificcion de Hecho crudo
 

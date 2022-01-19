@@ -18,8 +18,16 @@ grant select on pago_informante_despedido to D_area;
 grant select on hechos_informante_despedido to D_area;
 grant select on hist_venta to D_area;
 grant select, delete on historico_seguridad to D_area;
+grant select on historico_cargo;
 
 -- Jefe_Estacion
+create role D_estacion NOT IDENTIFIED;
+grant select, update,insert on historico_cargo to D_estacion;
+grant select on estacion to D_estacion;
+grant select on ciudad to D_estacion;
+grant select on pais to D_estacion;
+
+
 
 
 -- Analista

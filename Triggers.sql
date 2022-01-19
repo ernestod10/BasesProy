@@ -238,24 +238,37 @@ alter table hechos_informante_despedido add constraint fk_hc_despido_inf FOREIGN
 -- VALIDAR CAMBIO DE ROL AGENTE/ANALISTA
 
 CREATE OR REPLACE trigger CAMBIO_ROL
-BEFORE UPDATE OF fec_fin ON historico_cargo
+AFTER UPDATE OF fec_fin ON historico_cargo
+REFERENCING NEW AS NEW OLD AS OLD
 FOR EACH ROW
 
 BEGIN
     
-   if :OLD.cargo = 'Agente' then
-   INSERT into historico_cargo values (sysdate,null,'Analista',:OLD.emp_int_id,:OLD.estacion_id, :OLD.est_ofic_prin_id);
-   DELETE from informante where hist_cg_emp_int = :OLD.emp_int_id; 
+   if (:OLD.cargo = 'Agente') then
+   DELETE from informante where hist_cg_emp_int_id = :OLD.emp_int_id;
+   DELETE FROM TABLE (select alias_agente from empleado_inteligencia where id_emp_int = :OLD.emp_int_id); 
+   INSERT INTO analistas_temas VALUES (:OLD.emp_int_id,1);
+   DBMS_OUTPUT.PUT_LINE('############   NOTIFICAR JEFE  ############');
+   DBMS_OUTPUT.PUT_LINE('Crear historico de cargo nuevo para empleado : ' || :OLD.emp_int_id);
+   ELSIF (:OLD.cargo = 'Analista') then
+   DBMS_OUTPUT.PUT_LINE('############   NOTIFICAR JEFE  ############');
+   DBMS_OUTPUT.PUT_LINE('Se esta creando un Cargo: Agente... Asignarle un ALias');
+   DBMS_OUTPUT.PUT_LINE('Crear historico de cargo nuevo para empleado : ' || :OLD.emp_int_id);
    end if;
-   
-   if :OLD.cargo = 'Analista' then
-   INSERT into historico_cargo values (sysdate,null,'Agente',:OLD.emp_int_id,:OLD.estacion_id, :OLD.est_ofic_prin_id);
-   insertar_alias(:OLD.emp_int_id);
-   end if;
-END;
+END;  
 
-CREATE OR REPLACE PROCEDURE insertar_alias(id_empleado in number) is
-begin 
-    INSERT INTO TABLE(select alias_agente from empleado_inteligencia where id_emp_int = id_empleado) 
+    -- 
+    INSERT into historico_cargo values (&fec_fin,null,'Analista',&emp_int_id,:OLD.estacion_id, :OLD.est_ofic_prin_id);
+    -- Insertar un alias nuevo
+   INSERT INTO TABLE(select alias_agente from empleado_inteligencia where id_emp_int = &id_empleado) 
    VALUES (&nombre_agente,BFILENAME('MEDIA_DIR',&foto),&nacimiento,&pais,&doc_identidad,&color_ojos,&direccion,&ultimo_uso);
-end;
+
+    -- quitar privilegios a la cuenta de de agente y otorgar privilegios de analista
+
+
+    -- Eliminar alias 
+    TRUNCATE TABLE (select alias_agente from empleado_inteligencia where id_emp_int = &id_empleado); 
+
+    -- quitar privilegios a la cuenta de de analista y otorgar privilegios de agente
+
+'09-MAY-2030'
