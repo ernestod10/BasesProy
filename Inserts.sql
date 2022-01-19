@@ -119,7 +119,7 @@ INSERT INTO hecho_crudo VALUES (3,'Los venenos en la naturaleza no son más que 
 
 -- Pieza Inteligencia --
 INSERT INTO pieza_inteligencia VALUES (1, 120.50, TO_DATE('2032/02/14 17:20:15', 'yyyy/mm/dd hh24:mi:ss'),
-null, 1, 1, TO_DATE('2032/02/14 17:20:15', 'yyyy/mm/dd hh24:mi:ss'), 0, 0, 0);
+null, 2, 1, TO_DATE('2032/02/14 17:20:15', 'yyyy/mm/dd hh24:mi:ss'), 0, 0, 0);
 
 -- Relacion  Pieza Hecho
 INSERT INTO p_h VALUES (1,1);
@@ -130,9 +130,56 @@ INSERT INTO p_h VALUES (3,1);
 INSERT INTO tema VALUES (1,'Biología', 'El estudio de la vida es una fuente inagotable de misterios y la curiosidad una fuente sin fin de interrogantes que continuamente nos obliga a hacernos numerosas preguntas, y en el momento que tienes una resuelta, su respuesta te lleva inmediatamente a otras.',
 'Serpientes');
 
--- Relacion  Tema
+-- Relacion Tema
 INSERT INTO p_t VALUES (1,1);
 
--- cliente
-INSERT INTO cliente VALUES (1,'Sociedad Bióloga de América', CONTACT('José Miguel', 'Monsalve', 'Barrios', '0414212222', 'N', ),
-'Serpientes', 29, 108);
+-- Cliente
+INSERT INTO cliente VALUES (1,'Sociedad Bióloga de América', CONTACT('José Miguel', 'Monsalve', 'Barrios', '0414212222', 'N') , 29, 108);
+
+-- historico de venta
+INSERT INTO hist_venta VALUES (1, TO_DATE('2032/02/27 11:20:15', 'yyyy/mm/dd hh24:mi:ss'), 150.12, 1, 1);
+
+
+
+-- ////////////////////// PIEZA DE INTELIGENCIA 2 ///////////////////////////////
+
+-- Hecho Crudo -- 
+INSERT INTO hecho_crudo VALUES (4,'Todo sobre los hombres que vendieron la Copa del Mundo a Qatar',
+'abierta', 'individuos',
+'En los últimos años, numerosos escándalos de corrupción, sospechas de sobornos y posibles extorsiones han rodeado muchas de las decisiones anunciadas por la FIFA. En diciembre de 2010, la mayor institución del fútbol mundial protagonizó uno de los episodios que más controversia ha generado en la historia de la FIFA al anunciar la elección de Qatar como país anfitrión de la edición de 2022 de la Copa del Mundo. ¿Cómo es posible que un país con un clima tan cálido como para no poder albergar la competición en verano al finalizar la temporada regular de fútbol, cuya afición al fútbol es residual, pero que está regido por mandatarios ricos y poderosos, sea el mejor candidato posible?'
+97, TO_DATE('2032/01/14 07:00:22', 'yyyy/mm/dd hh24:mi:ss'), 100, TO_DATE('2032/03/19 17:20:04', 'yyyy/mm/dd hh24:mi:ss'),
+3, null, null, TO_DATE('2032/01/14 07:00:22', 'yyyy/mm/dd hh24:mi:ss'), 0, 0, 0);
+
+INSERT INTO hecho_crudo VALUES (5,'Cómo se adjudicó el Mundial de Qatar y la corrupción en la FIFA',
+'secreta', 'países',
+'En diciembre de 2010 la mayor institución del fútbol mundial protagonizó uno de los episodios que más controversia ha generado en su centenaria historia al anunciar la elección de Qatar. ¿Cómo es posible que un país con un clima tan tórrido como para no poder albergar la competición en verano al finalizar la temporada regular de fútbol, cuya afición al fútbol es residual, pero que está regido por mandatarios poderosos, sea el mejor candidato posible?'
+80, TO_DATE('2032/02/18 00:31:05', 'yyyy/mm/dd hh24:mi:ss'), 79, TO_DATE('2032/03/02 20:50:14', 'yyyy/mm/dd hh24:mi:ss'),
+3, null, null, TO_DATE('2032/02/18 00:31:05', 'yyyy/mm/dd hh24:mi:ss'), 0, 0, 0);
+
+INSERT INTO hecho_crudo VALUES (6,'El puro negocio: un Mundial cada dos años sí, una SuperLiga no',
+'secreta', 'países',
+'Infantino dice que el prestigio del Mundial no depende de su frecuencia. Claro, no depende de que sea cada dos años, pero queremos que sea cada dos años. Los que mandan en el fútbol, los que dicen que el fútbol es del pueblo, hablan de que los ingresos aumentarían de 3,9 mil millones de euros a más de 10 mil millones en los próximos cuatro años. Esto lo tenéis claro, ¿no? El negocio. El puro negocio. Un Mundial cada dos años sí, una SuperLiga no. Las incongruencias de los corbatas que rigen el fútbol y que no comprenden la importancia de cuidar el deporte y no solo ganar dinero con el fútbol. La diferencia es abismal.'
+100, TO_DATE('2032/03/30 13:27:15', 'yyyy/mm/dd hh24:mi:ss'), 91, TO_DATE('2032/03/12 05:18:22', 'yyyy/mm/dd hh24:mi:ss'),
+3, null, null, TO_DATE('2032/03/30 13:27:15', 'yyyy/mm/dd hh24:mi:ss'), 0, 0, 0);
+
+-- Pieza Inteligencia --
+INSERT INTO pieza_inteligencia VALUES (2, 1000.20, TO_DATE('2032/04/04 18:20:15', 'yyyy/mm/dd hh24:mi:ss'),
+null, 3, 2, TO_DATE('2032/04/04 18:20:15', 'yyyy/mm/dd hh24:mi:ss'), 0, 0, 0);
+
+-- Relacion  Pieza Hecho
+INSERT INTO p_h VALUES (4,2);
+INSERT INTO p_h VALUES (5,2);
+INSERT INTO p_h VALUES (6,2);
+
+-- Tema Pieza Inteligencia
+INSERT INTO tema VALUES (1,'Deportes', 'Investigaciones en la actualidad del mundo del deporte',
+'Fútbol', 19, );
+
+-- Relacion Tema
+INSERT INTO p_t VALUES (2,2);
+
+-- Cliente
+INSERT INTO cliente VALUES (1,'DirecTV Sports', CONTACT('Pablo', 'Giralt', 'Total', '089445161'), 'N', );
+
+-- historico de venta
+INSERT INTO hist_venta VALUES (1, TO_DATE('2032/02/27 11:20:15', 'yyyy/mm/dd hh24:mi:ss'), 180, 1, 1);
