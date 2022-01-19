@@ -15,56 +15,56 @@ CREATE SEQUENCE incr_hc INCREMENT BY 1 START WITH 1;
 CREATE SEQUENCE incr_pi INCREMENT BY 1 START WITH 1;
 
 -- Pais --
-INSERT INTO pais VALUES (incremento_id_pais.nextval,'Suiza','Eu'); -- Sede Central
-INSERT INTO pais VALUES (incremento_id_pais.nextval,'Grecia','Eu');
-INSERT INTO pais VALUES (incremento_id_pais.nextval,'Portugal','Eu');
-INSERT INTO pais VALUES (incremento_id_pais.nextval,'Singapur','As'); -- Oficina de area
-INSERT INTO pais VALUES (incremento_id_pais.nextval,'Qatar','As');
-INSERT INTO pais VALUES (incremento_id_pais.nextval,'Indonesia','As');
-INSERT INTO pais VALUES (incremento_id_pais.nextval,'Estados Unidos','AmN'); -- Oficina de area
-INSERT INTO pais VALUES (incremento_id_pais.nextval,'Costa Rica','AmN');
-INSERT INTO pais VALUES (incremento_id_pais.nextval,'Argentina','AmS');-- Oficina de area
-INSERT INTO pais VALUES (incremento_id_pais.nextval,'Ecuador','AmS');
-INSERT INTO pais VALUES (incremento_id_pais.nextval,'Egipto','Af');-- Oficina de area
-INSERT INTO pais VALUES (incremento_id_pais.nextval,'Marruecos','Af');
-INSERT INTO pais VALUES (incremento_id_pais.nextval,'Cabo Verde','Af');
-INSERT INTO pais VALUES (incremento_id_pais.nextval,'Australia','Oc');-- Oficina de area
-INSERT INTO pais VALUES (incremento_id_pais.nextval,'Nueva Zelanda','Oc');
+INSERT INTO pais VALUES (100,'Suiza','Eu'); -- Sede Central
+INSERT INTO pais VALUES (101,'Grecia','Eu');
+INSERT INTO pais VALUES (102,'Portugal','Eu');
+INSERT INTO pais VALUES (103,'Singapur','As'); -- Oficina de area
+INSERT INTO pais VALUES (104,'Qatar','As');
+INSERT INTO pais VALUES (105,'Indonesia','As');
+INSERT INTO pais VALUES (106,'Estados Unidos','AmN'); -- Oficina de area
+INSERT INTO pais VALUES (107,'Costa Rica','AmN');
+INSERT INTO pais VALUES (108,'Argentina','AmS');-- Oficina de area
+INSERT INTO pais VALUES (109,'Ecuador','AmS');
+INSERT INTO pais VALUES (110,'Egipto','Af');-- Oficina de area
+INSERT INTO pais VALUES (111,'Marruecos','Af');
+INSERT INTO pais VALUES (112,'Cabo Verde','Af');
+INSERT INTO pais VALUES (113,'Australia','Oc');-- Oficina de area
+INSERT INTO pais VALUES (114,'Nueva Zelanda','Oc');
 
 -- Ciudad --
-INSERT INTO ciudad VALUES(incremento_id_ciudad.nextval,'Ginebra',100); -- central
-INSERT INTO ciudad VALUES(incremento_id_ciudad.nextval,'Atenas',101);
-INSERT INTO ciudad VALUES(incremento_id_ciudad.nextval,'Oya',101);
-INSERT INTO ciudad VALUES(incremento_id_ciudad.nextval,'Argos',101);
-INSERT INTO ciudad VALUES(incremento_id_ciudad.nextval,'Lisboa',102);
-INSERT INTO ciudad VALUES(incremento_id_ciudad.nextval,'Amadora',102);
-INSERT INTO ciudad VALUES(incremento_id_ciudad.nextval,'Esposende',102);
-INSERT INTO ciudad VALUES(incremento_id_ciudad.nextval,'Ciudad de Singapur',103); -- Central
-INSERT INTO ciudad VALUES(incremento_id_ciudad.nextval,'Doha',104);
-INSERT INTO ciudad VALUES(incremento_id_ciudad.nextval,'Dukhan',104);
-INSERT INTO ciudad VALUES(incremento_id_ciudad.nextval,'Lusail',104);
-INSERT INTO ciudad VALUES(incremento_id_ciudad.nextval,'Yakarta',105);
-INSERT INTO ciudad VALUES(incremento_id_ciudad.nextval,'Surabaya',105);
-INSERT INTO ciudad VALUES(incremento_id_ciudad.nextval,'Medan',105);
-INSERT INTO ciudad VALUES(incremento_id_ciudad.nextval,'Washington D. C.',106); -- Central
-INSERT INTO ciudad VALUES(incremento_id_ciudad.nextval,'Heredia',107);
-INSERT INTO ciudad VALUES(incremento_id_ciudad.nextval,'Escazú',107);
-INSERT INTO ciudad VALUES(incremento_id_ciudad.nextval,'Puntarenas',107);
-INSERT INTO ciudad VALUES(incremento_id_ciudad.nextval,'Buenos Aires',108);-- Central
-INSERT INTO ciudad VALUES(incremento_id_ciudad.nextval,'Machala',109);
-INSERT INTO ciudad VALUES(incremento_id_ciudad.nextval,'Quito',109);
-INSERT INTO ciudad VALUES(incremento_id_ciudad.nextval,'Salinas',109);
-INSERT INTO ciudad VALUES(incremento_id_ciudad.nextval,'El Cairo',110);-- Central
-INSERT INTO ciudad VALUES(incremento_id_ciudad.nextval,'Casablanca',111);
-INSERT INTO ciudad VALUES(incremento_id_ciudad.nextval,'Fez',111);
-INSERT INTO ciudad VALUES(incremento_id_ciudad.nextval,'Salé',111);
-INSERT INTO ciudad VALUES(incremento_id_ciudad.nextval,'Praia',112);
-INSERT INTO ciudad VALUES(incremento_id_ciudad.nextval,'Mindelo',112);
-INSERT INTO ciudad VALUES(incremento_id_ciudad.nextval,'Santa Maria',112);
-INSERT INTO ciudad VALUES(incremento_id_ciudad.nextval,'Sydney',113);-- Central
-INSERT INTO ciudad VALUES(incremento_id_ciudad.nextval,'Auckland',114);
-INSERT INTO ciudad VALUES(incremento_id_ciudad.nextval,'Wellington',114);
-INSERT INTO ciudad VALUES(incremento_id_ciudad.nextval,'Hamilton',114);
+INSERT INTO ciudad VALUES(10,'Ginebra',100); -- central
+INSERT INTO ciudad VALUES(11,'Atenas',101);
+INSERT INTO ciudad VALUES(12,'Oya',101);
+INSERT INTO ciudad VALUES(13,'Argos',101);
+INSERT INTO ciudad VALUES(14,'Lisboa',102);
+INSERT INTO ciudad VALUES(15,'Amadora',102);
+INSERT INTO ciudad VALUES(16,'Esposende',102);
+INSERT INTO ciudad VALUES(17,'Ciudad de Singapur',103); -- Central
+INSERT INTO ciudad VALUES(18,'Doha',104);
+INSERT INTO ciudad VALUES(19,'Dukhan',104);
+INSERT INTO ciudad VALUES(20,'Lusail',104);
+INSERT INTO ciudad VALUES(21,'Yakarta',105);
+INSERT INTO ciudad VALUES(22,'Surabaya',105);
+INSERT INTO ciudad VALUES(23,'Medan',105);
+INSERT INTO ciudad VALUES(24,'Washington D. C.',106); -- Central
+INSERT INTO ciudad VALUES(25,'Heredia',107);
+INSERT INTO ciudad VALUES(26,'Escazú',107);
+INSERT INTO ciudad VALUES(27,'Puntarenas',107);
+INSERT INTO ciudad VALUES(28,'Buenos Aires',108);-- Central
+INSERT INTO ciudad VALUES(29,'Machala',109);
+INSERT INTO ciudad VALUES(30,'Quito',109);
+INSERT INTO ciudad VALUES(31,'Salinas',109);
+INSERT INTO ciudad VALUES(32,'El Cairo',110);-- Central
+INSERT INTO ciudad VALUES(33,'Casablanca',111);
+INSERT INTO ciudad VALUES(34,'Fez',111);
+INSERT INTO ciudad VALUES(35,'Salé',111);
+INSERT INTO ciudad VALUES(36,'Praia',112);
+INSERT INTO ciudad VALUES(37,'Mindelo',112);
+INSERT INTO ciudad VALUES(38,'Santa Maria',112);
+INSERT INTO ciudad VALUES(39,'Sydney',113);-- Central
+INSERT INTO ciudad VALUES(40,'Auckland',114);
+INSERT INTO ciudad VALUES(41,'Wellington',114);
+INSERT INTO ciudad VALUES(42,'Hamilton',114);
 
 -- Empleado Jefe --
 
@@ -90,6 +90,49 @@ create or replace view detalle_oficina(Oficina,Nombre,Ciudad,Pais,Director)
 As SELECT ofi.id_oficina,ofi.nombre,ci.nombre,pa.nombre,e.nombre ||' '|| e.apellido 
 from oficina_principal ofi, ciudad ci, pais pa, empleado_jefe e
 where ofi.ciudad_id=ci.id_ciudad and ofi.ciudad_pais_id = pa.id_pais and ofi.empleado_jefe_id = e.id;
+
+
+-- Oficina Principal -- 
+INSERT INTO empleado_inteligencia VALUES (1,27234520,TO_DATE('1990/10/09 12:00:00', 'yyyy/mm/dd hh24:mi:ss'),
+'Anthny', 'Irvne', 'Mnsalve', 'Barros', 2, LIC('Venezuela', 2103455), CARACT(NULL, NULL, NULL, 170, 68.5, 'Marron', 'Perfecta'),
+'+5841499855', ALIAS_('Perry', NULL, TO_DATE('1990/10/09 12:00:00', 'yyyy/mm/dd hh24:mi:ss'), 'Venezuela', 2723450, 'Marron', 'Avenida principal, calle 25'),
+'calle 18 de la guaira', IDIOM('Español', 'Mandarín', 'Inglés', 'Alemán', 'Francés', 'Portugués'), 'Licenciatura', );
+
+
+CREATE TABLE empleado_inteligencia (
+    nivel_educativo      VARCHAR2 (22) NOT NULL,
+    ciudad_id            NUMBER NOT NULL,
+    ciudad_pais_id       NUMBER NOT NULL,
+    familiar1            FAMILIAR,
+    familiar2            FAMILIAR,
+    CONSTRAINT ck_caract_peso CHECK (caract.peso > 0),
+    CONSTRAINT ck_caract_altura CHECK (caract.altura_cm > 0),
+    CONSTRAINT ck_emp_nivel_seguridad CHECK (nivel_seguridad > 0 and nivel_seguridad < 4)
+);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -131,7 +174,7 @@ INSERT INTO tema VALUES (1,'Biología', 'El estudio de la vida es una fuente ina
 INSERT INTO p_t VALUES (1,1);
 
 -- Cliente
-INSERT INTO cliente VALUES (1,'Sociedad Bióloga de América', CONTACT('José Miguel', 'Monsalve', 'Barrios', '0414212222', 'N') , 29, 108);
+INSERT INTO cliente VALUES (1,'Sociedad Bióloga de América', CONTACT('José Miguel', 'Monsalve', 'Barrios', '0414212222', 'N') , 28, 108);
 
 -- historico de venta
 INSERT INTO hist_venta VALUES (1, TO_DATE('2032/02/27 11:20:15', 'yyyy/mm/dd hh24:mi:ss'), 150.12, 1, 1);

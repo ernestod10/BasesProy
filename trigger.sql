@@ -82,3 +82,13 @@ BEGIN
     
     END IF;
 END;
+
+-- AREA DE INTERES DESPUES DE VENDER
+create or replace TRIGGER T_AREA_INT_VENTA
+AFTER INSERT ON hist_venta FOR EACH ROW
+DECLARE 
+TEMA_PIEZA NUMBER;
+BEGIN
+    SELECT tema_id INTO TEMA_PIEZA FROM pieza_inteligencia WHERE id = :NEW.pieza_inteligencia_id;
+    INSERT INTO area_interes VALUES (:NEW.cliente_id, TEMA_PIEZA);    
+END;
