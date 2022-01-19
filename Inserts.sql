@@ -139,7 +139,7 @@ INSERT INTO estacion VALUES (incremento_id_estacion.nextval,'Cat',60000,24,31,10
 INSERT INTO estacion VALUES (incremento_id_estacion.nextval,'Pelican',70000,25,33,111,5);
 INSERT INTO estacion VALUES (incremento_id_estacion.nextval,'Jaguar',80000,26,34,111,5); 
 INSERT INTO estacion VALUES (incremento_id_estacion.nextval,'Armadillo',90000,27,35,111,5); 
-INSERT INTO estacion VALUES (incremento_id_estacion.nextval,'Armadillo',90000,28,36,112,5); 
+INSERT INTO estacion VALUES (incremento_id_estacion.nextval,'Snake',90000,28,36,112,5); 
 INSERT INTO estacion VALUES (incremento_id_estacion.nextval,'Oasis',9000,29,37,112,5);
 INSERT INTO estacion VALUES (incremento_id_estacion.nextval,'Fisher',60000,30,38,112,5);
 INSERT INTO estacion VALUES (incremento_id_estacion.nextval,'Crane',50000,31,40,114,6);
