@@ -4,6 +4,7 @@ create or replace type LIC as object
     Pais VARCHAR2(15),
     Numero NUMBER
 ); 
+/
 
 create or replace type CARACT as object
 (   
@@ -15,7 +16,7 @@ create or replace type CARACT as object
     color_ojos VARCHAR2(15),
     vision VARCHAR2(15)
 ); 
-
+/
 create or replace type FAMILIAR as object
 (   
     nombre VARCHAR2(25), 
@@ -23,9 +24,9 @@ create or replace type FAMILIAR as object
     parentesco VARCHAR2(15), 
     tel_contacto NUMBER(10)
 ); 
-
+/
 create or replace type IDIOM as varray(6) of VARCHAR2(10); 
-
+/
 create or replace type ALIAS_ as object
 (
     nombre VARCHAR2(25),
@@ -36,32 +37,28 @@ create or replace type ALIAS_ as object
     color_ojos VARCHAR2(15),
     direccion VARCHAR2(50),
     ult_fec_uso DATE
-    -- Falta atributo tabla anidada para los familiares
-
-    -- CREO QUE NO HACE FALTA LA TABLA ANIDADA PORQUE LOS FAMILIARES NO FORMAN PARTE DEL ALIAS SINO DEL 
-    -- AGENTE COMO TAL, LOS PUSE COMO DOS ATRIBUTOS MÁS Y CREÉ EL TIPO DE DATO "FAMILIAR"
-
-); 
-
+);
+create or replace type alias_nt as table of ALIAS_; 
+/
  
 create or replace type IDIOM as varray(6) of VARCHAR2(10); 
-
+/
 create or replace type INFORMAC as object
 (
     Pais VARCHAR2(15),
     Numero NUMBER
 ); 
-
+/
 create or replace type CONTACT as object
 (
     Nombre VARCHAR2(15),
     apellido VARCHAR2(15),
     apellido2 VARCHAR2(15),
-    telefono NUMBER(10),
+    telefono VARCHAR2(14),
     email VARCHAR2(15)
 ); 
 
-
+/
 ---------------------------------------------------------------------------                TABLAS                ------------------------------------------------------------------------------- 
 
 
@@ -97,7 +94,7 @@ CREATE TABLE cliente (
     id                   NUMBER NOT NULL PRIMARY KEY,
     nombre               VARCHAR2 (22)NOT NULL,
     contacto_empresa     CONTACT NOT NULL,
-    exclusivo            BOOLEAN NOT NULL,
+    exclusivo            NUMBER NOT NULL,
     ciudad_id            NUMBER NOT NULL,
     ciudad_pais_id       NUMBER NOT NULL
 );
@@ -115,7 +112,7 @@ CREATE TABLE empleado_inteligencia (
     licencia             LIC NOT NULL,
     caract               CARACT NOT NULL,
     telefono             NUMBER NOT NULL,
-    alias                ALIAS_,
+    alias_agente         alias_nt,
     calle                VARCHAR2(30) NOT NULL,
     idiomas              IDIOM NOT NULL,
     nivel_educativo      VARCHAR2 (22) NOT NULL,
@@ -126,7 +123,7 @@ CREATE TABLE empleado_inteligencia (
     CONSTRAINT ck_caract_peso CHECK (caract.peso > 0),
     CONSTRAINT ck_caract_altura CHECK (caract.altura_cm > 0),
     CONSTRAINT ck_emp_nivel_seguridad CHECK (nivel_seguridad > 0 and nivel_seguridad < 4)
-);
+) nested table alias_agente store as alias_nt_2;
 
 
 CREATE TABLE empleado_jefe (
@@ -142,7 +139,7 @@ CREATE TABLE estacion (
     id_estacion                   NUMBER NOT NULL,
     nombre                        VARCHAR2 (22) NOT NULL,
     presupuesto_anual             NUMBER NOT NULL,
-    empleado_jefe_id              NUMBER NOT NULL,
+    empleado_jefe_id              NUMBER NOT NULL UNIQUE,
     ciudad_id                     NUMBER NOT NULL,
     ciudad_pais_id                NUMBER NOT NULL,
     oficina_principal_id          NUMBER NOT NULL,
@@ -170,24 +167,26 @@ CREATE UNIQUE INDEX oficina_principal__idx ON
         empleado_jefe_id
     ASC );
 
-CREATE UNIQUE INDEX oficina_principal__idxv1 ON
-    oficina_principal (
-        ciudad_id_ciudad
-    ASC,
-        ciudad_pais_id_pais
-    ASC );
+--CREATE UNIQUE INDEX oficina_principal__idxv1 ON
+--  oficina_principal (
+--        ciudad_id_ciudad
+--    ASC,
+--        ciudad_pais_id_pais
+--    ASC );
 
 
 CREATE TABLE historico_cargo (
     fec_inicio                           DATE NOT NULL,
     fec_fin                              DATE,
-    cargo                                Varchar(1) NOT NULL, 
+    cargo                                Varchar(15) NOT NULL, 
     emp_int_id                           NUMBER NOT NULL,
     estacion_id                          NUMBER NOT NULL, 
     est_ofic_prin_id                     NUMBER NOT NULL,
+    CONSTRAINT ck_cargo CHECK( cargo IN ('Agente','Analista')),
     CONSTRAINT historico_cargo_pk PRIMARY KEY ( fec_inicio,emp_int_id,estacion_id,est_ofic_prin_id),
     CONSTRAINT ck_fec_hist_cargo CHECK (fec_fin >= fec_inicio)
 );
+
 
 CREATE TABLE informante (
     id_informante                                      NUMBER NOT NULL PRIMARY KEY,
@@ -200,7 +199,7 @@ CREATE TABLE informante (
     hist_cg_fec_ini                                    DATE NOT NULL, 
     hist_cg_emp_int_id                                 NUMBER NOT NULL, 
     hist_cg_est_id                                     NUMBER NOT NULL, 
-    hist_cg_ofic_id                                    NUMBER NOT NULL,
+    hist_cg_ofic_id                                    NUMBER NOT NULL,d
     CONSTRAINT arc_1 CHECK ( ( ( hist_cg_fec_ini_A IS NOT NULL )AND ( hist_cg_emp_int_id IS NOT NULL )AND ( hist_cg_est_id_A IS NOT NULL )AND ( hist_cg_ofic_id_A IS NOT NULL )AND ( empleado_jefe_id_A IS NULL ) )
                                  OR ( ( empleado_jefe_id_A IS NOT NULL )AND ( hist_cg_fec_ini_A IS NULL )AND ( hist_cg_emp_int_id_A IS NULL )AND ( hist_cg_est_id_A IS NULL )AND ( hist_cg_ofic_id_A IS NULL ) ) )
 );
@@ -209,7 +208,7 @@ CREATE TABLE historico_pago (
     id_pago_infor                          NUMBER NOT NULL,
     fecha                                  DATE NOT NULL,
     pago                                   NUMBER NOT NULL,
-    hecho_crudo_id_hecho_cdo               NUMBER,
+    hecho_crudo_id                         NUMBER,
     informante_id                          NUMBER NOT NULL,
     CONSTRAINT historico_pago_pk PRIMARY KEY ( id_pago_infor,informante_id),
     CONSTRAINT ck_pago CHECK (pago >= 0)
@@ -217,7 +216,7 @@ CREATE TABLE historico_pago (
 
 CREATE UNIQUE INDEX historico_pago__idx ON
     historico_pago (
-        hecho_crudo_id_hecho_cdo
+        hecho_crudo_id
     ASC );
 
 
@@ -275,8 +274,8 @@ CREATE TABLE p_t (
 
 CREATE TABLE hecho_crudo (
     id_hecho_cdo                                      NUMBER NOT NULL PRIMARY KEY,
-    resumen                                           VARCHAR2 (22) NOT NULL,
-    fuente                                            VARCHAR(1) NOT NULL,
+    resumen                                           VARCHAR2 (50) NOT NULL,
+    fuente                                            VARCHAR(25) NOT NULL,
     tipo_contenido                                    VARCHAR2 (12) NOT NULL,
     contenido                                         VARCHAR2 (80) NOT NULL,
     nivel_confi_ini                                   NUMBER NOT NULL,
@@ -388,7 +387,7 @@ ALTER TABLE hist_venta
 
 ALTER TABLE historico_cargo
     ADD CONSTRAINT hist_cargo_emp_int_fk FOREIGN KEY ( emp_int_id )
-        REFERENCES empleado_inteligencia ( id_emp_int );
+        REFERENCES empleado_inteligencia ( id_emp_int ) ON DELETE CASCADE;
 
 ALTER TABLE historico_cargo
     ADD CONSTRAINT historico_cargo_estacion_fk FOREIGN KEY ( estacion_id,est_ofic_prin_id )
@@ -396,10 +395,11 @@ ALTER TABLE historico_cargo
 
 -- Relacion de Historico de Pago
 
-ALTER TABLE historico_pago
+ ALTER TABLE historico_pago
     ADD CONSTRAINT historico_pago_informante_fk FOREIGN KEY ( informante_id )
-        REFERENCES informante ( id_informante );
+        REFERENCES informante ( id_informante ) ON DELETE CASCADE;
 
+       
 
 -- Relacion de Informante
 
@@ -413,8 +413,7 @@ ALTER TABLE informante
 
 ALTER TABLE informante
     ADD CONSTRAINT Agente_fkv1 FOREIGN KEY ( hist_cg_fec_ini,hist_cg_emp_int_id,hist_cg_est_id,hist_cg_ofic_id )
-        REFERENCES historico_cargo ( fec_inicio,emp_int_id,estacion_id,est_ofic_prin_id);
-
+        REFERENCES historico_cargo ( fec_inicio,emp_int_id,estacion_id,est_ofic_prin_id) ON DELETE CASCADE;
 
 -- Relaciones de Oficina Principal
 
@@ -430,7 +429,7 @@ ALTER TABLE oficina_principal
 
 ALTER TABLE pieza_inteligencia
     ADD CONSTRAINT pieza_int_hist_ca_fk FOREIGN KEY ( hist_cg_fec_ini,hist_cg_emp_int_id,hist_cg_est_id,hist_cg_ofic_id)
-        REFERENCES historico_cargo ( fec_inicio ,emp_int_id ,estacion_id,est_ofic_prin_id);
+        REFERENCES historico_cargo ( fec_inicio ,emp_int_id ,estacion_id,est_ofic_prin_id) ON DELETE CASCADE;
 
 ALTER TABLE pieza_inteligencia
     ADD CONSTRAINT pieza_inteligencia_tema_fk FOREIGN KEY ( tema_id )
@@ -451,18 +450,19 @@ ALTER TABLE p_t
 
 ALTER TABLE hecho_crudo
     ADD CONSTRAINT hecho_crudo_historico_cargo_fk FOREIGN KEY ( hist_cg_fec_ini, hist_cg_emp_int_id,hist_carg_est_id,hist_carg_ofic_id )
-        REFERENCES historico_cargo ( fec_inicio,emp_int_id,estacion_id,est_ofic_prin_id);
+        REFERENCES historico_cargo ( fec_inicio,emp_int_id,estacion_id,est_ofic_prin_id) ON DELETE cascade;
 
-
+    -- Creo que falta un constraint para el historico de pago que puede ser null y tiene que ser unico.
+    
 -- Relacion de P_H
 
 ALTER TABLE p_h
     ADD CONSTRAINT p_h_cliente_fk FOREIGN KEY ( pieza_int_id )
-        REFERENCES pieza_inteligencia ( id );
+        REFERENCES pieza_inteligencia ( id )  ON DELETE CASCADE;
 
 ALTER TABLE p_h
     ADD CONSTRAINT p_h_hecho_crudo_fk FOREIGN KEY ( hecho_cdo_id )
-        REFERENCES hecho_crudo ( id_hecho_cdo );
+        REFERENCES hecho_crudo ( id_hecho_cdo ) ON DELETE CASCADE;
 
 -- Relacion de Verificcion de Hecho crudo
 

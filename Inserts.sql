@@ -12,6 +12,12 @@ CREATE SEQUENCE incremento_id_estacion
 INCREMENT BY 1
 START WITH 300;
 
+-- Incremento hecho crudo
+CREATE SEQUENCE incr_hc INCREMENT BY 1 START WITH 1;
+
+-- Incremento Pieza inteligencia
+CREATE SEQUENCE incr_pi INCREMENT BY 1 START WITH 1;
+
 
 -- Pais --
 INSERT INTO pais VALUES (incremento_id_pais.nextval,'Suiza','Eu'); -- Sede Central
@@ -139,3 +145,53 @@ INSERT INTO estacion VALUES (incremento_id_estacion.nextval,'Fisher',60000,30,38
 INSERT INTO estacion VALUES (incremento_id_estacion.nextval,'Crane',50000,31,40,114,6);
 INSERT INTO estacion VALUES (incremento_id_estacion.nextval,'Gecko',50000,32,41,114,6);
 INSERT INTO estacion VALUES (incremento_id_estacion.nextval,'Capuchin',50000,33,42,114,6);
+
+
+-- Empleado_inteligencia --
+
+insert into empleado_inteligencia VALUES (1,27948046,'09-JAN-2001','Diego','Miguel','Bastardo','Jurado',2,
+LIC('Venezuela','5555'),
+CARACT(bfilename('MEDIA_DIR','empleado_ing.jpg'),bfilename('MEDIA_DIR','huella_dactilar.jpg'),bfilename('MEDIA_DIR','huella_retina.jpg'),179,71,'Verdes','Buena'),
+04248569544,
+alias_nt(ALIAS_('Juan Luis Gomez',bfilename('MEDIA_DIR','alias1.jpg'),'21-OCT-1999','Rusia','2154879','Marron','AV Centuri prim 1234','30-SEP-2020')),
+'AV ALitisis',
+IDIOM('Español','Ingles','Arabe','Frances','Italiano','Ruso'),
+'Universitario',11,101,
+FAMILIAR('Miguel BAstardo','03-MAY-1970','Papa',0425841436),
+FAMILIAR('Cristy Jurado','24-NOV-1971','Mama',0425841436)
+);
+
+
+
+
+
+-- Historico_cargo --
+INSERT into historico_cargo values ('02-DEC-2031',null,'Agente',1,300,1);
+
+
+
+
+-- Informantes --
+INSERT INTO informante VALUES(1,'Nepistedes',2,null,null,null,null,'02-DEC-2031',1,300,1);
+INSERT INTO informante VALUES(2,'Proteo',3,null,null,null,null,'02-DEC-2031',1,300,1);
+INSERT INTO informante VALUES (3,'Altair',2,null,null,null,null,'02-DEC-2031',1,300,1);
+INSERT INTO informante VALUES (4,'Chuo',3,null,null,null,null,'02-DEC-2031',1,300,1); -- informante de segundo empleado de inteligencia 
+
+-- Historico de Pago --
+
+INSERT INTO historico_pago values (1,'02-DEC-2031',200,6,2);
+
+
+-- Hecho crudo -- 
+
+INSERT INTO hecho_crudo VALUES (5,'Este es un ejemplo de Hecho Crudo',
+'abierta', 'individuos',
+'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry"s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.',
+91, TO_DATE('2031/12/24 14:31:05', 'yyyy/mm/dd hh24:mi:ss'), 90, TO_DATE('2032/01/09 11:20:04', 'yyyy/mm/dd hh24:mi:ss'),
+2, null, null, '02-DEC-2031', 1, 300,1);
+
+INSERT INTO hecho_crudo VALUES (6,'Por que los estudiantes aprenden solos',
+'abierta', 'individuos',
+'Eso significa que el paradigma constructivista actual que lidera el mundo educativo sitúa al alumno como protagonista absoluto y casi solitario del proceso de enseñanza/aprendizaje. Posiblemente se trate de una reacción exagerada a la postura anterior en la que únicamente contaba la enseñanza del maestro y el estudiante quedaba relegado a un pasivo segundo plano. Como casi siempre, la verdad está en el medio. “Es cierto que los alumnos pueden aprender algunas destrezas a través del descubrimiento personal.',
+91, TO_DATE('2031/12/24 14:31:05', 'yyyy/mm/dd hh24:mi:ss'), 90, TO_DATE('2032/01/09 11:20:04', 'yyyy/mm/dd hh24:mi:ss'),
+2, 1, 2, '02-DEC-2031', 1, 300,1);
