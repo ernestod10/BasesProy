@@ -328,3 +328,25 @@ END;
     -- quitar privilegios a la cuenta de de analista y otorgar privilegios de agente
 
 '09-MAY-2030'
+
+--trigger q promedia las evaluaciones de los hechos crudos
+CREATE OR REPLACE TRIGGER promedio_hecho
+    after INSERT ON verificacion_hecho
+    FOR EACH ROW 
+BEGIN
+    UPDATE hecho_crudo 
+    SET NIVEL_CONFI_FIN = (get_suma_h(:new.HECHO_CDO_ID)/get_cont_h(:new.HECHO_CDO_ID)) 
+    where ID_HECHO_CDO=:new.HECHO_CDO_ID;
+
+END;
+/
+--trigger q no deja a un agente editar informantes de otro agente
+Create or replace trigger informante_edit_trigger
+before update or delete on informante
+for each row
+begin
+  if :OLD.HIST_CG_EMP_INT_ID != emp_id then
+        raise_application_error(-20001,'El agente no tiene el clearance necesario para realizar la operacion');
+    end if;
+end;
+/

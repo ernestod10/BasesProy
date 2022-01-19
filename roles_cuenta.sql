@@ -59,16 +59,20 @@ grant update on p_t to Analista;
 grant select on verificacion_hecho to Analista;
 grant update on verificacion_hecho to Analista;
 grant select on empleado_jefe to Analista;
+grant execute on Verificar_hecho to Analista; 
 
 -- Agente 
 create role Agente NOT IDENTIFIED;
 grant connect to Agente;
 grant create session to Agente;
-grant select, delete, update,insert on informante to Agente;
+grant delete, update,insert on informante to Agente;
 grant select,update,insert on hecho_crudo to Agente;
 grant insert,select on verificacion_hecho to Agente;
 grant select, insert, update on historico_pago to Agente;
 grant select on empleado_jefe to Agente;
+grant select on informantes_ver to Agente;
+grant execute on CREA_Hecho to Agente;
+grant execute on nuevo_informante to Agente;
 
 -- Cliente 
 
