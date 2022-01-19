@@ -35,6 +35,7 @@ grant select on estacion to D_estacion;
 grant select on ciudad to D_estacion;
 grant select on pais to D_estacion;
 grant select on pieza_inteligencia to D_estacion;
+grant select on hecho_crudo to D_estacion;
 grant select,insert,delete,update on hist_venta to D_estacion;
 
 
