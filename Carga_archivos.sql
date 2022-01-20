@@ -1,7 +1,4 @@
 
--- Directorio de Diego 
-CREATE OR REPLACE DIRECTORY media_dir AS 'C:\Users\diego\Desktop\7mo Semestre\Sistemas de bases de datos II\Proyecto\Entrega II\img_proy';
-
 
 -- DBMS_LOB BFILE functionality
 

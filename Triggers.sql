@@ -1,3 +1,4 @@
+--------------------------------------------------------        TRIGGERS        ------------------------------------------------------------------------------------------
 
 -- VALIDAR QUE LA ESTACION TENGA 1 SOLO JEFE  
 
@@ -350,3 +351,29 @@ begin
     end if;
 end;
 /
+
+-- Validar Acceso no autorizado
+CREATE SEQUENCE incremento_id_hist_seguridad
+INCREMENT BY 1
+START WITH 100;
+
+CREATE OR REPLACE PROCEDURE CONSULTAR_PIEZA (id_empleado IN number, id_pieza IN number) IS 
+nivel_S_emp number := null;
+nivel_S_p number := null;
+id_pieza1 number := null;
+precio_aproximado number := null;
+fecha_construccion date := null;
+nivel_confiabilidad number := null;
+tema_id number := null;
+BEGIN
+    SELECT p.id_pieza_in,p.precio_aproximado, p.fecha_construccion,p.nivel_confiabilidad,p.tema_id,emp.CLASESEGURIDAD,p.nivel_seguridad into  id_pieza1,precio_aproximado, fecha_construccion,nivel_confiabilidad,tema_id,nivel_S_emp,nivel_S_p 
+    from pieza_inteligencia p, empleado_inteligencia emp where p.hist_cg_emp_int_id = id_empleado and p.id_pieza_in = id_pieza and  p.hist_cg_emp_int_id = emp.id_emp_int;
+    dbms_output.put_line( 'id_pieza: ' || id_pieza1 || ', '|| 'Precio_aproximado: '|| precio_aproximado ||'$, '||'Fecha de construccion: '|| fecha_construccion ||', '||'Nivel de confiabilidad: '|| nivel_confiabilidad||'%, ' ||'Tema: '|| tema_id);
+
+    if nivel_S_emp < nivel_S_p  then 
+        insert into historico_seguridad values(incremento_id_hist_seguridad.nextval,id_empleado,id_pieza);
+    end if;
+END;
+commit;
+
+EXECUTE CONSULTAR_PIEZA(1,3);
